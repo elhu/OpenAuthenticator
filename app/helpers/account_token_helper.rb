@@ -1,0 +1,2 @@
+module AccountTokenHelper
+end

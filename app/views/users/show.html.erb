@@ -1,0 +1,38 @@
+<p>
+  <b>Login:</b>
+  <%= @user.login %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <b>Birthdate:</b>
+  <%= @user.birthdate %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Emergency pass:</b>
+  <%= @user.emergency_pass %>
+</p>
+
+<p>
+  <b>Personal key:</b>
+  <%= @user.personal_keys.first.personal_key %>
+  <%= @user.personal_keys.first.to_json %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
