@@ -1,10 +1,10 @@
 TODO:
--Check why the personal_key's state isn't set on create
+-Check why the personal_key's state isn't set on create | DONE-- set the state in before_create
 -Javascript validation of user create and edit
 -WRITE TESTS FFS!
 -link account_token creation
 -link account_token management (change state, don't delete => use named_scope)
+-For account_token-- add reference column so the user can associate a note to a token
 -Authenticate method
 -Log of authentication requests (creation, display, --by account_token)
--For account_token-- add reference column so the user can associate a note to a token
 -Find a design(er)

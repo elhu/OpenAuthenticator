@@ -1,21 +1,13 @@
 Openauthenticator::Application.routes.draw do
-  get "personal_key/new"
 
-  get "personal_key/create"
+  resources :personal_key, :only => [:new, :create, :index, :show, :delete]
 
-  get "personal_key/index"
-
-  get "personal_key/show"
-
-  get "personal_key/delete"
-
-  get "account_token/create"
-
-  get "account_token/update"
-
-  get "account_token/delete"
+  resources :account_token, :only => [:create, :update, :delete]
 
   resources :users
+
+  match '/users/new/check_email', :to => 'users#check_email'
+  match '/users/new/check_login', :to => 'users#check_login'
 
   match "/register" => "users#new"
 end

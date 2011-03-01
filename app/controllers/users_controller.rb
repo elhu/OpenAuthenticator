@@ -87,4 +87,21 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # AJAX validation methods
+  # check email availability
+  def check_email
+		user = User.find_by_email(params[:user][:email])
+		if current_user? user
+			respond_with(true)
+		else
+			respond_with(!user)
+		end
+  end
+
+  # check login availability
+  def check_login
+  	user = User.find_by_login(params[:user][:login])
+		respond_with(!user)
+  end
 end
