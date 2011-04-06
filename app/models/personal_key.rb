@@ -14,7 +14,7 @@ class PersonalKey < ActiveRecord::Base
   # model associations
   belongs_to :user
 
-  scope :current, where(:state => :activ)
+  scope :current, where(:state => :active)
 
   # prevent foreign key change by mass assignment
   attr_accessible :personal_key

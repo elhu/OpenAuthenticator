@@ -49,6 +49,7 @@ class UsersController < ApplicationController
       if @user.save
         flash[:success] = 'User was successfully created.';
         format.html { redirect_to @user}
+        format.json { render :json => @user }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         flash[:error] = 'Something went wrong with the user creation'
@@ -92,11 +93,7 @@ class UsersController < ApplicationController
   # check email availability
   def check_email
 		user = User.find_by_email(params[:user][:email])
-		if current_user? user
-			respond_with(true)
-		else
-			respond_with(!user)
-		end
+    respond_with(!user)
   end
 
   # check login availability

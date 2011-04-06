@@ -18,7 +18,19 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="capistrano" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="factory_girl_rails" version="1.0" bound="EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="heroku" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
@@ -116,6 +128,13 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] rspec (v2.5.0, /usr/lib/ruby/gems/1.8/gems/rspec-2.5.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-core (v2.5.1, /usr/lib/ruby/gems/1.8/gems/rspec-core-2.5.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] nokogiri (v1.5.0.beta.4, /home/elhu/.gem/ruby/1.8/gems/nokogiri-1.5.0.beta.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] net-ssh (v2.1.0, /usr/lib/ruby/gems/1.8/gems/net-ssh-2.1.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] net-scp (v1.0.4, /usr/lib/ruby/gems/1.8/gems/net-scp-1.0.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] capistrano (v2.5.19, /usr/lib/ruby/gems/1.8/gems/capistrano-2.5.19)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] highline (v1.6.1, /usr/lib/ruby/gems/1.8/gems/highline-1.6.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] net-ssh-gateway (v1.0.1, /usr/lib/ruby/gems/1.8/gems/net-ssh-gateway-1.0.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] net-sftp (v2.0.5, /usr/lib/ruby/gems/1.8/gems/net-sftp-2.0.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] bundler (v1.0.10, /usr/lib/ruby/gems/1.8/gems/bundler-1.0.10)" level="application" />
   </component>
 </module>
 

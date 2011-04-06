@@ -16,4 +16,12 @@ class AccountToken < ActiveRecord::Base
 
   # prevent foreign key change by mass assignment
   attr_accessible :account_token
+
+  before_create :generate_account_token
+
+  private
+  def generate_account_token
+    self.account_token = Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}")
+    self.state = :active
+  end
 end

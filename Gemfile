@@ -4,8 +4,11 @@ gem 'rails', '3.0.4'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql2'
 gem 'rake'
+gem 'heroku'
 
 gem 'sqlite3'
+
+gem 'capistrano'
 
 group :development do
   gem 'rspec-rails', '2.5.0'

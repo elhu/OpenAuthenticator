@@ -31,8 +31,9 @@
 <p>
   <b>Personal key:</b>
   <%= @user.personal_keys.first.personal_key %>
-  <%= @user.personal_keys.first.to_json %>
 </p>
+
+<%= button_to "Create AccountToken", { :controller => :account_token, :action  => :create, :account_token => { :user_id => @user.id } }, :method => :post %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

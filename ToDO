@@ -1,6 +1,6 @@
 TODO:
--Check why the personal_key's state isn't set on create | DONE-- set the state in before_create
--Javascript validation of user create and edit
+-Check why the personal_key's state isn't set on create | DONE --set the state in before_create
+-Javascript validation of user create and edit | DONE --used jquery.validation => created ajax methods and routes (see user_controller.rb)
 -WRITE TESTS FFS!
 -link account_token creation
 -link account_token management (change state, don't delete => use named_scope)
