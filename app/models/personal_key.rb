@@ -11,10 +11,10 @@
 #
 
 class PersonalKey < ActiveRecord::Base
+  scope :current, where(:state => :active)
+
   # model associations
   belongs_to :user
-
-  scope :current, where(:state => :active)
 
   # prevent foreign key change by mass assignment
   attr_accessible :personal_key
@@ -22,16 +22,16 @@ class PersonalKey < ActiveRecord::Base
   # before create filter
   before_create :generate_personal_key
 
+  # revoke the personal key
+  def revoke
+    self.state = :revoked
+    self.save
+  end
 
   private
   # generate the personal_key bound to the User
   def generate_personal_key
     self.personal_key = Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}")
     self.state = :active
-  end
-
-  # revoke the personal key
-  def revoke
-    self.state = :revoked
   end
 end

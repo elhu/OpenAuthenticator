@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true, :length => { :maximum => 50 }
   validates :last_name, :presence => true, :length => { :maximum => 50 }
   validates :email, :presence => true, :format => { :with => email_regex },
-            :length => { :maximum => 100 }, :uniqueness => { :case_sensitive => false }
+            :length => { :maximum => 255 }, :uniqueness => { :case_sensitive => false }
 
   # before and after filters
   before_create :set_emergency_pass

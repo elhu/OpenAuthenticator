@@ -1,10 +1,23 @@
 TODO:
 -Check why the personal_key's state isn't set on create | DONE --set the state in before_create
 -Javascript validation of user create and edit | DONE --used jquery.validation => created ajax methods and routes (see user_controller.rb)
--WRITE TESTS FFS!
--link account_token creation
+-link account_token creation | DONE
 -link account_token management (change state, don't delete => use named_scope)
--For account_token-- add reference column so the user can associate a note to a token
 -Authenticate method
 -Log of authentication requests (creation, display, --by account_token)
--Find a design(er)
+-Find a design(er) | DONE --Web Academy
+-For account_token-- add reference column so the user can associate a note to a token
+
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!
+-WRITE TEST FFS!

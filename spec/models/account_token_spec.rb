@@ -4,6 +4,7 @@ describe AccountToken do
   pending "add some examples to (or delete) #{__FILE__}"
 end
 
+
 # == Schema Information
 #
 # Table name: account_tokens
@@ -14,5 +15,6 @@ end
 #  user_id       :integer
 #  created_at    :datetime
 #  updated_at    :datetime
+#  label         :string(255)
 #
 

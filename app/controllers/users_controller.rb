@@ -1,104 +1,211 @@
 class UsersController < ApplicationController
   respond_to :xml, :html, :json, :js
-  # GET /users
-  # GET /users.xml
+
+  # Returns all users
+  #
+  # Restricted to: admin
+  #
+  # URL params:
+  # * <format>: Output format wanted
+  #
+  # Query URLs:
+  # * GET /users
+  # * GET /users.<format>
+  # ToDo:
+  # * Restrict, and probably expect arguments to return a smaller set of users
   def index
     @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.xml { render :xml => @users }
     end
   end
 
-  # GET /users/login
-  # GET /users/login.xml
+  # Gets user with login <login>
+  #
+  # Restricted to: authenticated user, admin
+  #
+  # Return values:
+  # * On success: 200 OK => user
+  # * On failure: 404 NOT FOUND => false (no such user)
+  #
+  # URL params:
+  # * <login>: User's login
+  # * <format>: Output format wanted
+  #
+  # Query URLs:
+  # * GET /users/<login>
+  # * GET /users/<login>.<format>
   def show
     @user = User.find_by_login(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @user }
-    end
-  end
-
-  # GET /users/new
-  # GET /users/new.xml
-  def new
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
-    end
-  end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find_by_login(params[:id])
-  end
-
-  # POST /users
-  # POST /users.xml
-  def create
-    @user = User.new(params[:user])
-
-    @user.login = params[:user][:login] #needed to secure mass assignment
-
-    respond_to do |format|
-      if @user.save
-        flash[:success] = 'User was successfully created.';
-        format.html { redirect_to @user}
-        format.json { render :json => @user }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      if not @user.nil?
+        #format.html # show.html.erb
+        format.json
+        #format.xml { render :xml => @user }
       else
-        flash[:error] = 'Something went wrong with the user creation'
-        format.html { render :action => "new"}
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.json { render :json => false, :status => :not_found }
       end
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
+  # Creates a new User
+  #
+  # Return values:
+  # * On success: 201 CREATED => user
+  # * On failure: 422 UNPROCESSABLE ENTITY => false (bad parameters)
+  #
+  # URL params:
+  # * <format>: Output format wanted
+  #
+  # POST params:
+  # * user:
+  #   * login: desired login (string, matching: /\w+|[-]/, length: <= 25 )
+  #   * first_name: user's first name (string, length: <= 50)
+  #   * last_name: user's last name (string, length: <= 50)
+  #   * email: user's email address (string, matching: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, length: <= 255)
+  #   * birthdate:
+  #     * year: user's year of birth (integer)
+  #     * month: user's month of birth (integer)
+  #     * day: user's day of birth (integer)
+  #
+  # Query URLs:
+  # * POST /users
+  # * POST /users.<format>
+  def create
+    @user           = User.new(params[:user])
+
+    @user.login     = params[:user][:login] #needed to secure mass assignment
+    @user.birthdate = Date.new(params[:user][:birthdate][:year], params[:user][:birthdate][:month], params[:user][:birthdate][:day])
+
+    respond_to do |format|
+      if @user.save
+#        flash[:success] = 'User was successfully created.'
+#        format.html { redirect_to @user}
+        format.json { render :json => @user, :status => :created }
+#        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else
+#        flash[:error] = 'Something went wrong with the user creation'
+#        format.html { render :action => "new"}
+        format.json { render :json => @user.errors, :status => :unprocessable_entity }
+#        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # Updates user information according to params
+  #
+  # Restricted to: authenticated user, admin
+  #
+  # Return values:
+  # * On success: 200 OK => user
+  # * On failure:
+  #   * 422 UNPROCESSABLE ENTITY => false (bad parameters)
+  #   * 404 NOT FOUND => false (no such user)
+  #
+  # URL params:
+  # * <format>: Output format wanted
+  #
+  # PUT Params:
+  # * user:
+  #   * first_name: user's first name (string, length: <= 50)
+  #   * last_name: user's last name (string, length: <= 50)
+  #   * email: user's email address (string, matching: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, length: <= 255)
+  #
+  # Query URLs:
+  # * PUT /users/<login>
+  # * PUT /users/<login>.<format>
   def update
     @user = User.find_by_login(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        flash[:success] = 'User was successfully updated.'
-        format.html { redirect_to(@user)}
-        format.xml  { head :ok }
+      if not @user.nil?
+        if @user.update_attributes(params[:user])
+          #        flash[:success] = 'User was successfully updated.'
+          #        format.html { redirect_to(@user)}
+          format.json { render :json => @user }
+          #        format.xml  { head :ok }
+        else
+          #        flash[:error] = 'Something went wrong with the user update'
+          #        format.html { render :action => "edit"}
+          format.json { render :json => @user.errors, :status => :unprocessable_entity }
+          #        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
       else
-        flash[:error] = 'Something went wrong with the user update'
-        format.html { render :action => "edit"}
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.json { render :json => false, :status => :not_found }
       end
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
+  # Deletes user's record
+  #
+  # Restricted to: authenticated user, admin
+  #
+  # Return values:
+  # * On success: 200 OK => true
+  # * On failure: 404 NOT FOUND => false (no such user)
+  #
+  # URL params:
+  # * <login>: User's login
+  # * <format>: Output format wanted
+  #
+  # Query URLs:
+  # * DELETE /users/<login>
+  # * DELETE /users/<login>.<format>
   def destroy
     @user = User.find_by_login(params[:id])
-    @user.destroy
+    @user.destroy unless @user.nil?
 
     respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
+      if @user.nil?
+#      format.html { redirect_to(users_url) }
+#      format.xml  { head :ok }
+        format.json { render :json => false, :status => :not_found }
+      else
+        format.json { render :json => true }
+      end
     end
   end
 
   # AJAX validation methods
-  # check email availability
+
+  # Checks email availability
+  #
+  # Return values:
+  # 
+  # GET Params:
+  # * user:
+  #   * email: user's email address (string, matching: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, length: <= 255)
+  #
+  # Query URLs:
+  # * GET /users/new/check_email
   def check_email
-		user = User.find_by_email(params[:user][:email])
+    user = User.find_by_email(params[:user][:email])
     respond_with(!user)
   end
 
-  # check login availability
+  # Checks login availability
+  #
+  # Return values:
+  # * Login available: 200 OK => true
+  # * Login unavailable: 409 CONFLICT => false
+  #
+  # GET Params:
+  # * user:
+  #   * login: desired login (string, matching: /\w+|[-]/, length: <= 25 )
+  #
+  # Query URLs:
+  # * GET /users/new/check_login
   def check_login
-  	user = User.find_by_login(params[:user][:login])
-		respond_with(!user)
+    user = User.find_by_login(params[:user][:login])
+    respond_to do |format|
+      if (user)
+        format.json { render :json => false, :status => :conflict }
+      else
+        format.json { render :json => true }
+      end
+    end
   end
 end

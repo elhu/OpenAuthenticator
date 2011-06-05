@@ -8,11 +8,10 @@ Openauthenticator::Application.routes.draw do
 
   get "pages/contact"
 
-  resources :personal_key, :only => [:new, :create, :index, :show, :delete]
-
-  resources :account_token, :only => [:create, :update, :delete]
-
-  resources :users
+  resources :users do
+    resources :account_token
+    resources :personal_key
+  end
 
   match '/users/new/check_email', :to => 'users#check_email'
   match '/users/new/check_login', :to => 'users#check_login'
