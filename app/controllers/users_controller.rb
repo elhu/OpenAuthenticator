@@ -174,16 +174,24 @@ class UsersController < ApplicationController
   # Checks email availability
   #
   # Return values:
-  # 
-  # GET Params:
+  # * Email available: 200 OK => true
+  # * Email unavailable: 409 CONFLICT => false
+  #
+  # POST Params:
   # * user:
   #   * email: user's email address (string, matching: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, length: <= 255)
   #
   # Query URLs:
-  # * GET /users/new/check_email
+  # * POST /users/new/check_email
   def check_email
     user = User.find_by_email(params[:user][:email])
-    respond_with(!user)
+    respond_to do |format|
+      if user
+        format.json { render :json => false, :status => :conflict }
+      else
+        format.json { render :json => true }        
+      end
+    end
   end
 
   # Checks login availability
@@ -192,16 +200,16 @@ class UsersController < ApplicationController
   # * Login available: 200 OK => true
   # * Login unavailable: 409 CONFLICT => false
   #
-  # GET Params:
+  # POST Params:
   # * user:
   #   * login: desired login (string, matching: /\w+|[-]/, length: <= 25 )
   #
   # Query URLs:
-  # * GET /users/new/check_login
+  # * POST /users/new/check_login
   def check_login
     user = User.find_by_login(params[:user][:login])
     respond_to do |format|
-      if (user)
+      if user
         format.json { render :json => false, :status => :conflict }
       else
         format.json { render :json => true }

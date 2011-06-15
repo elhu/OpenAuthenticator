@@ -10,8 +10,8 @@ class AccountTokenController < ApplicationController
   # * <format>: the output format wanted
   #
   # Query URLs:
-  # GET * /users/<login>/account_token
-  # GET * /users/<login>/account_token.<format>
+  # * GET /users/<login>/account_token
+  # * GET /users/<login>/account_token.<format>
   def index
     user = User.find_by_login(params[:user_id])
     respond_to do |format|
