@@ -4,14 +4,11 @@
     <list default="true" id="019845dd-4f32-4dc2-8e12-e71076b45440" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/openauthenticator.iml" afterPath="$PROJECT_DIR$/.idea/openauthenticator.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/app/created.rid" afterPath="$PROJECT_DIR$/doc/app/created.rid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/pids/server.pid" afterPath="$PROJECT_DIR$/tmp/pids/server.pid" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/account_token_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/account_token_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/app/classes/AccountTokenController.html" afterPath="$PROJECT_DIR$/doc/app/classes/AccountTokenController.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/app/files/app/controllers/account_token_controller_rb.html" afterPath="$PROJECT_DIR$/doc/app/files/app/controllers/account_token_controller_rb.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
     </list>
     <ignored path="openauthenticator.iws" />

@@ -78,19 +78,15 @@ class UsersController < ApplicationController
     @user           = User.new(params[:user])
 
     @user.login     = params[:user][:login] #needed to secure mass assignment
-    @user.birthdate = Date.new(params[:user][:birthdate][:year], params[:user][:birthdate][:month], params[:user][:birthdate][:day])
+    if params[:user][:birthdate] and params[:user][:birthdate][:year] and params[:user][:birthdate][:month] and params[:user][:birthdate][:day]
+      @user.birthdate = Date.new(params[:user][:birthdate][:year], params[:user][:birthdate][:month], params[:user][:birthdate][:day])
+    end
 
     respond_to do |format|
       if @user.save
-#        flash[:success] = 'User was successfully created.'
-#        format.html { redirect_to @user}
         format.json { render :json => @user, :status => :created }
-#        format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
-#        flash[:error] = 'Something went wrong with the user creation'
-#        format.html { render :action => "new"}
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
-#        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
