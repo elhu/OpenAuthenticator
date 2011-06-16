@@ -42,7 +42,8 @@ class PersonalKeyController < ApplicationController
   # * POST /users/<login>/personal_key
   # * POST /users/<login>/personal_key.<format>
   def create
-#    PersonalKey.active.revoke # change to get authenticated user personal_key
+    user = User.find_by_login(params[:user_id])
+    PersonalKey.current.find_by_user_id(user.id).revoke unless user.nil? # change to get authenticated user personal_key
     @personal_key = PersonalKey.new
     user = User.find_by_login(params[:user_id])
     @personal_key.user_id = user.id unless user.nil?
@@ -50,7 +51,7 @@ class PersonalKeyController < ApplicationController
     respond_to do |format|
       if not user.nil?
         if @personal_key.save and not user.nil?
-          format.json { render :json => @personal_key }
+          format.json { render :json => @personal_key, :status => :created }
         else
           format.json { render :json => @personal_key.errors, :status => :unprocessable_entity }
         end
@@ -76,11 +77,11 @@ class PersonalKeyController < ApplicationController
   # * GET /users/<login>/personal_key/<key_id>
   # * GET /users/<login>/personal_key/<key_id>.<format>
   def show
-    @personal_key = PersonalKey.find params[:id]
+    @personal_key = PersonalKey.find_by_id params[:id]
     user = User.find_by_login params[:user_id]
 
     respond_to do |format|
-      if @personal_key.nil? or user.nil? or @personal_key.user.id != user.id
+      if @personal_key.nil? or user.nil? or @personal_key.user.id != user.id or @personal_key.state == :revoked.to_s
         format.json { render :json => false, :status => :not_found }
       else
         format.json { render :json => @personal_key }
@@ -103,11 +104,11 @@ class PersonalKeyController < ApplicationController
   # * DELETE /users/<login>/personal_key/<key_id>
   # * DELETE /users/<login>/personal_key/<key_id>.<format>
   def destroy
-    @personal_key = PersonalKey.find params[:id] # change to get authenticated user personal_key
+    @personal_key = PersonalKey.find_by_id params[:id] # change to get authenticated user personal_key
     user = User.find_by_login params[:user_id]
 
     respond_to do |format|
-      if @personal_key.nil? or @personal_key.state == :revoked.to_s or @personal_key.user.id = user.id
+      if user.nil? or @personal_key.nil? or @personal_key.state == :revoked.to_s or @personal_key.user.id != user.id
         format.json { render :json => false, :status => :not_found }
       else
         @personal_key.revoke

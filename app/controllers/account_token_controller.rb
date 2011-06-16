@@ -38,11 +38,11 @@ class AccountTokenController < ApplicationController
   # * GET /users/<login>/account_token/<token_id>
   # * GET /users/<login>/account_token/<token_id>.<format>
   def show
-    @account_token = AccountToken.find(params[:id])
+    @account_token = AccountToken.find_by_id(params[:id])
     user           = User.find_by_login(params[:user_id])
 
     respond_to do |format|
-      if (@account_token.nil? or user.nil? or @account_token.user != user)
+      if @account_token.nil? or user.nil? or @account_token.user != user or @account_token.state == :revoked.to_s
         format.json { render :json => false, :status => :not_found }
       else
         format.json { render :json => @account_token }
@@ -80,7 +80,7 @@ class AccountTokenController < ApplicationController
       else
         @account_token.user_id = user.id
         if @account_token.save
-          format.json { render :json => @account_token }
+          format.json { render :json => @account_token, :status => :created }
         else
           format.json { render :json => @account_token.errors, :status => :unprocessable_entity }
         end
@@ -108,7 +108,7 @@ class AccountTokenController < ApplicationController
   # * PUT /users/<login>/account_token
   # * PUT /users/<login>/account_token.<format>
   def update
-    @account_token = AccountToken.find(params[:id])
+    @account_token = AccountToken.find_by_id(params[:id])
     user           = User.find_by_login(params[:user_id])
 
     respond_to do |format|
@@ -139,11 +139,11 @@ class AccountTokenController < ApplicationController
   # * DELETE /users/<login>/account_token/<token_id>
   # * DELETE /users/<login>/account_token/<token_id>.<format>
   def destroy
-    @account_token = AccountToken.find(params[:id])
+    @account_token = AccountToken.find_by_id(params[:id])
     user           = User.find_by_login(params[:user_id])
 
     respond_to do |format|
-      if (@account_token.state == :revoked.to_s or @account_token.nil? or user.nil? or @account_token.user != user)
+      if (@account_token.nil? or @account_token.state == :revoked.to_s or user.nil? or @account_token.user != user)
         format.json { render :json => false, :status => :not_found }
       else
         @account_token.revoke

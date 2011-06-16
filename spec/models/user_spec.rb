@@ -17,13 +17,13 @@ require 'spec_helper'
 
 describe User do
   before :each do
-      @user = Factory(:user)
-      @attr = {
-        :first_name => "Foo",
-        :last_name => "Bar",
-        :login => "foobar",
-        :email => "foo@bar.com"
-      }
+    @user = Factory(:user)
+    @attr = {
+      :first_name => "Foo",
+      :last_name => "Bar",
+      :login => "foobar",
+      :email => "foo@bar.com"
+    }
   end
   
   describe "creation" do

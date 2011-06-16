@@ -36,6 +36,11 @@ class User < ActiveRecord::Base
   # before and after filters
   before_create :set_emergency_pass
   after_create :create_personal_key
+  
+  # returns the active personal_key
+  def personal_key
+    PersonalKey.current.find_by_user_id(self.id)
+  end
 
   # set the login as key for URLs
   def to_param
