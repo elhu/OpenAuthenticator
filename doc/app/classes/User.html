@@ -104,7 +104,8 @@ Table name: users
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000001">to_param</a>&nbsp;&nbsp;
+      <a href="#M000001">personal_key</a>&nbsp;&nbsp;
+      <a href="#M000002">to_param</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -131,6 +132,32 @@ Table name: users
 
         <div class="method-heading">
           <a href="#M000001" class="method-signature">
+          <span class="method-name">personal_key</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns the active <a href="User.html#M000001">personal_key</a>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 41</span>
+41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">personal_key</span>
+42:     <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">id</span>)
+43:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
           <span class="method-name">to_param</span><span class="method-args">()</span>
           </a>
         </div>
@@ -140,13 +167,13 @@ Table name: users
 set the login as key for URLs
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000001-source">
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/models/user.rb, line 41</span>
-41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_param</span>
-42:     <span class="ruby-identifier">login</span>
-43:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 46</span>
+46:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_param</span>
+47:     <span class="ruby-identifier">login</span>
+48:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

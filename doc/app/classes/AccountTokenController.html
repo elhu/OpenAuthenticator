@@ -88,11 +88,11 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000021">create</a>&nbsp;&nbsp;
-      <a href="#M000023">destroy</a>&nbsp;&nbsp;
-      <a href="#M000019">index</a>&nbsp;&nbsp;
-      <a href="#M000020">show</a>&nbsp;&nbsp;
-      <a href="#M000022">update</a>&nbsp;&nbsp;
+      <a href="#M000022">create</a>&nbsp;&nbsp;
+      <a href="#M000024">destroy</a>&nbsp;&nbsp;
+      <a href="#M000020">index</a>&nbsp;&nbsp;
+      <a href="#M000021">show</a>&nbsp;&nbsp;
+      <a href="#M000023">update</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -114,11 +114,11 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000021" class="method-detail">
-        <a name="M000021"></a>
+      <div id="method-M000022" class="method-detail">
+        <a name="M000022"></a>
 
         <div class="method-heading">
-          <a href="#M000021" class="method-signature">
+          <a href="#M000022" class="method-signature">
           <span class="method-name">create</span><span class="method-args">()</span>
           </a>
         </div>
@@ -182,8 +182,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000021-source">
+            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000022-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/account_token_controller.rb, line 72</span>
 72:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
@@ -197,7 +197,7 @@ Query URLs:
 80:       <span class="ruby-keyword kw">else</span>
 81:         <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
 82:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">save</span>
-83:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@account_token</span> }
+83:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@account_token</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:created</span> }
 84:         <span class="ruby-keyword kw">else</span>
 85:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
 86:         <span class="ruby-keyword kw">end</span>
@@ -209,11 +209,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000023" class="method-detail">
-        <a name="M000023"></a>
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
 
         <div class="method-heading">
-          <a href="#M000023" class="method-signature">
+          <a href="#M000024" class="method-signature">
           <span class="method-name">destroy</span><span class="method-args">()</span>
           </a>
         </div>
@@ -260,16 +260,16 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000023-source">
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
 <pre>
      <span class="ruby-comment cmt"># File app/controllers/account_token_controller.rb, line 141</span>
 141:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
-142:     <span class="ruby-ivar">@account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+142:     <span class="ruby-ivar">@account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
 143:     <span class="ruby-identifier">user</span>           = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>])
 144: 
 145:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-146:       <span class="ruby-keyword kw">if</span> (<span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:revoked</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">user</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span>)
+146:       <span class="ruby-keyword kw">if</span> (<span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:revoked</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">user</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span>)
 147:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:not_found</span> }
 148:       <span class="ruby-keyword kw">else</span>
 149:         <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">revoke</span>
@@ -282,11 +282,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000019" class="method-detail">
-        <a name="M000019"></a>
+      <div id="method-M000020" class="method-detail">
+        <a name="M000020"></a>
 
         <div class="method-heading">
-          <a href="#M000019" class="method-signature">
+          <a href="#M000020" class="method-signature">
           <span class="method-name">index</span><span class="method-args">()</span>
           </a>
         </div>
@@ -329,8 +329,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000019-source">
+            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000020-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/account_token_controller.rb, line 15</span>
 15:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
@@ -348,11 +348,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000020" class="method-detail">
-        <a name="M000020"></a>
+      <div id="method-M000021" class="method-detail">
+        <a name="M000021"></a>
 
         <div class="method-heading">
-          <a href="#M000020" class="method-signature">
+          <a href="#M000021" class="method-signature">
           <span class="method-name">show</span><span class="method-args">()</span>
           </a>
         </div>
@@ -399,16 +399,16 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000020-source">
+            onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000021-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/account_token_controller.rb, line 40</span>
 40:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
-41:     <span class="ruby-ivar">@account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+41:     <span class="ruby-ivar">@account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
 42:     <span class="ruby-identifier">user</span>           = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>])
 43: 
 44:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-45:       <span class="ruby-keyword kw">if</span> (<span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">user</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span>)
+45:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">user</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:revoked</span>.<span class="ruby-identifier">to_s</span>
 46:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:not_found</span> }
 47:       <span class="ruby-keyword kw">else</span>
 48:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@account_token</span> }
@@ -420,11 +420,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000022" class="method-detail">
-        <a name="M000022"></a>
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
 
         <div class="method-heading">
-          <a href="#M000022" class="method-signature">
+          <a href="#M000023" class="method-signature">
           <span class="method-name">update</span><span class="method-args">()</span>
           </a>
         </div>
@@ -488,12 +488,12 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000022-source">
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
 <pre>
      <span class="ruby-comment cmt"># File app/controllers/account_token_controller.rb, line 110</span>
 110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
-111:     <span class="ruby-ivar">@account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+111:     <span class="ruby-ivar">@account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
 112:     <span class="ruby-identifier">user</span>           = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>])
 113: 
 114:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
