@@ -1,5 +1,9 @@
 class AccountTokenController < ApplicationController
+  before_filter :restricted
+  
   # Lists all the user's account tokens
+  #
+  # Restricted to: authenticated user, admin
   #
   # Return values;
   # * On success: 200 OK => account tokens
@@ -24,6 +28,8 @@ class AccountTokenController < ApplicationController
   end
 
   # Gets the account token information
+  #
+  # Restricted to: authenticated user, admin
   #
   # Return values
   # * On success: 200 OK => @account_token
@@ -51,6 +57,8 @@ class AccountTokenController < ApplicationController
   end
 
   # Creates a new account token for the specified user
+  #
+  # Restricted to: authenticated user, admin
   #
   # Return values:
   # * On success: 201 CREATED => account_token
@@ -90,6 +98,8 @@ class AccountTokenController < ApplicationController
 
   # Creates a new account token for the specified user
   #
+  # Restricted to: authenticated user, admin
+  #
   # Return values:
   # * On success: 201 CREATED => account_token
   # * On failure:
@@ -125,6 +135,8 @@ class AccountTokenController < ApplicationController
   end
 
   # Deletes (revokes) the specified account token for the specified user
+  #
+  # Restricted to: authenticated user, admin
   #
   # Return values:
   # * On success: 200 OK => true

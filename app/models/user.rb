@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   # model associations
   has_many :account_tokens, :dependent => :destroy
   has_many :personal_keys, :dependent => :destroy
+  has_one :pseudo_cookie, :dependent => :destroy
   
   # forbid mass assignment of login in update.
   attr_accessible :first_name, :last_name, :email, :birth_date

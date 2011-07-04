@@ -12,6 +12,8 @@
 #
 
 class AccountToken < ActiveRecord::Base
+  scope :active, where(:state => :active)
+  
   # model associations
   belongs_to :user
 
