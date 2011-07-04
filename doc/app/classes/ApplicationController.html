@@ -86,7 +86,8 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000019">authenticate</a>&nbsp;&nbsp;
+      <a href="#M000024">generate_token</a>&nbsp;&nbsp;
+      <a href="#M000023">restricted</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -108,24 +109,61 @@
     <div id="methods">
       <h3 class="section-bar">Protected Instance methods</h3>
 
-      <div id="method-M000019" class="method-detail">
-        <a name="M000019"></a>
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
 
         <div class="method-heading">
-          <a href="#M000019" class="method-signature">
-          <span class="method-name">authenticate</span><span class="method-args">()</span>
+          <a href="#M000024" class="method-signature">
+          <span class="method-name">generate_token</span><span class="method-args">(personal_key)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000019-source">
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
 <pre>
-   <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 7</span>
-7:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">authenticate</span>
-8:     
-9:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 20</span>
+20:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate_token</span>(<span class="ruby-identifier">personal_key</span>)
+21:     <span class="ruby-identifier">timespan</span> = <span class="ruby-value">30</span>
+22:     <span class="ruby-identifier">time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">timespan</span>
+23:     <span class="ruby-identifier">to_hash</span> = <span class="ruby-node">&quot;#{personal_key}--#{time.to_s}&quot;</span>
+24:     <span class="ruby-identifier">token</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA2</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">to_hash</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">7</span>]
+25:   <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
+
+        <div class="method-heading">
+          <a href="#M000023" class="method-signature">
+          <span class="method-name">restricted</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 5</span>
+ 5:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">restricted</span>
+ 6:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:auth_token</span>].<span class="ruby-identifier">blank?</span>
+ 7:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+ 8:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unauthorized</span> }
+ 9:       <span class="ruby-keyword kw">end</span>
+10:     <span class="ruby-keyword kw">else</span>
+11:       <span class="ruby-identifier">auth_user</span> = <span class="ruby-constant">PseudoCookie</span>.<span class="ruby-identifier">find_by_cookie</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:auth_token</span>]).<span class="ruby-identifier">user</span>
+12:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">auth_user</span>.<span class="ruby-identifier">login</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">auth_user</span>.<span class="ruby-identifier">login</span>
+13:         <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+14:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unauthorized</span> }
+15:         <span class="ruby-keyword kw">end</span>
+16:       <span class="ruby-keyword kw">end</span>
+17:     <span class="ruby-keyword kw">end</span>
+18:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
