@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   respond_to :xml, :html, :json, :js
+  before_filter :restricted, :except => [:index, :create, :check_email, :check_login]
 
   # Returns all users
   #

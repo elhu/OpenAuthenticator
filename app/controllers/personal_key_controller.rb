@@ -1,4 +1,6 @@
 class PersonalKeyController < ApplicationController
+  before_filter :restricted
+  
   # Lists all the user's personal keys
   #
   # Return values;

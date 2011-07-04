@@ -24,7 +24,7 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="factory_girl_rails" version="1.0" bound="EQUAL" git="false" path="false" doRequire="true" />
+        <dependency name="factory_girl_rails" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
@@ -48,13 +48,13 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="rspec" version="2.5.0" bound="EQUAL" git="false" path="false" doRequire="true" />
+        <dependency name="rspec" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="rspec-rails" version="2.5.0" bound="EQUAL" git="false" path="false" doRequire="true" />
+        <dependency name="rspec-rails" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
@@ -72,7 +72,7 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="webrat" version="0.7.1" bound="EQUAL" git="false" path="false" doRequire="true" />
+        <dependency name="webrat" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
@@ -140,6 +140,17 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] heroku (v2.2.1, /usr/lib/ruby/gems/1.8/gems/heroku-2.2.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] net-ssh-gateway (v1.1.0, /usr/lib/ruby/gems/1.8/gems/net-ssh-gateway-1.1.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] term-ansicolor (v1.0.5, /usr/lib/ruby/gems/1.8/gems/term-ansicolor-1.0.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.9.2, /usr/lib/ruby/gems/1.8/gems/rake-0.9.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-rails (v2.6.1, /usr/lib/ruby/gems/1.8/gems/rspec-rails-2.6.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec (v2.6.0, /usr/lib/ruby/gems/1.8/gems/rspec-2.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] factory_girl_rails (v1.1.beta1, /home/elhu/.gem/ruby/1.8/gems/factory_girl_rails-1.1.beta1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] webrat (v0.7.3, /usr/lib/ruby/gems/1.8/gems/webrat-0.7.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] heroku (v2.3.0, /usr/lib/ruby/gems/1.8/gems/heroku-2.3.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-mocks (v2.6.0, /usr/lib/ruby/gems/1.8/gems/rspec-mocks-2.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec (v2.6.0, /usr/lib/ruby/gems/1.8/gems/rspec-2.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-expectations (v2.6.0, /usr/lib/ruby/gems/1.8/gems/rspec-expectations-2.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.9.2, /usr/lib/ruby/gems/1.8/gems/rake-0.9.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-core (v2.6.4, /usr/lib/ruby/gems/1.8/gems/rspec-core-2.6.4)" level="application" />
   </component>
 </module>
 

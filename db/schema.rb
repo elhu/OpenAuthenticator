@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110605151417) do
+ActiveRecord::Schema.define(:version => 20110704141739) do
 
   create_table "account_tokens", :force => true do |t|
     t.string   "account_token"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(:version => 20110605151417) do
   end
 
   add_index "personal_keys", ["user_id"], :name => "index_personal_keys_on_user_id"
+
+  create_table "pseudo_cookies", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "cookie"
+    t.datetime "expire"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pseudo_cookies", ["cookie"], :name => "index_pseudo_cookies_on_cookie", :unique => true
+  add_index "pseudo_cookies", ["user_id"], :name => "index_pseudo_cookies_on_user_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login"
