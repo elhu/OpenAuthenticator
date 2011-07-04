@@ -30,6 +30,7 @@ describe UsersController do
         post :create, :format => :json, :user => @attr
         response.status.should == 201
         response.should contain @attr[:login]
+        print response.body
       end.should change(User, :count).by(1)
     end
   end

@@ -85,7 +85,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.json { render :json => @user, :status => :created }
+        format.json { render :json => [@user, PersonalKey.current.find_by_user_id(@user.id)], :status => :created }
       else
         format.json { render :json => @user.errors, :status => :unprocessable_entity }
       end
