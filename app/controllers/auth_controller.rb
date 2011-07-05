@@ -22,8 +22,8 @@ class AuthController < ApplicationController
   # * POST /authenticate
   # * POST /authenticate.<format>
   def authenticate
-    account_token = params[:credentials][:account_token] unless params[:credentials].blank?
-    token = params[:credentials][:token] unless params[:credentials].blank?
+    account_token = params[:credentials][:account_token] unless params[:credentials][:account_token].blank?
+    token = params[:credentials][:token] unless params[:credentials][:token].blank?
     
     authorized = false
     
