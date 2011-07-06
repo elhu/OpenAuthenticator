@@ -88,13 +88,13 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000013">check_email</a>&nbsp;&nbsp;
-      <a href="#M000014">check_login</a>&nbsp;&nbsp;
-      <a href="#M000010">create</a>&nbsp;&nbsp;
-      <a href="#M000012">destroy</a>&nbsp;&nbsp;
-      <a href="#M000008">index</a>&nbsp;&nbsp;
-      <a href="#M000009">show</a>&nbsp;&nbsp;
-      <a href="#M000011">update</a>&nbsp;&nbsp;
+      <a href="#M000009">check_email</a>&nbsp;&nbsp;
+      <a href="#M000010">check_login</a>&nbsp;&nbsp;
+      <a href="#M000006">create</a>&nbsp;&nbsp;
+      <a href="#M000008">destroy</a>&nbsp;&nbsp;
+      <a href="#M000004">index</a>&nbsp;&nbsp;
+      <a href="#M000005">show</a>&nbsp;&nbsp;
+      <a href="#M000007">update</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -116,11 +116,11 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000013" class="method-detail">
-        <a name="M000013"></a>
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
 
         <div class="method-heading">
-          <a href="#M000013" class="method-signature">
+          <a href="#M000009" class="method-signature">
           <span class="method-name">check_email</span><span class="method-args">()</span>
           </a>
         </div>
@@ -163,8 +163,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000013-source">
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
 <pre>
      <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 183</span>
 183:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_email</span>
@@ -182,11 +182,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000014" class="method-detail">
-        <a name="M000014"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000014" class="method-signature">
+          <a href="#M000010" class="method-signature">
           <span class="method-name">check_login</span><span class="method-args">()</span>
           </a>
         </div>
@@ -228,8 +228,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000014-source">
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
 <pre>
      <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 206</span>
 206:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_login</span>
@@ -247,11 +247,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000010" class="method-detail">
-        <a name="M000010"></a>
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
 
         <div class="method-heading">
-          <a href="#M000010" class="method-signature">
+          <a href="#M000006" class="method-signature">
           <span class="method-name">create</span><span class="method-args">()</span>
           </a>
         </div>
@@ -328,8 +328,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000010-source">
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 78</span>
 78:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
@@ -337,12 +337,12 @@ Query URLs:
 80: 
 81:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">login</span>     = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>] <span class="ruby-comment cmt">#needed to secure mass assignment</span>
 82:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>]
-83:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">birthdate</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>], <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>], <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>])
+83:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">birthdate</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>)
 84:     <span class="ruby-keyword kw">end</span>
 85: 
 86:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
 87:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
-88:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:created</span> }
+88:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-ivar">@user</span>, <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>)], <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:created</span> }
 89:       <span class="ruby-keyword kw">else</span>
 90:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
 91:       <span class="ruby-keyword kw">end</span>
@@ -353,11 +353,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000012" class="method-detail">
-        <a name="M000012"></a>
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
 
         <div class="method-heading">
-          <a href="#M000012" class="method-signature">
+          <a href="#M000008" class="method-signature">
           <span class="method-name">destroy</span><span class="method-args">()</span>
           </a>
         </div>
@@ -403,8 +403,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000012-source">
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
 <pre>
      <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 154</span>
 154:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
@@ -426,11 +426,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
 
         <div class="method-heading">
-          <a href="#M000008" class="method-signature">
+          <a href="#M000004" class="method-signature">
           <span class="method-name">index</span><span class="method-args">()</span>
           </a>
         </div>
@@ -470,8 +470,8 @@ ToDo:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000008-source">
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 17</span>
 17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
@@ -487,11 +487,11 @@ ToDo:
         </div>
       </div>
 
-      <div id="method-M000009" class="method-detail">
-        <a name="M000009"></a>
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
 
         <div class="method-heading">
-          <a href="#M000009" class="method-signature">
+          <a href="#M000005" class="method-signature">
           <span class="method-name">show</span><span class="method-args">()</span>
           </a>
         </div>
@@ -537,8 +537,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000009-source">
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 41</span>
 41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
@@ -559,11 +559,11 @@ Query URLs:
         </div>
       </div>
 
-      <div id="method-M000011" class="method-detail">
-        <a name="M000011"></a>
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
 
         <div class="method-heading">
-          <a href="#M000011" class="method-signature">
+          <a href="#M000007" class="method-signature">
           <span class="method-name">update</span><span class="method-args">()</span>
           </a>
         </div>
@@ -634,8 +634,8 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000011-source">
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
 <pre>
      <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 117</span>
 117:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
