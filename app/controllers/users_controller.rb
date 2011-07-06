@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
     @user.login     = params[:user][:login] #needed to secure mass assignment
     if params[:user][:birthdate] and params[:user][:birthdate][:year] and params[:user][:birthdate][:month] and params[:user][:birthdate][:day]
-      @user.birthdate = Date.new(params[:user][:birthdate][:year], params[:user][:birthdate][:month], params[:user][:birthdate][:day])
+      @user.birthdate = Date.new(params[:user][:birthdate][:year].to_s.to_i, params[:user][:birthdate][:month].to_s.to_i, params[:user][:birthdate][:day].to_s.to_i)
     end
 
     respond_to do |format|
