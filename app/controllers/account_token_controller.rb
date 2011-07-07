@@ -13,6 +13,9 @@ class AccountTokenController < ApplicationController
   # * <login>: the user the account token belongs to
   # * <format>: the output format wanted
   #
+  # GET params:
+  # * auth_token: time-based token generated (string, length == 8)
+  #
   # Query URLs:
   # * GET /users/<login>/account_token
   # * GET /users/<login>/account_token.<format>
@@ -39,6 +42,9 @@ class AccountTokenController < ApplicationController
   # * <login>: the user the account token belongs to
   # * <token_id>: the account_token id
   # * <format>: the output format wanted
+  #
+  # GET params:
+  # * auth_token: time-based token generated (string, length == 8)
   #
   # Query URLs:
   # * GET /users/<login>/account_token/<token_id>
@@ -69,6 +75,7 @@ class AccountTokenController < ApplicationController
   # POST Params:
   # * account_token:
   #   * label: label for the account token (string, length <= 255)
+  # * auth_token: time-based token generated (string, length == 8)
   #
   # URL Params:
   # * <login>: the user the account token will be created for
@@ -109,6 +116,7 @@ class AccountTokenController < ApplicationController
   # PUT Params:
   # * account_token:
   #   * label: label for the account token (string, length <= 255)
+  # * auth_token: time-based token generated (string, length == 8)
   #
   # URL Params:
   # * <login>: the user the account token will be created for
@@ -146,6 +154,9 @@ class AccountTokenController < ApplicationController
   # * <login>: the user the account token belongs to
   # * <token_id>: the account_token id
   # * <format>: the output format wanted
+  #
+  # DELETE params:
+  # * auth_token: time-based token generated (string, length == 8)
   #
   # Query URLs:
   # * DELETE /users/<login>/account_token/<token_id>

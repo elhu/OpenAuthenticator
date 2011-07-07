@@ -35,6 +35,9 @@ class UsersController < ApplicationController
   # * <login>: User's login
   # * <format>: Output format wanted
   #
+  # GET params:
+  # * auth_token: time-based token generated (string, length == 8)
+  #
   # Query URLs:
   # * GET /users/<login>
   # * GET /users/<login>.<format>
@@ -71,6 +74,7 @@ class UsersController < ApplicationController
   #     * year: user's year of birth (integer)
   #     * month: user's month of birth (integer)
   #     * day: user's day of birth (integer)
+  # * auth_token: time-based token generated (string, length == 8)
   #
   # Query URLs:
   # * POST /users
@@ -110,6 +114,7 @@ class UsersController < ApplicationController
   #   * first_name: user's first name (string, length: <= 50)
   #   * last_name: user's last name (string, length: <= 50)
   #   * email: user's email address (string, matching: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, length: <= 255)
+  # * auth_token: time-based token generated (string, length == 8)
   #
   # Query URLs:
   # * PUT /users/<login>
@@ -147,6 +152,9 @@ class UsersController < ApplicationController
   # URL params:
   # * <login>: User's login
   # * <format>: Output format wanted
+  #
+  # DELETE params:
+  # * auth_token: time-based token generated (string, length == 8)
   #
   # Query URLs:
   # * DELETE /users/<login>
