@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     else
       cookie = PseudoCookie.find_by_cookie(params[:auth_token])
       auth_user = cookie.user
-      if params[:user_id] != auth_user.login and params[:id] != auth_user.login and cookie.expire.to_time > Time.new
+      if (params[:user_id] != auth_user.login and params[:id] != auth_user.login) or cookie.expire.to_time > Time.new
         respond_to do |format|
           format.json { render :json => false, :status => :unauthorized }
         end

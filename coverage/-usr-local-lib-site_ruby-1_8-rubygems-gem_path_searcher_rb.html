@@ -30,15 +30,15 @@
             <td class="left_align"><a href="-usr-local-lib-site_ruby-1_8-rubygems-gem_path_searcher_rb.html">/usr/local/lib/site_ruby/1.8/rubygems/gem_path_searcher.rb</a></td>
             <td class='right_align'><tt>102</tt></td>
             <td class='right_align'><tt>39</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>45.10%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>86.27%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:45px"></div>
-            <div class="uncovered" style="width:55px"></div>
+            <div class="covered" style="width:86px"></div>
+            <div class="uncovered" style="width:14px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>33.33%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>84.62%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:33px"></div>
-            <div class="uncovered" style="width:67px"></div>
+            <div class="covered" style="width:85px"></div>
+            <div class="uncovered" style="width:15px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -86,103 +86,103 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line6">6</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line7">7</a>   ##</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line8">8</a>   # Initialise the data we need to make searches later.</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line9">9</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line10">10</a>   def initialize</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line11">11</a>     # We want a record of all the installed gemspecs, in the order we wish to</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line12">12</a>     # examine them.</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line13">13</a>     @gemspecs = init_gemspecs</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line14">14</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line15">15</a>     # Map gem spec to glob of full require_path directories.  Preparing this</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line16">16</a>     # information may speed up searches later.</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line17">17</a>     @lib_dirs = {}</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line18">18</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line19">19</a>     @gemspecs.each do |spec|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line20">20</a>       @lib_dirs[spec.object_id] = lib_dirs_for spec</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line21">21</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line22">22</a>   end</pre></td>
           </tr>
         
@@ -512,151 +512,151 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line77">77</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line78">78</a>   ##</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line79">79</a>   # Return a list of all installed gemspecs, sorted by alphabetical order and</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line80">80</a>   # in reverse version order.  (bar-2, bar-1, foo-2)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line81">81</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line82">82</a>   def init_gemspecs</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line83">83</a>     specs = Gem.source_index.map { |_, spec| spec }</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line84">84</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line85">85</a>     specs.sort { |a, b|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line86">86</a>       names = a.name &lt;=&gt; b.name</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line87">87</a>       next names if names.nonzero?</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line88">88</a>       b.version &lt;=&gt; a.version</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line89">89</a>     }</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line90">90</a>   end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line91">91</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line92">92</a>   ##</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line93">93</a>   # Returns library directories glob for a gemspec.  For example,</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line94">94</a>   #   '/usr/local/lib/ruby/gems/1.8/gems/foobar-1.0/{lib,ext}'</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line95">95</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line96">96</a>   def lib_dirs_for(spec)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line97">97</a>     &quot;#{spec.full_gem_path}/{#{spec.require_paths.join(',')}}&quot; if</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line98">98</a>       spec.require_paths</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line99">99</a>   end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line100">100</a> </pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line101">101</a> end</pre></td>
           </tr>
         
@@ -669,7 +669,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 15 21:24:40 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jul 07 21:00:48 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

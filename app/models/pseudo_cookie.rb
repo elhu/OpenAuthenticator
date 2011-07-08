@@ -28,7 +28,7 @@ class PseudoCookie < ActiveRecord::Base
     end
     cookie = PseudoCookie.new
     cookie.user_id = user_id
-    cookie.expire = Time.new + (10 * 60)
+    cookie.expire = Time.new + (120 * 60)
     cookie.cookie = Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}") + user_id.to_s
     cookie.save!
     cookie
