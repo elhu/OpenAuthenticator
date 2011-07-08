@@ -31,7 +31,7 @@ class AuthController < ApplicationController
       user_id = AccountToken.active.find_by_account_token(account_token).user_id
       p_key = PersonalKey.current.find_by_user_id(user_id).personal_key
       generated_token = generate_token p_key
-      logger.debug "server_token: #{generated_token} | user_token: #{token}"
+      logger.info "server_token: #{generated_token} | user_token: #{token}"
       if generated_token == token
         authorized = true
       end
