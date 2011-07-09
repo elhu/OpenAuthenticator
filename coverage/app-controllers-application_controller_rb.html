@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-application_controller_rb.html">app/controllers/application_controller.rb</a></td>
-            <td class='right_align'><tt>27</tt></td>
-            <td class='right_align'><tt>25</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>25.93%</tt></div>
+            <td class='right_align'><tt>35</tt></td>
+            <td class='right_align'><tt>31</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>31.43%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:26px"></div>
-            <div class="uncovered" style="width:74px"></div>
+            <div class="covered" style="width:31px"></div>
+            <div class="uncovered" style="width:69px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>20.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>22.58%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:20px"></div>
-            <div class="uncovered" style="width:80px"></div>
+            <div class="covered" style="width:23px"></div>
+            <div class="uncovered" style="width:77px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -56,98 +56,98 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line1">1</a> class ApplicationController &lt; ActionController::Base</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line1">1</a> # This class defines the methods used in several controllers</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   protect_from_forgery</pre></td>
+            <td><pre><a name="line2">2</a> class ApplicationController &lt; ActionController::Base</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   protect_from_forgery</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a>   </pre></td>
+            <td><pre><a name="line4">4</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   protected</pre></td>
+            <td><pre><a name="line5">5</a>   protected</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   def restricted</pre></td>
+            <td><pre><a name="line6">6</a>   def restricted</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line6">6</a>     if params[:auth_token].blank?</pre></td>
+            <td><pre><a name="line7">7</a>     response = HttpResponse.new</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line7">7</a>       respond_to do |format|</pre></td>
+            <td><pre><a name="line8">8</a>     response.body = false</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line8">8</a>         format.json { render :json =&gt; false, :status =&gt; :unauthorized }</pre></td>
+            <td><pre><a name="line9">9</a>     response.status  = :unauthorized</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line9">9</a>       end</pre></td>
+            <td><pre><a name="line10">10</a>     if params[:auth_token].blank?</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line10">10</a>     else</pre></td>
+            <td><pre><a name="line11">11</a>       respond response</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line11">11</a>       cookie = PseudoCookie.find_by_cookie(params[:auth_token])</pre></td>
+            <td><pre><a name="line12">12</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line12">12</a>       auth_user = cookie.user</pre></td>
+            <td><pre><a name="line13">13</a>       cookie = PseudoCookie.find_by_cookie(params[:auth_token])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line13">13</a>       if params[:user_id] != auth_user.login and params[:id] != auth_user.login and cookie.expire.to_time &gt; Time.new</pre></td>
+            <td><pre><a name="line14">14</a>       auth_user = cookie.user</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line14">14</a>         respond_to do |format|</pre></td>
+            <td><pre><a name="line15">15</a>       if params[:user_id] != auth_user.login and params[:id] != auth_user.login and cookie.expire.to_time &gt; Time.new</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line15">15</a>           format.json { render :json =&gt; false, :status =&gt; :unauthorized }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line16">16</a>         end</pre></td>
+            <td><pre><a name="line16">16</a>         respond response</pre></td>
           </tr>
         
           
@@ -212,14 +212,62 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line27">27</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>   private </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>   def respond(response)</pre></td>
+          </tr>
+        
+          
+          
           <tr class="uncovered">
-            <td><pre><a name="line27">27</a> end</pre></td>
+            <td><pre><a name="line30">30</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line31">31</a>       format.json { render :json =&gt; response.body, :status =&gt; response.status }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line32">32</a>       format.xml { render :xml =&gt; response.body, :status =&gt; response.status }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line33">33</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line34">34</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line35">35</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jul 07 21:02:14 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Jul 09 15:02:42 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -13,9 +13,6 @@
 class PseudoCookie < ActiveRecord::Base
   # model associations
   belongs_to :user
-
-  # forbid any mass assignment
-  attr_accessible :none
   
   # validation rules for PseudoCookie model
   validates :user_id, :presence => true, :uniqueness => true
@@ -23,20 +20,15 @@ class PseudoCookie < ActiveRecord::Base
   validates :cookie, :presence => true, :uniqueness => true
   
   def self.generate_cookie(user_id)
-    if not User.find_by_id(user_id).pseudo_cookie.nil?
-      User.find_by_id(user_id).pseudo_cookie.destroy
-    end
-    cookie = PseudoCookie.new
-    cookie.user_id = user_id
-    cookie.expire = Time.new + (120 * 60)
-    cookie.cookie = Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}") + user_id.to_s
-    cookie.save!
-    cookie
+    prev_cookie = User.find_by_id(user_id).pseudo_cookie
+    prev_cookie.destroy unless prev_cookie.nil?
+    content = { :user_id => user_id,
+      :expire => Time.new + (10 * 60),
+      :cookie => OaUtils.generate_random_key + user_id.to_s
+    }
+    cookie = PseudoCookie.create(content)
+    cookie if cookie.save!
   end
-  
-  # TODO:
-  # finish pseudo_cookie handling
-  # add pseudo_cookie verification for restricted actions
 end
 
 

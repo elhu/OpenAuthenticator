@@ -11,6 +11,7 @@
 #
 
 class PersonalKey < ActiveRecord::Base
+  #scopes definitions
   scope :current, where(:state => :active)
 
   # model associations
@@ -31,7 +32,7 @@ class PersonalKey < ActiveRecord::Base
   private
   # generate the personal_key bound to the User
   def generate_personal_key
-    self.personal_key = Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}")
+    self.personal_key = OaUtils.generate_random_key
     self.state = :active
   end
 end

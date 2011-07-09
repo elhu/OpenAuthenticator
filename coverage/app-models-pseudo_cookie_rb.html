@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-pseudo_cookie_rb.html">app/models/pseudo_cookie.rb</a></td>
-            <td class='right_align'><tt>42</tt></td>
-            <td class='right_align'><tt>18</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>64.29%</tt></div>
+            <td class='right_align'><tt>34</tt></td>
+            <td class='right_align'><tt>16</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>70.59%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:64px"></div>
-            <div class="uncovered" style="width:36px"></div>
+            <div class="covered" style="width:71px"></div>
+            <div class="uncovered" style="width:29px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>38.89%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>37.50%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:39px"></div>
-            <div class="uncovered" style="width:61px"></div>
+            <div class="covered" style="width:38px"></div>
+            <div class="uncovered" style="width:62px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -147,169 +147,121 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line16">16</a>   </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   # forbid any mass assignment</pre></td>
+            <td><pre><a name="line17">17</a>   # validation rules for PseudoCookie model</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   attr_accessible :none</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a>   # validation rules for PseudoCookie model</pre></td>
+            <td><pre><a name="line18">18</a>   validates :user_id, :presence =&gt; true, :uniqueness =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   validates :user_id, :presence =&gt; true, :uniqueness =&gt; true</pre></td>
+            <td><pre><a name="line19">19</a>   validates :expire, :presence =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   validates :expire, :presence =&gt; true</pre></td>
+            <td><pre><a name="line20">20</a>   validates :cookie, :presence =&gt; true, :uniqueness =&gt; true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   validates :cookie, :presence =&gt; true, :uniqueness =&gt; true</pre></td>
+            <td><pre><a name="line22">22</a>   def self.generate_cookie(user_id)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line23">23</a>     prev_cookie = User.find_by_id(user_id).pseudo_cookie</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line24">24</a>     prev_cookie.destroy unless prev_cookie.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line25">25</a>     content = { :user_id =&gt; user_id,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line26">26</a>       :expire =&gt; Time.new + (10 * 60),</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line27">27</a>       :cookie =&gt; OaUtils.generate_random_key + user_id.to_s</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line28">28</a>     }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line29">29</a>     cookie = PseudoCookie.create(content)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line30">30</a>     cookie if cookie.save!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line31">31</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line32">32</a> end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>   def self.generate_cookie(user_id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line26">26</a>     if not User.find_by_id(user_id).pseudo_cookie.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line27">27</a>       User.find_by_id(user_id).pseudo_cookie.destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line28">28</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line29">29</a>     cookie = PseudoCookie.new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line30">30</a>     cookie.user_id = user_id</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line31">31</a>     cookie.expire = Time.new + (10 * 60)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line32">32</a>     cookie.cookie = Digest::SHA2.hexdigest(&quot;#{Time.new.utc}--#{SecureRandom.base64(128)}&quot;) + user_id.to_s</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line33">33</a>     cookie.save!</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line34">34</a>     cookie</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line35">35</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line36">36</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line37">37</a>   # TODO:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line38">38</a>   # finish pseudo_cookie handling</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line39">39</a>   # add pseudo_cookie verification for restricted actions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line40">40</a> end</pre></td>
+            <td><pre><a name="line33">33</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line42">42</a> </pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jul 07 21:02:14 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Jul 09 15:02:42 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

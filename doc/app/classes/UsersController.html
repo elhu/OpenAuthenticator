@@ -80,6 +80,12 @@
 
   <div id="contextContent">
 
+    <div id="description">
+      <p>
+This class defines the API methods related to user management
+</p>
+
+    </div>
 
 
    </div>
@@ -166,17 +172,14 @@ Query URLs:
             onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000009-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 191</span>
-191:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_email</span>
-192:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:email</span>])
-193:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-194:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>
-195:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:conflict</span> }
-196:       <span class="ruby-keyword kw">else</span>
-197:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }        
-198:       <span class="ruby-keyword kw">end</span>
-199:     <span class="ruby-keyword kw">end</span>
-200:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 170</span>
+170:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_email</span>
+171:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:email</span>])
+172:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
+173:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
+174:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">conflict</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:ok</span>
+175:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
+176:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -231,17 +234,14 @@ Query URLs:
             onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000010-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 214</span>
-214:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_login</span>
-215:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>])
-216:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-217:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>
-218:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:conflict</span> }
-219:       <span class="ruby-keyword kw">else</span>
-220:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }
-221:       <span class="ruby-keyword kw">end</span>
-222:     <span class="ruby-keyword kw">end</span>
-223:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 190</span>
+190:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_login</span>
+191:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>])
+192:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
+193:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
+194:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">conflict</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:ok</span>
+195:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
+196:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -334,23 +334,19 @@ Query URLs:
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 82</span>
-82:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-83:     <span class="ruby-ivar">@user</span>           = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>])
-84: 
-85:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">login</span>     = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>] <span class="ruby-comment cmt">#needed to secure mass assignment</span>
-86:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>]
-87:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">birthdate</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>)
-88:     <span class="ruby-keyword kw">end</span>
-89: 
-90:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-91:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
-92:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-ivar">@user</span>, <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>)], <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:created</span> }
-93:       <span class="ruby-keyword kw">else</span>
-94:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
-95:       <span class="ruby-keyword kw">end</span>
-96:     <span class="ruby-keyword kw">end</span>
-97:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 77</span>
+77:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+78:     <span class="ruby-ivar">@user</span>           = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>])
+79:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">login</span>     = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>] <span class="ruby-comment cmt">#needed to secure mass assignment</span>
+80:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>]
+81:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">birthdate</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>)
+82:     <span class="ruby-keyword kw">end</span>
+83:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
+84:     <span class="ruby-identifier">success</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
+85:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> =  <span class="ruby-identifier">success</span> <span class="ruby-value">? </span>[<span class="ruby-ivar">@user</span>, <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>)] <span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>
+86:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">created</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
+87:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
+88:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -417,21 +413,17 @@ Query URLs:
             onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000008-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 162</span>
-162:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
-163:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
-164:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
-165: 
-166:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-167:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
-168: <span class="ruby-comment cmt">#      format.html { redirect_to(users_url) }</span>
-169: <span class="ruby-comment cmt">#      format.xml  { head :ok }</span>
-170:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:not_found</span> }
-171:       <span class="ruby-keyword kw">else</span>
-172:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }
-173:       <span class="ruby-keyword kw">end</span>
-174:     <span class="ruby-keyword kw">end</span>
-175:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 145</span>
+145:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+146:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+147:     
+148:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
+149:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
+150:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
+151:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+152:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
+153:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
+154:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -484,14 +476,13 @@ ToDo:
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 17</span>
-17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
-18:     <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>
-19: 
-20:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-21:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@users</span> }
-22:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@users</span> }
-23:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 18</span>
+18:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+19:     <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>
+20:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
+21:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:ok</span>
+22:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-ivar">@users</span>
+23:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
 24:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
@@ -562,17 +553,12 @@ Query URLs:
     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 44</span>
 44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
 45:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
-46: 
-47:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-48:       <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
-49:         <span class="ruby-comment cmt">#format.html # show.html.erb</span>
-50:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span>
-51:         <span class="ruby-comment cmt">#format.xml { render :xml =&gt; @user }</span>
-52:       <span class="ruby-keyword kw">else</span>
-53:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:not_found</span> }
-54:       <span class="ruby-keyword kw">end</span>
-55:     <span class="ruby-keyword kw">end</span>
-56:   <span class="ruby-keyword kw">end</span>
+46:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
+47:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
+48:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@user</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+49:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
+50:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
+51:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -659,28 +645,20 @@ Query URLs:
             onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000007-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 122</span>
-122:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
-123:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
-124: 
-125:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-126:       <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
-127:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>])
-128:           <span class="ruby-comment cmt">#        flash[:success] = 'User was successfully updated.'</span>
-129:           <span class="ruby-comment cmt">#        format.html { redirect_to(@user)}</span>
-130:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span> }
-131:           <span class="ruby-comment cmt">#        format.xml  { head :ok }</span>
-132:         <span class="ruby-keyword kw">else</span>
-133:           <span class="ruby-comment cmt">#        flash[:error] = 'Something went wrong with the user update'</span>
-134:           <span class="ruby-comment cmt">#        format.html { render :action =&gt; &quot;edit&quot;}</span>
-135:           <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:unprocessable_entity</span> }
-136:           <span class="ruby-comment cmt">#        format.xml  { render :xml =&gt; @user.errors, :status =&gt; :unprocessable_entity }</span>
-137:         <span class="ruby-keyword kw">end</span>
-138:       <span class="ruby-keyword kw">else</span>
-139:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:not_found</span> }
-140:       <span class="ruby-keyword kw">end</span>
-141:     <span class="ruby-keyword kw">end</span>
-142:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 113</span>
+113:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+114:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+115:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
+116:     <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
+117:       <span class="ruby-identifier">success</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>])
+118:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@user</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>
+119:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
+120:     <span class="ruby-keyword kw">else</span>
+121:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-keyword kw">false</span>
+122:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:not_found</span>
+123:     <span class="ruby-keyword kw">end</span>
+124:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
+125:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

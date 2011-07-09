@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-auth_controller_rb.html">app/controllers/auth_controller.rb</a></td>
-            <td class='right_align'><tt>112</tt></td>
-            <td class='right_align'><tt>48</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>56.25%</tt></div>
+            <td class='right_align'><tt>101</tt></td>
+            <td class='right_align'><tt>36</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>63.37%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:56px"></div>
-            <div class="uncovered" style="width:44px"></div>
+            <div class="covered" style="width:63px"></div>
+            <div class="uncovered" style="width:37px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>10.42%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>13.89%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:10px"></div>
-            <div class="uncovered" style="width:90px"></div>
+            <div class="covered" style="width:14px"></div>
+            <div class="uncovered" style="width:86px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -56,302 +56,302 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line1">1</a> class AuthController &lt; ApplicationController</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line2">2</a>   respond_to :json, :xml, :html</pre></td>
-          </tr>
-        
-          
-          
           <tr class="inferred">
-            <td><pre><a name="line3">3</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line4">4</a>   # Check credentials the owner of the account_token</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line5">5</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a>   # This is the main API method for 3rd party apps</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line7">7</a>   # and therefore will need to be optimized.</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a>   # Return values:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line10">10</a>   # * On success: 200 OK =&gt; true (credentials accepted)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>   # * On failure: 401 UNAUTHORIZED =&gt; false (credential refused)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>   # URL params:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a>   # * &lt;format&gt;: Output format wanted</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line16">16</a>   # POST params:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a>   # * credentials:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a>   #   * account_token: The account_token the user provided (string)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a>   #   * token: The time-based token the user provided (string, length == 8)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line21">21</a>   # Query URLs:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a>   # * POST /authenticate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line23">23</a>   # * POST /authenticate.&lt;format&gt;</pre></td>
+            <td><pre><a name="line1">1</a> # This class defines the API methods related to authentication management</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   def authenticate</pre></td>
+            <td><pre><a name="line2">2</a> class AuthController &lt; ApplicationController</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
-            <td><pre><a name="line25">25</a>     account_token = params[:credentials][:account_token] unless params[:credentials][:account_token].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line26">26</a>     token = params[:credentials][:token] unless params[:credentials][:token].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line27">27</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line28">28</a>     authorized = false</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line29">29</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line30">30</a>     if not account_token.blank? and not token.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line31">31</a>       user_id = AccountToken.active.find_by_account_token(account_token).user_id</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line32">32</a>       p_key = PersonalKey.current.find_by_user_id(user_id).personal_key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line33">33</a>       generated_token = generate_token p_key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line34">34</a>       if generated_token == token</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line35">35</a>         authorized = true</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line36">36</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line37">37</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line38">38</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line39">39</a>     respond_to do |format|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line40">40</a>       if not authorized</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line41">41</a>         format.json { render :json =&gt; false, :status =&gt; :unauthorized }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line42">42</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line43">43</a>         format.json { render :json =&gt; true }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line44">44</a>       end </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line45">45</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line46">46</a>   end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   respond_to :json, :xml, :html</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>   </pre></td>
+            <td><pre><a name="line4">4</a>   </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>   # Returns the server time</pre></td>
+            <td><pre><a name="line5">5</a>   # Check credentials the owner of the account_token</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>   #</pre></td>
+            <td><pre><a name="line6">6</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>   # This method will be used by mobile apps to synchronize with the server</pre></td>
+            <td><pre><a name="line7">7</a>   # This is the main API method for 3rd party apps</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a>   # and therefore will need to be optimized.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line9">9</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line10">10</a>   # Return values:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line11">11</a>   # * On success: 200 OK =&gt; true (credentials accepted)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a>   # * On failure: 401 UNAUTHORIZED =&gt; false (credential refused)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a>   # URL params:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a>   # * &lt;format&gt;: Output format wanted</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line16">16</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a>   # POST params:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line18">18</a>   # * credentials:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line19">19</a>   #   * account_token: The account_token the user provided (string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a>   #   * token: The time-based token the user provided (string, length == 8)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>   # Query URLs:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>   # * POST /authenticate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line24">24</a>   # * POST /authenticate.&lt;format&gt;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>   def authenticate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line26">26</a>     account_token = params[:credentials][:account_token] unless params[:credentials][:account_token].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line27">27</a>     token = params[:credentials][:token] unless params[:credentials][:token].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line28">28</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line29">29</a>     authorized = false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line30">30</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line31">31</a>     user_id = AccountToken.active.find_by_account_token(account_token).user_id</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line32">32</a>     generated_token = generate_token PersonalKey.current.find_by_user_id(user_id).personal_key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line33">33</a>     authorized = true if generated_token == token</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line35">35</a>     response = HttpResponse.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line36">36</a>     response.body = authorized ? true : false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line37">37</a>     response.status = authorized ? :ok : :unauthorized</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line38">38</a>     respond response</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line39">39</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line40">40</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a>   # Returns the server time</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line42">42</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line43">43</a>   # This method will be used by mobile apps to synchronize with the server</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line45">45</a>   # Return values:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a>   # * On success: 200 OK =&gt; unix timestamp</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a>   # * On failure: Cannot fail.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a>   # URL params:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line50">50</a>   # * &lt;format&gt;: Output format wanted</pre></td>
           </tr>
         
           
@@ -363,373 +363,307 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>   # Return values:</pre></td>
+            <td><pre><a name="line52">52</a>   # Query URLs:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a>   # * On success: 200 OK =&gt; unix timestamp</pre></td>
+            <td><pre><a name="line53">53</a>   # * GET /sync</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>   # * On failure: Cannot fail.</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line55">55</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line56">56</a>   # URL params:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line57">57</a>   # * &lt;format&gt;: Output format wanted</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line58">58</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line59">59</a>   # Query URLs:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line60">60</a>   # * GET /sync</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line61">61</a>   # * GET /sync.&lt;format&gt;</pre></td>
+            <td><pre><a name="line54">54</a>   # * GET /sync.&lt;format&gt;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>   def sync</pre></td>
+            <td><pre><a name="line55">55</a>   def sync</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line63">63</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line56">56</a>     response = HttpResponse.new</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line64">64</a>       format.json { render :json =&gt; Time.new.to_i.to_s }   </pre></td>
+            <td><pre><a name="line57">57</a>     response.body = Time.new.to_i.to_s</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line65">65</a>     end</pre></td>
+            <td><pre><a name="line58">58</a>     response.status = :ok</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line66">66</a>   end</pre></td>
+            <td><pre><a name="line59">59</a>     respond response</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line60">60</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line67">67</a>   </pre></td>
+            <td><pre><a name="line61">61</a>   </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a>   # Gets a token in order to perform account management operations.</pre></td>
+            <td><pre><a name="line62">62</a>   # Gets a token in order to perform account management operations.</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>   #</pre></td>
+            <td><pre><a name="line63">63</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a>   # This method can be used only by the administration website and the</pre></td>
+            <td><pre><a name="line64">64</a>   # This method can be used only by the administration website and the</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>   # mobile apps. A token is valid for 10 minutes.</pre></td>
+            <td><pre><a name="line65">65</a>   # mobile apps. A token is valid for 10 minutes.</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a>   #</pre></td>
+            <td><pre><a name="line66">66</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a>   # Return values:</pre></td>
+            <td><pre><a name="line67">67</a>   # Return values:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a>   # * On success: 200 OK =&gt; cookie (credentials accepted)</pre></td>
+            <td><pre><a name="line68">68</a>   # * On success: 200 OK =&gt; cookie (credentials accepted)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a>   # * On failure: 401 UNAUTHORIZED =&gt; false (credential refused)</pre></td>
+            <td><pre><a name="line69">69</a>   # * On failure: 401 UNAUTHORIZED =&gt; false (credential refused)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a>   #</pre></td>
+            <td><pre><a name="line70">70</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line77">77</a>   # URL params:</pre></td>
+            <td><pre><a name="line71">71</a>   # URL params:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a>   # * &lt;format&gt;: Output format wanted</pre></td>
+            <td><pre><a name="line72">72</a>   # * &lt;format&gt;: Output format wanted</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line79">79</a>   #</pre></td>
+            <td><pre><a name="line73">73</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line80">80</a>   # POST params:</pre></td>
+            <td><pre><a name="line74">74</a>   # POST params:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line81">81</a>   # * credentials:</pre></td>
+            <td><pre><a name="line75">75</a>   # * credentials:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line82">82</a>   #   * personal_key: The account_token the user provided (string)</pre></td>
+            <td><pre><a name="line76">76</a>   #   * personal_key: The account_token the user provided (string)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line83">83</a>   #   * token: The time-based token the user provided (string, length == 8)</pre></td>
+            <td><pre><a name="line77">77</a>   #   * token: The time-based token the user provided (string, length == 8)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a>   #</pre></td>
+            <td><pre><a name="line78">78</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line85">85</a>   # Query URLs:</pre></td>
+            <td><pre><a name="line79">79</a>   # Query URLs:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line86">86</a>   # * POST /session_auth</pre></td>
+            <td><pre><a name="line80">80</a>   # * POST /session_auth</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line87">87</a>   # * POST /session_auth.&lt;format&gt;</pre></td>
+            <td><pre><a name="line81">81</a>   # * POST /session_auth.&lt;format&gt;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>   def session_auth</pre></td>
+            <td><pre><a name="line82">82</a>   def session_auth</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line89">89</a>     personal_key = params[:credentials][:personal_key] unless params[:credentials][:personal_key].blank?</pre></td>
+            <td><pre><a name="line83">83</a>     personal_key = params[:credentials][:personal_key] unless params[:credentials][:personal_key].blank?</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line90">90</a>     token = params[:credentials][:token] unless params[:credentials][:token].blank?</pre></td>
+            <td><pre><a name="line84">84</a>     token = params[:credentials][:token] unless params[:credentials][:token].blank?</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line91">91</a>     </pre></td>
+            <td><pre><a name="line85">85</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line92">92</a>     authorized = false</pre></td>
+            <td><pre><a name="line86">86</a>     authorized = false</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line93">93</a>     </pre></td>
+            <td><pre><a name="line87">87</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line94">94</a>     if not personal_key.blank? and not token.blank?</pre></td>
+            <td><pre><a name="line88">88</a>     user_id = PersonalKey.current.find_by_personal_key(personal_key).user_id</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line95">95</a>       user_id = PersonalKey.current.find_by_personal_key(personal_key).user_id</pre></td>
+            <td><pre><a name="line89">89</a>     generated_token = generate_token personal_key</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line96">96</a>       generated_token = generate_token personal_key</pre></td>
+            <td><pre><a name="line90">90</a>     if generated_token == token</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line97">97</a>       if generated_token == token</pre></td>
+            <td><pre><a name="line91">91</a>       cookie = PseudoCookie.generate_cookie user_id</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line98">98</a>         cookie = PseudoCookie.generate_cookie user_id</pre></td>
+            <td><pre><a name="line92">92</a>       authorized = true</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line99">99</a>         authorized = true</pre></td>
+            <td><pre><a name="line93">93</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line100">100</a>       end</pre></td>
+            <td><pre><a name="line94">94</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line101">101</a>     end</pre></td>
+            <td><pre><a name="line95">95</a>     response = HttpResponse.new</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line102">102</a>     </pre></td>
+            <td><pre><a name="line96">96</a>     response.body = authorized ? cookie : false</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line103">103</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line97">97</a>     response.status = authorized ? :ok : :unauthorized</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line104">104</a>       if not authorized</pre></td>
+            <td><pre><a name="line98">98</a>     respond response</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line105">105</a>         format.json { render :json =&gt; false, :status =&gt; :unauthorized }</pre></td>
+            <td><pre><a name="line99">99</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line106">106</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line107">107</a>         format.json { render :json =&gt; cookie }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line108">108</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line109">109</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line110">110</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line111">111</a> end</pre></td>
+            <td><pre><a name="line100">100</a> end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line112">112</a> </pre></td>
+            <td><pre><a name="line101">101</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jul 07 21:02:14 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Jul 09 15:02:42 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -12,6 +12,7 @@
 #
 
 class AccountToken < ActiveRecord::Base
+  # scope definitions
   scope :active, where(:state => :active)
   
   # model associations
@@ -34,7 +35,7 @@ class AccountToken < ActiveRecord::Base
   private
   # generate the account token randomly
   def generate_account_token
-    self.account_token = Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}")
+    self.account_token = OaUtils.generate_random_key
     self.state = :active
   end
 end

@@ -13,7 +13,7 @@
 #  updated_at     :datetime
 #
 
-class User < ActiveRecord::Base
+class User < ActiveRecord::Base  
   # model associations
   has_many :account_tokens, :dependent => :destroy
   has_many :personal_keys, :dependent => :destroy
@@ -56,11 +56,7 @@ class User < ActiveRecord::Base
 
   # generate and save emergency_pass for the user on create only
   def set_emergency_pass
-    self.emergency_pass = generate_emergency_pass if self.new_record? and self.emergency_pass.nil?
-  end
-
-  def generate_emergency_pass
-    Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}")
+    self.emergency_pass = OaUtils.generate_random_key if self.new_record? and self.emergency_pass.nil?
   end
 end
 

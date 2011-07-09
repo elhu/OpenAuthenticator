@@ -1,3 +1,4 @@
+# This class defines the API methods related to user management
 class UsersController < ApplicationController
   respond_to :xml, :html, :json, :js
   before_filter :restricted, :except => [:index, :create, :check_email, :check_login]
@@ -16,11 +17,10 @@ class UsersController < ApplicationController
   # * Restrict, and probably expect arguments to return a smaller set of users
   def index
     @users = User.all
-
-    respond_to do |format|
-      format.xml { render :xml => @users }
-      format.json { render :json => @users }
-    end
+    response = HttpResponse.new
+    response.status = :ok
+    response.body = @users
+    respond response
   end
 
   # Gets user with login <login>
@@ -43,16 +43,11 @@ class UsersController < ApplicationController
   # * GET /users/<login>.<format>
   def show
     @user = User.find_by_login(params[:id])
-
-    respond_to do |format|
-      if not @user.nil?
-        #format.html # show.html.erb
-        format.json
-        #format.xml { render :xml => @user }
-      else
-        format.json { render :json => false, :status => :not_found }
-      end
-    end
+    success = !@user.nil?
+    response = HttpResponse.new
+    response.body = success ? @user : false
+    response.status = success ? :ok : :not_found
+    respond response
   end
 
   # Creates a new User
@@ -81,19 +76,15 @@ class UsersController < ApplicationController
   # * POST /users.<format>
   def create
     @user           = User.new(params[:user])
-
     @user.login     = params[:user][:login] #needed to secure mass assignment
     if params[:user][:birthdate] and params[:user][:birthdate][:year] and params[:user][:birthdate][:month] and params[:user][:birthdate][:day]
       @user.birthdate = Date.new(params[:user][:birthdate][:year].to_s.to_i, params[:user][:birthdate][:month].to_s.to_i, params[:user][:birthdate][:day].to_s.to_i)
     end
-
-    respond_to do |format|
-      if @user.save
-        format.json { render :json => [@user, PersonalKey.current.find_by_user_id(@user.id)], :status => :created }
-      else
-        format.json { render :json => @user.errors, :status => :unprocessable_entity }
-      end
-    end
+    response = HttpResponse.new
+    success = @user.save
+    response.body =  success ? [@user, PersonalKey.current.find_by_user_id(@user.id)] : @user.errors
+    response.status = success ? :created : :unprocessable_entity
+    respond response
   end
 
   # Updates user information according to params
@@ -121,24 +112,16 @@ class UsersController < ApplicationController
   # * PUT /users/<login>.<format>
   def update
     @user = User.find_by_login(params[:id])
-
-    respond_to do |format|
-      if not @user.nil?
-        if @user.update_attributes(params[:user])
-          #        flash[:success] = 'User was successfully updated.'
-          #        format.html { redirect_to(@user)}
-          format.json { render :json => @user }
-          #        format.xml  { head :ok }
-        else
-          #        flash[:error] = 'Something went wrong with the user update'
-          #        format.html { render :action => "edit"}
-          format.json { render :json => @user.errors, :status => :unprocessable_entity }
-          #        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-        end
-      else
-        format.json { render :json => false, :status => :not_found }
-      end
+    response = HttpResponse.new
+    if not @user.nil?
+      success = @user.update_attributes(params[:user])
+      response.body = success ? @user : @user.errors
+      response.status = success ? :ok : :unprocessable_entity
+    else
+      response.body = false
+      response.status = :not_found
     end
+    respond response
   end
 
   # Deletes user's record
@@ -161,17 +144,13 @@ class UsersController < ApplicationController
   # * DELETE /users/<login>.<format>
   def destroy
     @user = User.find_by_login(params[:id])
-    @user.destroy unless @user.nil?
-
-    respond_to do |format|
-      if @user.nil?
-#      format.html { redirect_to(users_url) }
-#      format.xml  { head :ok }
-        format.json { render :json => false, :status => :not_found }
-      else
-        format.json { render :json => true }
-      end
-    end
+    
+    success = !@user.nil?
+    @user.destroy if success
+    response = HttpResponse.new
+    response.body = success ? true : false
+    response.status = success ? :ok : :not_found
+    respond response
   end
 
   # AJAX validation methods
@@ -190,13 +169,10 @@ class UsersController < ApplicationController
   # * POST /users/new/check_email
   def check_email
     user = User.find_by_email(params[:user][:email])
-    respond_to do |format|
-      if user
-        format.json { render :json => false, :status => :conflict }
-      else
-        format.json { render :json => true }        
-      end
-    end
+    response = HttpResponse.new
+    response.body = user ? false : true
+    response.status = user ? :conflict : :ok
+    respond response
   end
 
   # Checks login availability
@@ -213,12 +189,9 @@ class UsersController < ApplicationController
   # * POST /users/new/check_login
   def check_login
     user = User.find_by_login(params[:user][:login])
-    respond_to do |format|
-      if user
-        format.json { render :json => false, :status => :conflict }
-      else
-        format.json { render :json => true }
-      end
-    end
+    response = HttpResponse.new
+    response.body = user ? false : true
+    response.status = user ? :conflict : :ok
+    respond response
   end
 end

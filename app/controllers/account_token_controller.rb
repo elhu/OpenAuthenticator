@@ -1,3 +1,4 @@
+# This class defines the API methods related to account_token management
 class AccountTokenController < ApplicationController
   before_filter :restricted
   
@@ -21,13 +22,11 @@ class AccountTokenController < ApplicationController
   # * GET /users/<login>/account_token.<format>
   def index
     user = User.find_by_login(params[:user_id])
-    respond_to do |format|
-      if not user.nil?
-        format.json { render :json => user.account_tokens }
-      else
-        format.json { render :json => false, :status => :not_found}
-      end
-    end
+    success = !user.nil?
+    response = HttpResponse.new
+    response.status = success ? :ok : :not_found
+    response.body = success ? user.account_tokens : false
+    respond response
   end
 
   # Gets the account token information
@@ -52,14 +51,11 @@ class AccountTokenController < ApplicationController
   def show
     @account_token = AccountToken.find_by_id(params[:id])
     user           = User.find_by_login(params[:user_id])
-
-    respond_to do |format|
-      if @account_token.nil? or user.nil? or @account_token.user != user or @account_token.state == :revoked.to_s
-        format.json { render :json => false, :status => :not_found }
-      else
-        format.json { render :json => @account_token }
-      end
-    end
+    success = !(@account_token.nil? or user.nil? or @account_token.user != user or @account_token.state == :revoked.to_s)
+    response = HttpResponse.new
+    response.body = success ? @account_token : false
+    response.status = success ? :ok : :not_found
+    respond response
   end
 
   # Creates a new account token for the specified user
@@ -86,21 +82,18 @@ class AccountTokenController < ApplicationController
   # * POST /users/<login>/account_token.<format>
   def create
     @account_token         = AccountToken.new(params[:account_token])
-    @account_token.user_id = params[:user_id]
     user = User.find_by_login(params[:user_id])
-
-    respond_to do |format|
-      if user.nil?
-        format.json { render :json => false, :status => :not_found }
-      else
-        @account_token.user_id = user.id
-        if @account_token.save
-          format.json { render :json => @account_token, :status => :created }
-        else
-          format.json { render :json => @account_token.errors, :status => :unprocessable_entity }
-        end
-      end
+    response = HttpResponse.new
+    if user.nil?
+      response.body = false
+      response.staus = :not_found
+    else
+      @account_token.user_id = user.id
+      success = @account_token.save
+      response.body = success ? @account_token : @account_token.errors
+      response.status = success ? :created : :unprocessable_entity
     end
+    respond response
   end
 
   # Creates a new account token for the specified user
@@ -128,18 +121,16 @@ class AccountTokenController < ApplicationController
   def update
     @account_token = AccountToken.find_by_id(params[:id])
     user           = User.find_by_login(params[:user_id])
-
-    respond_to do |format|
-      if (@account_token.nil? or user.nil? or @account_token.user != user)
-        format.json { render :json => false, :status => :not_found }
-      else
-        if @account_token.update_attributes(params[:account_token])
-          format.json { render :json => @account_token }
-        else
-          format.json { render :json => @account_token.errors, :status => :unprocessable_entity }
-        end
-      end
+    response = HttpResponse.new
+    if @account_token.nil? or user.nil? or @account_token.user != user
+      response.body = false
+      response.status = :not_found
+    else
+      success = @account_token.update_attributes(params[:account_token])
+      response.body = success ? @account_token : @account_token.errors
+      response.status = success ? :ok : :unprocessable_entity
     end
+    respond response
   end
 
   # Deletes (revokes) the specified account token for the specified user
@@ -164,14 +155,11 @@ class AccountTokenController < ApplicationController
   def destroy
     @account_token = AccountToken.find_by_id(params[:id])
     user           = User.find_by_login(params[:user_id])
-
-    respond_to do |format|
-      if (@account_token.nil? or @account_token.state == :revoked.to_s or user.nil? or @account_token.user != user)
-        format.json { render :json => false, :status => :not_found }
-      else
-        @account_token.revoke
-        format.json { render :json => true }      
-      end
-    end
+    success = !(@account_token.nil? or @account_token.state == :revoked.to_s or user.nil? or @account_token.user != user)
+    response = HttpResponse.new
+    response.body = success ? true : false
+    response.status = success ? :ok : :not_found
+    @account_token.revoke unless !success
+    respond response
   end
 end
