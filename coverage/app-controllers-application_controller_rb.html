@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-application_controller_rb.html">app/controllers/application_controller.rb</a></td>
-            <td class='right_align'><tt>35</tt></td>
-            <td class='right_align'><tt>31</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>31.43%</tt></div>
+            <td class='right_align'><tt>30</tt></td>
+            <td class='right_align'><tt>22</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>50.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:31px"></div>
-            <div class="uncovered" style="width:69px"></div>
+            <div class="covered" style="width:50px"></div>
+            <div class="uncovered" style="width:50px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>22.58%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>31.82%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:23px"></div>
-            <div class="uncovered" style="width:77px"></div>
+            <div class="covered" style="width:32px"></div>
+            <div class="uncovered" style="width:68px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -75,7 +75,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>   </pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
@@ -86,188 +86,158 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>   def restricted</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line7">7</a>     response = HttpResponse.new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line8">8</a>     response.body = false</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line9">9</a>     response.status  = :unauthorized</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line10">10</a>     if params[:auth_token].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line11">11</a>       respond response</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line12">12</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line13">13</a>       cookie = PseudoCookie.find_by_cookie(params[:auth_token])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line14">14</a>       auth_user = cookie.user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line15">15</a>       if params[:user_id] != auth_user.login and params[:id] != auth_user.login and cookie.expire.to_time &gt; Time.new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line16">16</a>         respond response</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line17">17</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line18">18</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line19">19</a>   end</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line6">6</a>   # Respond with a 422 status code if trying to access a resource</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   </pre></td>
+            <td><pre><a name="line7">7</a>   # that doesn't belong to the authenticating user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   def generate_token(personal_key)</pre></td>
+            <td><pre><a name="line8">8</a>   def restricted</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line22">22</a>     timespan = 30</pre></td>
+            <td><pre><a name="line9">9</a>     if !PseudoCookie.rightful_auth? params</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line23">23</a>     time = Time.new.to_i / timespan</pre></td>
+            <td><pre><a name="line10">10</a>       @response = HttpResponse.new</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line24">24</a>     to_hash = &quot;#{personal_key}--#{time.to_s}&quot;</pre></td>
+            <td><pre><a name="line11">11</a>       @response.body = false</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line25">25</a>     token = Digest::SHA2.hexdigest(to_hash)[0..7]</pre></td>
+            <td><pre><a name="line12">12</a>       @response.status = :unauthorized</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line26">26</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>       respond</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line14">14</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line15">15</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>   </pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a>   # Instanciates the @response var for all API requests</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>   private </pre></td>
+            <td><pre><a name="line18">18</a>   def instanciate_response</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line19">19</a>     @response = HttpResponse.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line20">20</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>   def respond(response)</pre></td>
+            <td><pre><a name="line22">22</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>   # Handles the response for all API requests</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>   def respond</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line30">30</a>     respond_to do |format|</pre></td>
+            <td><pre><a name="line25">25</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line31">31</a>       format.json { render :json =&gt; response.body, :status =&gt; response.status }</pre></td>
+            <td><pre><a name="line26">26</a>       format.json { render :json =&gt; @response.body, :status =&gt; @response.status }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line32">32</a>       format.xml { render :xml =&gt; response.body, :status =&gt; response.status }</pre></td>
+            <td><pre><a name="line27">27</a>       format.xml { render :xml =&gt; @response.body, :status =&gt; @response.status }</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line33">33</a>     end</pre></td>
+            <td><pre><a name="line28">28</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line34">34</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line35">35</a> end</pre></td>
+            <td><pre><a name="line30">30</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jul 09 15:02:42 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun Jul 10 21:23:47 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

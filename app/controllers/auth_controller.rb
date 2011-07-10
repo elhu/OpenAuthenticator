@@ -1,7 +1,8 @@
 # This class defines the API methods related to authentication management
 class AuthController < ApplicationController
   respond_to :json, :xml, :html
-  
+  before_filter :instanciate_response
+
   # Check credentials the owner of the account_token
   #
   # This is the main API method for 3rd party apps
@@ -23,21 +24,19 @@ class AuthController < ApplicationController
   # * POST /authenticate
   # * POST /authenticate.<format>
   def authenticate
-    account_token = params[:credentials][:account_token] unless params[:credentials][:account_token].blank?
-    token = params[:credentials][:token] unless params[:credentials][:token].blank?
-    
-    authorized = false
-    
-    user_id = AccountToken.active.find_by_account_token(account_token).user_id
-    generated_token = generate_token PersonalKey.current.find_by_user_id(user_id).personal_key
-    authorized = true if generated_token == token
+    credentials = params[:credentials]
+    account_token = credentials[:account_token]
+    token = credentials[:token]
 
-    response = HttpResponse.new
-    response.body = authorized ? true : false
-    response.status = authorized ? :ok : :unauthorized
-    respond response
+    user_id = AccountToken.active.find_by_account_token(account_token).user_id
+    generated_token = OaUtils.generate_token PersonalKey.current.find_by_user_id(user_id).personal_key
+    authorized = generated_token == token ? true : false
+
+    @response.body = authorized ? true : false
+    @response.status = authorized ? :ok : :unauthorized
+    respond
   end
-  
+
   # Returns the server time
   #
   # This method will be used by mobile apps to synchronize with the server
@@ -53,12 +52,11 @@ class AuthController < ApplicationController
   # * GET /sync
   # * GET /sync.<format>
   def sync
-    response = HttpResponse.new
-    response.body = Time.new.to_i.to_s
-    response.status = :ok
-    respond response
+    @response.body = Time.new.to_i.to_s
+    @response.status = :ok
+    respond
   end
-  
+
   # Gets a token in order to perform account management operations.
   #
   # This method can be used only by the administration website and the
@@ -80,22 +78,17 @@ class AuthController < ApplicationController
   # * POST /session_auth
   # * POST /session_auth.<format>
   def session_auth
-    personal_key = params[:credentials][:personal_key] unless params[:credentials][:personal_key].blank?
-    token = params[:credentials][:token] unless params[:credentials][:token].blank?
-    
-    authorized = false
-    
+    credentials = params[:credentials]
+    personal_key = credentials[:personal_key]
+    token = credentials[:token]
+
     user_id = PersonalKey.current.find_by_personal_key(personal_key).user_id
-    generated_token = generate_token personal_key
-    if generated_token == token
-      cookie = PseudoCookie.generate_cookie user_id
-      authorized = true
-    end
-    
-    response = HttpResponse.new
-    response.body = authorized ? cookie : false
-    response.status = authorized ? :ok : :unauthorized
-    respond response
+
+    authorized = OaUtils.generate_token(personal_key) == token ? true : false
+
+    @response.body = authorized ? PseudoCookie.generate_cookie(user_id) : false
+    @response.status = authorized ? :ok : :unauthorized
+    respond
   end
 end
 

@@ -13,12 +13,12 @@
 #  updated_at     :datetime
 #
 
-class User < ActiveRecord::Base  
+class User < ActiveRecord::Base
   # model associations
   has_many :account_tokens, :dependent => :destroy
   has_many :personal_keys, :dependent => :destroy
   has_one :pseudo_cookie, :dependent => :destroy
-  
+
   # forbid mass assignment of login in update.
   attr_accessible :first_name, :last_name, :email, :birth_date
 
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   # before and after filters
   before_create :set_emergency_pass
   after_create :create_personal_key
-  
+
   # returns the active personal_key
   def personal_key
     PersonalKey.current.find_by_user_id(self.id)
@@ -48,13 +48,27 @@ class User < ActiveRecord::Base
     login
   end
 
+  # creates a new user with the params received
+  def self.new_with_params params
+    traits = params[:user]
+    user = User.new(traits)
+    user.login = traits[:login]
+    date = traits[:birthdate]
+    begin
+      user.birthdate = Date.new(date[:year].to_s.to_i, date[:month].to_s.to_i, date[:day].to_s.to_i)
+    rescue
+      user.birthdate = nil
+    end
+    user
+  end
+
   private
-  # generate an account_token for the user on create only
+  # generates an account_token for the user on create only
   def create_personal_key
     self.personal_keys.create
   end
 
-  # generate and save emergency_pass for the user on create only
+  # generates and save emergency_pass for the user on create only
   def set_emergency_pass
     self.emergency_pass = OaUtils.generate_random_key if self.new_record? and self.emergency_pass.nil?
   end

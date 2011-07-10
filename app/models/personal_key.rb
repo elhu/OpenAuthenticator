@@ -29,6 +29,10 @@ class PersonalKey < ActiveRecord::Base
     self.save
   end
 
+  def revoked?
+    self.state == :revoked.to_s
+  end
+
   private
   # generate the personal_key bound to the User
   def generate_personal_key

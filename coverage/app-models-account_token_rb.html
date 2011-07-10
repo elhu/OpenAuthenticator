@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-account_token_rb.html">app/models/account_token.rb</a></td>
-            <td class='right_align'><tt>42</tt></td>
-            <td class='right_align'><tt>16</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>83.33%</tt></div>
+            <td class='right_align'><tt>46</tt></td>
+            <td class='right_align'><tt>19</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>80.43%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:83px"></div>
-            <div class="uncovered" style="width:17px"></div>
+            <div class="covered" style="width:80px"></div>
+            <div class="uncovered" style="width:20px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>56.25%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>52.63%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:56px"></div>
-            <div class="uncovered" style="width:44px"></div>
+            <div class="covered" style="width:53px"></div>
+            <div class="uncovered" style="width:47px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -153,7 +153,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   </pre></td>
+            <td><pre><a name="line17">17</a> </pre></td>
           </tr>
         
           
@@ -261,55 +261,79 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>   private</pre></td>
+            <td><pre><a name="line35">35</a>   def revoked?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line36">36</a>     self.state == :revoked.to_s</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>   # generate the account token randomly</pre></td>
+            <td><pre><a name="line38">38</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>   def generate_account_token</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line38">38</a>     self.account_token = OaUtils.generate_random_key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line39">39</a>     self.state = :active</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line40">40</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line41">41</a> end</pre></td>
+            <td><pre><a name="line39">39</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a> </pre></td>
+            <td><pre><a name="line40">40</a>   # generate the account token randomly</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>   def generate_account_token</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line42">42</a>     self.account_token = OaUtils.generate_random_key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line43">43</a>     self.state = :active</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line44">44</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line45">45</a> end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jul 09 15:02:42 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun Jul 10 21:23:47 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

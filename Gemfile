@@ -5,7 +5,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql2', '0.2.10'
 gem 'rake'
 gem 'heroku'
-gem 'annotate'
 
 gem 'sqlite3'
 
@@ -14,6 +13,11 @@ gem 'capistrano'
 group :development do
   gem 'rspec-rails'
   gem 'reek'
+  gem 'annotate'
+  gem 'flog'
+  gem 'flay'
+  gem 'rcov'
+  gem 'rails_best_practices'
 end
 
 group :test do

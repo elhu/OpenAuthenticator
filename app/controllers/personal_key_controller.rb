@@ -1,7 +1,8 @@
 # This class defines the API methods related to personal_key management
 class PersonalKeyController < ApplicationController
   before_filter :restricted
-  
+  before_filter :instanciate_response
+
   # Lists all the user's personal keys
   #
   # Return values;
@@ -21,10 +22,9 @@ class PersonalKeyController < ApplicationController
   def index
     user = User.find_by_login(params[:user_id])
     success = !user.nil?
-    response = HttpResponse.new
-    response.body = success ? user.personal_keys : false
-    response.status = success ? :ok : :not_found
-    respond response
+    @response.body = success ? user.personal_keys : false
+    @response.status = success ? :ok : :not_found
+    respond
   end
 
   # Revokes the active personal key and creates a new one
@@ -48,19 +48,17 @@ class PersonalKeyController < ApplicationController
   # * POST /users/<login>/personal_key.<format>
   def create
     user = User.find_by_login(params[:user_id])
-    response = HttpResponse.new
     if user.nil?
-      response.body = false
-      response.status = :not_found
+      @response.body = false
+      @response.status = :not_found
     else
       PersonalKey.current.find_by_user_id(user.id).revoke
-      @personal_key = PersonalKey.new
-      @personal_key.user_id
-      success = @personal_key.save
-      response.body = success ? @personal_key : @personal_key.errors
-      response.status = success ? :created : :unprocessable_entity
+      personal_key = user.personal_keys.create
+      success = personal_key.save
+      @response.body = success ? personal_key : personal_key.errors
+      @response.status = success ? :created : :unprocessable_entity
     end
-    respond response
+    respond
   end
 
   # Gets the personal key of the required user
@@ -81,13 +79,12 @@ class PersonalKeyController < ApplicationController
   # * GET /users/<login>/personal_key/<key_id>
   # * GET /users/<login>/personal_key/<key_id>.<format>
   def show
-    @personal_key = PersonalKey.find_by_id params[:id]
     user = User.find_by_login params[:user_id]
-    success = !(@personal_key.nil? or user.nil? or @personal_key.user.id != user.id or @personal_key.state == :revoked.to_s)
-    response = HttpResponse.new
-    response.body = success ? @personal_key : false
-    response.status = success ? :ok : :not_found
-    respond response
+    personal_key = user.personal_keys.find_by_id(params[:id]) unless user.nil?
+    success = !(personal_key.nil? or personal_key.revoked?)
+    @response.body = success ? personal_key : false
+    @response.status = success ? :ok : :not_found
+    respond
   end
 
   # Deletes the specified key
@@ -108,13 +105,12 @@ class PersonalKeyController < ApplicationController
   # * DELETE /users/<login>/personal_key/<key_id>
   # * DELETE /users/<login>/personal_key/<key_id>.<format>
   def destroy
-    @personal_key = PersonalKey.find_by_id params[:id] # change to get authenticated user personal_key
     user = User.find_by_login params[:user_id]
-    success = !(user.nil? or @personal_key.nil? or @personal_key.state == :revoked.to_s or @personal_key.user.id != user.id)
-    response = HttpResponse.new
-    response.body = success ? true : false
-    response.status = success ? :ok : :not_found
-    @personal_key.revoke if success
-    respond response
+    personal_key = user.personal_keys.find_by_id(params[:id]) unless user.nil?
+    success = !(personal_key.nil? or personal_key.revoked?)
+    @response.body = success ? true : false
+    @response.status = success ? :ok : :not_found
+    personal_key.revoke if success
+    respond
   end
 end

@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-personal_key_rb.html">app/models/personal_key.rb</a></td>
-            <td class='right_align'><tt>38</tt></td>
-            <td class='right_align'><tt>15</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>81.58%</tt></div>
+            <td class='right_align'><tt>42</tt></td>
+            <td class='right_align'><tt>18</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>78.57%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:82px"></div>
-            <div class="uncovered" style="width:18px"></div>
+            <div class="covered" style="width:79px"></div>
+            <div class="uncovered" style="width:21px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>53.33%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>50.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:53px"></div>
-            <div class="uncovered" style="width:47px"></div>
+            <div class="covered" style="width:50px"></div>
+            <div class="uncovered" style="width:50px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -243,49 +243,73 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   private</pre></td>
+            <td><pre><a name="line32">32</a>   def revoked?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line33">33</a>     self.state == :revoked.to_s</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line34">34</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   # generate the personal_key bound to the User</pre></td>
+            <td><pre><a name="line35">35</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>   def generate_personal_key</pre></td>
+            <td><pre><a name="line36">36</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line37">37</a>   # generate the personal_key bound to the User</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>   def generate_personal_key</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line35">35</a>     self.personal_key = OaUtils.generate_random_key</pre></td>
+            <td><pre><a name="line39">39</a>     self.personal_key = OaUtils.generate_random_key</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line36">36</a>     self.state = :active</pre></td>
+            <td><pre><a name="line40">40</a>     self.state = :active</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line37">37</a>   end</pre></td>
+            <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line38">38</a> end</pre></td>
+            <td><pre><a name="line42">42</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jul 09 15:02:42 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun Jul 10 21:23:47 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

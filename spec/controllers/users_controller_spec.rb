@@ -28,8 +28,8 @@ describe UsersController do
     it "should succeed" do
       lambda do
         post :create, :format => :json, :user => @attr
-        response.status.should == 201
         response.should contain @attr[:login]
+        response.status.should == 201
       end.should change(User, :count).by(1)
     end
   end

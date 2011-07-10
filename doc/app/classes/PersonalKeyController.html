@@ -94,10 +94,10 @@ This class defines the API methods related to personal_key management
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000012">create</a>&nbsp;&nbsp;
-      <a href="#M000014">destroy</a>&nbsp;&nbsp;
-      <a href="#M000011">index</a>&nbsp;&nbsp;
-      <a href="#M000013">show</a>&nbsp;&nbsp;
+      <a href="#M000014">create</a>&nbsp;&nbsp;
+      <a href="#M000016">destroy</a>&nbsp;&nbsp;
+      <a href="#M000013">index</a>&nbsp;&nbsp;
+      <a href="#M000015">show</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -119,11 +119,11 @@ This class defines the API methods related to personal_key management
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000012" class="method-detail">
-        <a name="M000012"></a>
+      <div id="method-M000014" class="method-detail">
+        <a name="M000014"></a>
 
         <div class="method-heading">
-          <a href="#M000012" class="method-signature">
+          <a href="#M000014" class="method-signature">
           <span class="method-name">create</span><span class="method-args">()</span>
           </a>
         </div>
@@ -185,36 +185,34 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000012-source">
+            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000014-source">
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/personal_key_controller.rb, line 49</span>
 49:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
 50:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>])
-51:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-52:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
-53:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-keyword kw">false</span>
-54:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:not_found</span>
-55:     <span class="ruby-keyword kw">else</span>
-56:       <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">revoke</span>
-57:       <span class="ruby-ivar">@personal_key</span> = <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">new</span>
-58:       <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">user_id</span>
-59:       <span class="ruby-identifier">success</span> = <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">save</span>
-60:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@personal_key</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">errors</span>
-61:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">created</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
-62:     <span class="ruby-keyword kw">end</span>
-63:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-64:   <span class="ruby-keyword kw">end</span>
+51:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+52:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-keyword kw">false</span>
+53:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:not_found</span>
+54:     <span class="ruby-keyword kw">else</span>
+55:       <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">revoke</span>
+56:       <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">create</span>
+57:       <span class="ruby-identifier">success</span> = <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">save</span>
+58:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-identifier">personal_key</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">errors</span>
+59:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">created</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
+60:     <span class="ruby-keyword kw">end</span>
+61:     <span class="ruby-identifier">respond</span>
+62:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000014" class="method-detail">
-        <a name="M000014"></a>
+      <div id="method-M000016" class="method-detail">
+        <a name="M000016"></a>
 
         <div class="method-heading">
-          <a href="#M000014" class="method-signature">
+          <a href="#M000016" class="method-signature">
           <span class="method-name">destroy</span><span class="method-args">()</span>
           </a>
         </div>
@@ -269,30 +267,29 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000014-source">
+            onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000016-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/personal_key_controller.rb, line 110</span>
-110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
-111:     <span class="ruby-ivar">@personal_key</span> = <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">find_by_id</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>] <span class="ruby-comment cmt"># change to get authenticated user personal_key</span>
-112:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>]
-113:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:revoked</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)
-114:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-115:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
-116:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
-117:     <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">revoke</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
-118:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-119:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/personal_key_controller.rb, line 107</span>
+107:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+108:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>]
+109:     <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+110:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">revoked?</span>)
+111:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+112:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
+113:     <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">revoke</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
+114:     <span class="ruby-identifier">respond</span>
+115:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000011" class="method-detail">
-        <a name="M000011"></a>
+      <div id="method-M000013" class="method-detail">
+        <a name="M000013"></a>
 
         <div class="method-heading">
-          <a href="#M000011" class="method-signature">
+          <a href="#M000013" class="method-signature">
           <span class="method-name">index</span><span class="method-args">()</span>
           </a>
         </div>
@@ -336,28 +333,27 @@ Query URLs: GET * /users/&lt;login&gt;/personal_key GET *
 /users/&lt;login&gt;/personal_key.&lt;format&gt;
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000011-source">
+            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000013-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/personal_key_controller.rb, line 21</span>
-21:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
-22:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>])
-23:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
-24:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-25:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
-26:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
-27:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
+    <span class="ruby-comment cmt"># File app/controllers/personal_key_controller.rb, line 22</span>
+22:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+23:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>])
+24:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+25:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+26:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
+27:     <span class="ruby-identifier">respond</span>
 28:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000013" class="method-detail">
-        <a name="M000013"></a>
+      <div id="method-M000015" class="method-detail">
+        <a name="M000015"></a>
 
         <div class="method-heading">
-          <a href="#M000013" class="method-signature">
+          <a href="#M000015" class="method-signature">
           <span class="method-name">show</span><span class="method-args">()</span>
           </a>
         </div>
@@ -412,19 +408,18 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000013-source">
+            onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000015-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/personal_key_controller.rb, line 83</span>
-83:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
-84:     <span class="ruby-ivar">@personal_key</span> = <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">find_by_id</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]
-85:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>]
-86:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span>(<span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@personal_key</span>.<span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:revoked</span>.<span class="ruby-identifier">to_s</span>)
-87:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-88:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@personal_key</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
-89:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
-90:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-91:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/personal_key_controller.rb, line 81</span>
+81:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
+82:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user_id</span>]
+83:     <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+84:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">revoked?</span>)
+85:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-identifier">personal_key</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+86:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
+87:     <span class="ruby-identifier">respond</span>
+88:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

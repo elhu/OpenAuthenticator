@@ -94,13 +94,13 @@ This class defines the API methods related to user management
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000009">check_email</a>&nbsp;&nbsp;
-      <a href="#M000010">check_login</a>&nbsp;&nbsp;
-      <a href="#M000006">create</a>&nbsp;&nbsp;
-      <a href="#M000008">destroy</a>&nbsp;&nbsp;
-      <a href="#M000004">index</a>&nbsp;&nbsp;
-      <a href="#M000005">show</a>&nbsp;&nbsp;
-      <a href="#M000007">update</a>&nbsp;&nbsp;
+      <a href="#M000011">check_email</a>&nbsp;&nbsp;
+      <a href="#M000012">check_login</a>&nbsp;&nbsp;
+      <a href="#M000008">create</a>&nbsp;&nbsp;
+      <a href="#M000010">destroy</a>&nbsp;&nbsp;
+      <a href="#M000006">index</a>&nbsp;&nbsp;
+      <a href="#M000007">show</a>&nbsp;&nbsp;
+      <a href="#M000009">update</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -122,11 +122,11 @@ This class defines the API methods related to user management
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000009" class="method-detail">
-        <a name="M000009"></a>
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
 
         <div class="method-heading">
-          <a href="#M000009" class="method-signature">
+          <a href="#M000011" class="method-signature">
           <span class="method-name">check_email</span><span class="method-args">()</span>
           </a>
         </div>
@@ -169,27 +169,24 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000009-source">
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 170</span>
-170:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_email</span>
-171:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:email</span>])
-172:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-173:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
-174:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">conflict</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:ok</span>
-175:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-176:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 159</span>
+159:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_email</span>
+160:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_email</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:email</span>])
+161:     <span class="ruby-identifier">user_exist_check</span> <span class="ruby-identifier">user</span>
+162:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000010" class="method-detail">
-        <a name="M000010"></a>
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
 
         <div class="method-heading">
-          <a href="#M000010" class="method-signature">
+          <a href="#M000012" class="method-signature">
           <span class="method-name">check_login</span><span class="method-args">()</span>
           </a>
         </div>
@@ -231,27 +228,24 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000010-source">
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 190</span>
-190:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_login</span>
-191:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>])
-192:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-193:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">false</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">true</span>
-194:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">user</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">conflict</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:ok</span>
-195:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-196:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 176</span>
+176:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_login</span>
+177:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>])
+178:     <span class="ruby-identifier">user_exist_check</span> <span class="ruby-identifier">user</span>
+179:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000006" class="method-detail">
-        <a name="M000006"></a>
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
 
         <div class="method-heading">
-          <a href="#M000006" class="method-signature">
+          <a href="#M000008" class="method-signature">
           <span class="method-name">create</span><span class="method-args">()</span>
           </a>
         </div>
@@ -331,32 +325,27 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000006-source">
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 77</span>
-77:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-78:     <span class="ruby-ivar">@user</span>           = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>])
-79:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">login</span>     = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:login</span>] <span class="ruby-comment cmt">#needed to secure mass assignment</span>
-80:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>]
-81:       <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">birthdate</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:year</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:month</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>][<span class="ruby-identifier">:birthdate</span>][<span class="ruby-identifier">:day</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_i</span>)
-82:     <span class="ruby-keyword kw">end</span>
-83:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-84:     <span class="ruby-identifier">success</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
-85:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> =  <span class="ruby-identifier">success</span> <span class="ruby-value">? </span>[<span class="ruby-ivar">@user</span>, <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>)] <span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>
-86:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">created</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
-87:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-88:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 76</span>
+76:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+77:     <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new_with_params</span> <span class="ruby-identifier">params</span>
+78:     <span class="ruby-identifier">success</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>
+79:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> =  <span class="ruby-identifier">success</span> <span class="ruby-value">? </span>[<span class="ruby-identifier">user</span>, <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)] <span class="ruby-operator">:</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">errors</span>
+80:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">created</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
+81:     <span class="ruby-identifier">respond</span>
+82:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000008" class="method-signature">
+          <a href="#M000010" class="method-signature">
           <span class="method-name">destroy</span><span class="method-args">()</span>
           </a>
         </div>
@@ -410,30 +399,27 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000008-source">
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 145</span>
-145:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
-146:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
-147:     
-148:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
-149:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
-150:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-151:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
-152:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
-153:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-154:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 137</span>
+137:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+138:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
+139:     <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
+140:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+141:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
+142:     <span class="ruby-identifier">respond</span>
+143:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000004" class="method-detail">
-        <a name="M000004"></a>
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
 
         <div class="method-heading">
-          <a href="#M000004" class="method-signature">
+          <a href="#M000006" class="method-signature">
           <span class="method-name">index</span><span class="method-args">()</span>
           </a>
         </div>
@@ -473,27 +459,26 @@ ToDo:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000004-source">
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 18</span>
-18:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
-19:     <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>
-20:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-21:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:ok</span>
-22:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-ivar">@users</span>
-23:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-24:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 20</span>
+20:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+21:     <span class="ruby-ivar">@users</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">all</span>
+22:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:ok</span>
+23:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-ivar">@users</span>
+24:     <span class="ruby-identifier">respond</span>
+25:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000005" class="method-detail">
-        <a name="M000005"></a>
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
 
         <div class="method-heading">
-          <a href="#M000005" class="method-signature">
+          <a href="#M000007" class="method-signature">
           <span class="method-name">show</span><span class="method-args">()</span>
           </a>
         </div>
@@ -547,28 +532,26 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000005-source">
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 44</span>
-44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
-45:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+    <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 45</span>
+45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
 46:     <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
-47:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-48:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@user</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
-49:     <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
-50:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-51:   <span class="ruby-keyword kw">end</span>
+47:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@user</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+48:     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:not_found</span>
+49:     <span class="ruby-identifier">respond</span>
+50:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000007" class="method-detail">
-        <a name="M000007"></a>
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
 
         <div class="method-heading">
-          <a href="#M000007" class="method-signature">
+          <a href="#M000009" class="method-signature">
           <span class="method-name">update</span><span class="method-args">()</span>
           </a>
         </div>
@@ -642,23 +625,21 @@ Query URLs:
 </li>
 </ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000007-source">
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 113</span>
-113:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
-114:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
-115:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">HttpResponse</span>.<span class="ruby-identifier">new</span>
-116:     <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
-117:       <span class="ruby-identifier">success</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>])
-118:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@user</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>
-119:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
-120:     <span class="ruby-keyword kw">else</span>
-121:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-keyword kw">false</span>
-122:       <span class="ruby-identifier">response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:not_found</span>
-123:     <span class="ruby-keyword kw">end</span>
-124:     <span class="ruby-identifier">respond</span> <span class="ruby-identifier">response</span>
-125:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/controllers/users_controller.rb, line 107</span>
+107:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+108:     <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
+109:       <span class="ruby-identifier">success</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:user</span>])
+110:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-ivar">@user</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">errors</span>
+111:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">ok</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:unprocessable_entity</span>
+112:     <span class="ruby-keyword kw">else</span>
+113:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-keyword kw">false</span>
+114:       <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">:not_found</span>
+115:     <span class="ruby-keyword kw">end</span>
+116:     <span class="ruby-identifier">respond</span>
+117:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

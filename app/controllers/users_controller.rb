@@ -2,6 +2,8 @@
 class UsersController < ApplicationController
   respond_to :xml, :html, :json, :js
   before_filter :restricted, :except => [:index, :create, :check_email, :check_login]
+  before_filter :get_user, :only => [:show, :update, :destroy]
+  before_filter :instanciate_response
 
   # Returns all users
   #
@@ -17,10 +19,9 @@ class UsersController < ApplicationController
   # * Restrict, and probably expect arguments to return a smaller set of users
   def index
     @users = User.all
-    response = HttpResponse.new
-    response.status = :ok
-    response.body = @users
-    respond response
+    @response.status = :ok
+    @response.body = @users
+    respond
   end
 
   # Gets user with login <login>
@@ -42,12 +43,10 @@ class UsersController < ApplicationController
   # * GET /users/<login>
   # * GET /users/<login>.<format>
   def show
-    @user = User.find_by_login(params[:id])
     success = !@user.nil?
-    response = HttpResponse.new
-    response.body = success ? @user : false
-    response.status = success ? :ok : :not_found
-    respond response
+    @response.body = success ? @user : false
+    @response.status = success ? :ok : :not_found
+    respond
   end
 
   # Creates a new User
@@ -75,16 +74,11 @@ class UsersController < ApplicationController
   # * POST /users
   # * POST /users.<format>
   def create
-    @user           = User.new(params[:user])
-    @user.login     = params[:user][:login] #needed to secure mass assignment
-    if params[:user][:birthdate] and params[:user][:birthdate][:year] and params[:user][:birthdate][:month] and params[:user][:birthdate][:day]
-      @user.birthdate = Date.new(params[:user][:birthdate][:year].to_s.to_i, params[:user][:birthdate][:month].to_s.to_i, params[:user][:birthdate][:day].to_s.to_i)
-    end
-    response = HttpResponse.new
-    success = @user.save
-    response.body =  success ? [@user, PersonalKey.current.find_by_user_id(@user.id)] : @user.errors
-    response.status = success ? :created : :unprocessable_entity
-    respond response
+    user = User.new_with_params params
+    success = user.save
+    @response.body =  success ? [user, PersonalKey.current.find_by_user_id(user.id)] : user.errors
+    @response.status = success ? :created : :unprocessable_entity
+    respond
   end
 
   # Updates user information according to params
@@ -111,17 +105,15 @@ class UsersController < ApplicationController
   # * PUT /users/<login>
   # * PUT /users/<login>.<format>
   def update
-    @user = User.find_by_login(params[:id])
-    response = HttpResponse.new
     if not @user.nil?
       success = @user.update_attributes(params[:user])
-      response.body = success ? @user : @user.errors
-      response.status = success ? :ok : :unprocessable_entity
+      @response.body = success ? @user : @user.errors
+      @response.status = success ? :ok : :unprocessable_entity
     else
-      response.body = false
-      response.status = :not_found
+      @response.body = false
+      @response.status = :not_found
     end
-    respond response
+    respond
   end
 
   # Deletes user's record
@@ -143,14 +135,11 @@ class UsersController < ApplicationController
   # * DELETE /users/<login>
   # * DELETE /users/<login>.<format>
   def destroy
-    @user = User.find_by_login(params[:id])
-    
     success = !@user.nil?
     @user.destroy if success
-    response = HttpResponse.new
-    response.body = success ? true : false
-    response.status = success ? :ok : :not_found
-    respond response
+    @response.body = success ? true : false
+    @response.status = success ? :ok : :not_found
+    respond
   end
 
   # AJAX validation methods
@@ -169,10 +158,7 @@ class UsersController < ApplicationController
   # * POST /users/new/check_email
   def check_email
     user = User.find_by_email(params[:user][:email])
-    response = HttpResponse.new
-    response.body = user ? false : true
-    response.status = user ? :conflict : :ok
-    respond response
+    user_exist_check user
   end
 
   # Checks login availability
@@ -189,9 +175,17 @@ class UsersController < ApplicationController
   # * POST /users/new/check_login
   def check_login
     user = User.find_by_login(params[:user][:login])
-    response = HttpResponse.new
-    response.body = user ? false : true
-    response.status = user ? :conflict : :ok
-    respond response
+    user_exist_check user
+  end
+
+  private
+  def user_exist_check user
+    @response.body = user ? false : true
+    @response.status = user ? :conflict : :ok
+    respond
+  end
+
+  def get_user
+    @user = User.find_by_login(params[:id])
   end
 end

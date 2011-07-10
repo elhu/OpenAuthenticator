@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-user_rb.html">app/models/user.rb</a></td>
-            <td class='right_align'><tt>62</tt></td>
-            <td class='right_align'><tt>29</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>85.48%</tt></div>
+            <td class='right_align'><tt>76</tt></td>
+            <td class='right_align'><tt>41</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>73.68%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:85px"></div>
-            <div class="uncovered" style="width:15px"></div>
+            <div class="covered" style="width:74px"></div>
+            <div class="uncovered" style="width:26px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>68.97%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>51.22%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:69px"></div>
-            <div class="uncovered" style="width:31px"></div>
+            <div class="covered" style="width:51px"></div>
+            <div class="uncovered" style="width:49px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -147,7 +147,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a> class User &lt; ActiveRecord::Base  </pre></td>
+            <td><pre><a name="line16">16</a> class User &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
@@ -177,7 +177,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   </pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
           </tr>
         
           
@@ -291,7 +291,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   </pre></td>
+            <td><pre><a name="line40">40</a> </pre></td>
           </tr>
         
           
@@ -356,80 +356,164 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>   private</pre></td>
-          </tr>
-        
-          
-          
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>   # generate an account_token for the user on create only</pre></td>
+            <td><pre><a name="line51">51</a>   # creates a new user with the params received</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>   def create_personal_key</pre></td>
+            <td><pre><a name="line52">52</a>   def self.new_with_params params</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line54">54</a>     self.personal_keys.create</pre></td>
+            <td><pre><a name="line53">53</a>     traits = params[:user]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line55">55</a>   end</pre></td>
+            <td><pre><a name="line54">54</a>     user = User.new(traits)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line55">55</a>     user.login = traits[:login]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line56">56</a>     date = traits[:birthdate]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line57">57</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line58">58</a>       user.birthdate = Date.new(date[:year].to_s.to_i, date[:month].to_s.to_i, date[:day].to_s.to_i)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line59">59</a>     rescue</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line60">60</a>       user.birthdate = nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line61">61</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line62">62</a>     user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line63">63</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line57">57</a>   # generate and save emergency_pass for the user on create only</pre></td>
+            <td><pre><a name="line64">64</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>   def set_emergency_pass</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line59">59</a>     self.emergency_pass = OaUtils.generate_random_key if self.new_record? and self.emergency_pass.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line60">60</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line61">61</a> end</pre></td>
+            <td><pre><a name="line65">65</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line62">62</a> </pre></td>
+            <td><pre><a name="line66">66</a>   # generates an account_token for the user on create only</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>   def create_personal_key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line68">68</a>     self.personal_keys.create</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line69">69</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a>   # generates and save emergency_pass for the user on create only</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>   def set_emergency_pass</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line73">73</a>     self.emergency_pass = OaUtils.generate_random_key if self.new_record? and self.emergency_pass.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line74">74</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line75">75</a> end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line76">76</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jul 09 15:02:42 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun Jul 10 21:23:47 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

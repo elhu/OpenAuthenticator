@@ -14,7 +14,7 @@
 class AccountToken < ActiveRecord::Base
   # scope definitions
   scope :active, where(:state => :active)
-  
+
   # model associations
   belongs_to :user
 
@@ -30,6 +30,10 @@ class AccountToken < ActiveRecord::Base
   def revoke
     self.state = :revoked
     self.save
+  end
+
+  def revoked?
+    self.state == :revoked.to_s
   end
 
   private
