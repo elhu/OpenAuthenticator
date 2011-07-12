@@ -7,19 +7,9 @@ require 'rake'
 
 Openauthenticator::Application.load_tasks
 
-require 'reek/rake/task'
-Reek::Rake::Task.new do |t|
-  t.fail_on_error = false
-end
-
-desc "Runs RCov on the project (code coverage metrics)"
-task :rcov => :environment do
-  system("rcov --rails --exclude \"/usr|spec/*\" spec/spec_helper.rb")
-end
-
-desc "Runs Flay on the project (duplicate checker)"
-task :flay => :environment do
-  system("flay app")
+desc "Runs simplecov on the project"
+task :cov => :environment do
+  system("/usr/bin/ruby1.9.1 -S bundle exec rspec ./spec/controllers/personal_key_controller_spec.rb ./spec/controllers/users_controller_spec.rb ./spec/controllers/auth_controller_spec.rb ./spec/controllers/account_token_controller_spec.rb ./spec/models/account_token_spec.rb ./spec/models/user_spec.rb ./spec/models/personal_key_spec.rb ./spec/models/pseudo_cookie_spec.rb ./spec/routing/users_routing_spec.rb")
 end
 
 desc "Runs Reek on the project (code smell checker)"
@@ -36,3 +26,4 @@ desc "Runs Rails_best_practice on the project"
 task :best_practice => :environment do
   system("rails_best_practices .")
 end
+

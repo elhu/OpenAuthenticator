@@ -105,14 +105,9 @@ class UsersController < ApplicationController
   # * PUT /users/<login>
   # * PUT /users/<login>.<format>
   def update
-    if not @user.nil?
-      success = @user.update_attributes(params[:user])
-      @response.body = success ? @user : @user.errors
-      @response.status = success ? :ok : :unprocessable_entity
-    else
-      @response.body = false
-      @response.status = :not_found
-    end
+    success = @user.update_attributes(params[:user])
+    @response.body = success ? @user : @user.errors
+    @response.status = success ? :ok : :unprocessable_entity
     respond
   end
 

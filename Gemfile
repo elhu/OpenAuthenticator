@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.4'
+gem 'rails', '3.0.9'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql2', '0.2.10'
 gem 'rake'
@@ -12,17 +12,14 @@ gem 'capistrano'
 
 group :development do
   gem 'rspec-rails'
-  gem 'reek'
   gem 'annotate'
-  gem 'flog'
-  gem 'flay'
-  gem 'rcov'
-  gem 'rails_best_practices'
 end
 
 group :test do
+  gem 'rcov'
   gem 'rspec'
   gem 'webrat'
   gem 'factory_girl_rails'
-  gem 'ruby-debug'
+  gem 'simplecov', '>=0.3.8', :require => false  
 end
+

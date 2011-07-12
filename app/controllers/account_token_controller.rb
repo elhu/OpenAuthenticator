@@ -80,15 +80,10 @@ class AccountTokenController < ApplicationController
   # * POST /users/<login>/account_token.<format>
   def create
     user = User.find_by_login(params[:user_id])
-    if user.nil?
-      @response.body = false
-      @response.status = :not_found
-    else
-      account_token = user.account_tokens.create(params[:account_token])
-      success = account_token.save
-      @response.body = success ? account_token : account_token.errors
-      @response.status = success ? :created : :unprocessable_entity
-    end
+    account_token = user.account_tokens.create(params[:account_token])
+    success = account_token.save
+    @response.body = success ? account_token : account_token.errors
+    @response.status = success ? :created : :unprocessable_entity
     respond
   end
 

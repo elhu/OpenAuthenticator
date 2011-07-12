@@ -59,6 +59,7 @@ describe AccountTokenController do
         @cookie = PseudoCookie.new
         @cookie.user_id = user_id
         @cookie.expire = Time.new + (10 * 60)
+        
         @cookie.cookie = Digest::SHA2.hexdigest("#{Time.new.utc}--#{SecureRandom.base64(128)}") + user_id.to_s
         @cookie.save!
       end
@@ -79,6 +80,12 @@ describe AccountTokenController do
               post :create, :format => :json, :user_id => "unkown_id", :account_token => @account_token, :auth_token => @cookie.cookie
               response.status.should == 401
             end.should change(AccountToken, :count).by(0)
+          end
+
+          it "should fail with a 401 status" do
+            lambda do
+              post :create, :format => :json, :user_id => "", :account_token => @account_token, :auth_token => @cookie.cookie
+            end.should raise_error
           end
         end
 

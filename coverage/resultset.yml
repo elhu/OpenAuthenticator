@@ -1,0 +1,25 @@
+---
+/var/lib/gems/1.9.1/bin/rspec .:
+  :original_result:
+    /home/elhu/workspace/rails_projects/openauthenticator/lib/oa_utils.rb:
+    - !!null 
+    - 1
+    - 1
+    - 1
+    - 187
+    - !!null 
+    - !!null 
+    - 1
+    - 6
+    - 6
+    - 6
+    - 6
+    - !!null 
+    - !!null 
+    - !!null 
+    /home/elhu/workspace/rails_projects/openauthenticator/lib/http_response.rb:
+    - !!null 
+    - 1
+    - 1
+    - !!null 
+  :created_at: 2011-07-11 23:10:25.846762398 +01:00

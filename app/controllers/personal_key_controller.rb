@@ -48,16 +48,11 @@ class PersonalKeyController < ApplicationController
   # * POST /users/<login>/personal_key.<format>
   def create
     user = User.find_by_login(params[:user_id])
-    if user.nil?
-      @response.body = false
-      @response.status = :not_found
-    else
-      PersonalKey.current.find_by_user_id(user.id).revoke
-      personal_key = user.personal_keys.create
-      success = personal_key.save
-      @response.body = success ? personal_key : personal_key.errors
-      @response.status = success ? :created : :unprocessable_entity
-    end
+    PersonalKey.current.find_by_user_id(user.id).revoke
+    personal_key = user.personal_keys.create
+    success = personal_key.save
+    @response.body = success ? personal_key : personal_key.errors
+    @response.status = success ? :created : :unprocessable_entity
     respond
   end
 

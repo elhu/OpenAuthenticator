@@ -48,8 +48,11 @@ describe AccountToken do
     end
     
     it "should have the right state" do
+      @account_token.revoked?.should == false
       @account_token.revoke
-      @account_token.state.should == :revoked
+      @account_token.reload
+      @account_token.state.should == :revoked.to_s
+      @account_token.revoked?.should == true
     end
   end
   

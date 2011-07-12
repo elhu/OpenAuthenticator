@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="spec-spec_helper_rb.html">spec/spec_helper.rb</a></td>
-            <td class='right_align'><tt>27</tt></td>
-            <td class='right_align'><tt>9</tt></td>
+            <td class='right_align'><tt>32</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -80,146 +80,176 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line5">5</a> require 'rspec/autorun'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> # Requires supporting ruby files with custom matchers and macros, etc,</pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> # in spec/support/ and its subdirectories.</pre></td>
+            <td><pre><a name="line7">7</a> # Requires supporting ruby files with custom matchers and macros, etc,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a> # in spec/support/ and its subdirectories.</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a> Dir[Rails.root.join(&quot;spec/support/**/*.rb&quot;)].each {|f| require f}</pre></td>
+            <td><pre><a name="line9">9</a> Dir[Rails.root.join(&quot;spec/support/**/*.rb&quot;)].each {|f| require f}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+            <td><pre><a name="line10">10</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a> RSpec.configure do |config|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>   # == Mock Framework</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>   # config.mock_with :mocha</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line16">16</a>   # config.mock_with :flexmock</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a>   # config.mock_with :rr</pre></td>
+            <td><pre><a name="line11">11</a> require 'simplecov'  </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   config.mock_with :rspec</pre></td>
+            <td><pre><a name="line12">12</a> SimpleCov.start 'rails'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a>   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures</pre></td>
+            <td><pre><a name="line13">13</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   config.fixture_path = &quot;#{::Rails.root}/spec/fixtures&quot;</pre></td>
+            <td><pre><a name="line14">14</a> RSpec.configure do |config|</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
+            <td><pre><a name="line15">15</a>   # == Mock Framework</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>   # If you're not using ActiveRecord, or you'd prefer not to run each of your</pre></td>
+            <td><pre><a name="line16">16</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>   # examples within a transaction, remove the following line or assign false</pre></td>
+            <td><pre><a name="line17">17</a>   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>   # instead of true.</pre></td>
+            <td><pre><a name="line18">18</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line19">19</a>   # config.mock_with :mocha</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a>   # config.mock_with :flexmock</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>   # config.mock_with :rr</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>   config.use_transactional_fixtures = true</pre></td>
+            <td><pre><a name="line22">22</a>   config.mock_with :rspec</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a> end</pre></td>
+            <td><pre><a name="line23">23</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line24">24</a>   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>   config.fixture_path = &quot;#{::Rails.root}/spec/fixtures&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line27">27</a>   # If you're not using ActiveRecord, or you'd prefer not to run each of your</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>   # examples within a transaction, remove the following line or assign false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a>   # instead of true.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>   config.use_transactional_fixtures = true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line31">31</a> end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line32">32</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jul 10 21:15:30 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jul 11 23:14:33 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
