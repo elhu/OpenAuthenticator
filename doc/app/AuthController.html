@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: AuthController</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./app/controllers/auth_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="app/controllers/auth_controller.rb">app/controllers/auth_controller.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="ApplicationController.html">ApplicationController</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-authenticate">#authenticate</a></li>
+          
+          <li><a href="#method-i-session_auth">#session_auth</a></li>
+          
+          <li><a href="#method-i-sync">#sync</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./AccountToken.html">AccountToken</a></li>
+        
+          <li><a href="./AccountTokenController.html">AccountTokenController</a></li>
+        
+          <li><a href="./ApplicationController.html">ApplicationController</a></li>
+        
+          <li><a href="./AuthController.html">AuthController</a></li>
+        
+          <li><a href="./AuthLog.html">AuthLog</a></li>
+        
+          <li><a href="./AuthLogController.html">AuthLogController</a></li>
+        
+          <li><a href="./HttpResponse.html">HttpResponse</a></li>
+        
+          <li><a href="./OaUtils.html">OaUtils</a></li>
+        
+          <li><a href="./PersonalKey.html">PersonalKey</a></li>
+        
+          <li><a href="./PersonalKeyController.html">PersonalKeyController</a></li>
+        
+          <li><a href="./PseudoCookie.html">PseudoCookie</a></li>
+        
+          <li><a href="./User.html">User</a></li>
+        
+          <li><a href="./UsersController.html">UsersController</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">AuthController</h1>
+
+    <div id="description" class="description">
+      
+<p>This class defines the API methods related to authentication management</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="authenticate-method" class="method-detail ">
+          <a name="method-i-authenticate"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">authenticate</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Check credentials the owner of the account_token</p>
+
+<p>This is the main API method for 3rd party apps and therefore will need to
+be optimized.</p>
+
+<p>Return values:</p>
+<ul><li>
+<p>On success: 200 OK =&gt; true (credentials accepted)</p>
+</li><li>
+<p>On failure: 401 UNAUTHORIZED =&gt; false (credential refused)</p>
+</li></ul>
+
+<p>URL params:</p>
+<ul><li>
+<p>&lt;format&gt;: Output format wanted</p>
+</li></ul>
+
+<p>POST params:</p>
+<ul><li>
+<p>credentials:</p>
+<ul><li>
+<p>account_token: The account_token the user provided (string)</p>
+</li><li>
+<p>token: The time-based token the user provided (string, length == 8)</p>
+</li></ul>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>POST /authenticate</p>
+</li><li>
+<p>POST /authenticate.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="authenticate-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/auth_controller.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticate</span>
+  <span class="ruby-identifier">credentials</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:credentials</span>]
+  <span class="ruby-identifier">account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">active</span>.<span class="ruby-identifier">find_by_account_token</span>(<span class="ruby-identifier">credentials</span>[<span class="ruby-value">:account_token</span>])
+  <span class="ruby-identifier">token</span> = <span class="ruby-identifier">credentials</span>[<span class="ruby-value">:token</span>]
+
+  <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">account_token</span>.<span class="ruby-identifier">user_id</span>
+  <span class="ruby-identifier">generated_token</span> = <span class="ruby-constant">OaUtils</span>.<span class="ruby-identifier">generate_token</span> <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">user_id</span>).<span class="ruby-identifier">personal_key</span>
+  <span class="ruby-identifier">authorized</span> = <span class="ruby-identifier">generated_token</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">token</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+
+  <span class="ruby-identifier">account_token</span>.<span class="ruby-identifier">auth_logs</span>.<span class="ruby-identifier">create!</span>({ <span class="ruby-value">:outcome</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">authorized</span> })
+
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">authorized</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">authorized</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:unauthorized</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- authenticate-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- authenticate-method -->
+
+      
+        <div id="session_auth-method" class="method-detail ">
+          <a name="method-i-session_auth"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">session_auth</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Gets a token in order to perform account management operations.</p>
+
+<p>This method can be used only by the administration website and the mobile
+apps. A token is valid for 10 minutes.</p>
+
+<p>Return values:</p>
+<ul><li>
+<p>On success: 200 OK =&gt; cookie (credentials accepted)</p>
+</li><li>
+<p>On failure: 401 UNAUTHORIZED =&gt; false (credential refused)</p>
+</li></ul>
+
+<p>URL params:</p>
+<ul><li>
+<p>&lt;format&gt;: Output format wanted</p>
+</li></ul>
+
+<p>POST params:</p>
+<ul><li>
+<p>credentials:</p>
+<ul><li>
+<p>personal_key: The account_token the user provided (string)</p>
+</li><li>
+<p>token: The time-based token the user provided (string, length == 8)</p>
+</li></ul>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>POST /session_auth</p>
+</li><li>
+<p>POST /session_auth.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="session_auth-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/auth_controller.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">session_auth</span>
+  <span class="ruby-identifier">credentials</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:credentials</span>]
+  <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">credentials</span>[<span class="ruby-value">:personal_key</span>]
+  <span class="ruby-identifier">token</span> = <span class="ruby-identifier">credentials</span>[<span class="ruby-value">:token</span>]
+
+  <span class="ruby-identifier">user_id</span> = <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_personal_key</span>(<span class="ruby-identifier">personal_key</span>).<span class="ruby-identifier">user_id</span>
+
+  <span class="ruby-identifier">authorized</span> = <span class="ruby-constant">OaUtils</span>.<span class="ruby-identifier">generate_token</span>(<span class="ruby-identifier">personal_key</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">token</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">authorized</span> <span class="ruby-operator">?</span> <span class="ruby-constant">PseudoCookie</span>.<span class="ruby-identifier">generate_cookie</span>(<span class="ruby-identifier">user_id</span>) <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">authorized</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:unauthorized</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- session_auth-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- session_auth-method -->
+
+      
+        <div id="sync-method" class="method-detail ">
+          <a name="method-i-sync"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">sync</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Returns the server time</p>
+
+<p>This method will be used by mobile apps to synchronize with the server</p>
+
+<p>Return values:</p>
+<ul><li>
+<p>On success: 200 OK =&gt; unix timestamp</p>
+</li><li>
+<p>On failure: Cannot fail.</p>
+</li></ul>
+
+<p>URL params:</p>
+<ul><li>
+<p>&lt;format&gt;: Output format wanted</p>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>GET /sync</p>
+</li><li>
+<p>GET /sync.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="sync-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/auth_controller.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sync</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">:ok</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- sync-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- sync-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

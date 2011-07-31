@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   protected
-  # Respond with a 422 status code if trying to access a resourcer
+  # Respond with a 422 status code if trying to access a resource
   # that doesn't belong to the authenticating user
   def restricted
     if !PseudoCookie.rightful_auth? params

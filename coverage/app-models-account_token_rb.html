@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-account_token_rb.html">app/models/account_token.rb</a></td>
-            <td class='right_align'><tt>46</tt></td>
-            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>47</tt></td>
+            <td class='right_align'><tt>20</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -170,170 +170,176 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>   has_many :auth_logs</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   # prevent foreign key change by mass assignment</pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>   # prevent foreign key change by mass assignment</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   attr_accessible :label</pre></td>
+            <td><pre><a name="line23">23</a>   attr_accessible :label</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a> </pre></td>
+            <td><pre><a name="line24">24</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>   # creates the account token before save</pre></td>
+            <td><pre><a name="line25">25</a>   # creates the account token before save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>   before_create :generate_account_token</pre></td>
+            <td><pre><a name="line26">26</a>   before_create :generate_account_token</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a> </pre></td>
+            <td><pre><a name="line27">27</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>   # validations</pre></td>
+            <td><pre><a name="line28">28</a>   # validations</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>   validates :label, :presence =&gt; true</pre></td>
+            <td><pre><a name="line29">29</a>   validates :label, :presence =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a> </pre></td>
+            <td><pre><a name="line30">30</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>   def revoke</pre></td>
+            <td><pre><a name="line31">31</a>   def revoke</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     self.state = :revoked</pre></td>
+            <td><pre><a name="line32">32</a>     self.state = :revoked</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     self.save</pre></td>
+            <td><pre><a name="line33">33</a>     self.save</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   end</pre></td>
+            <td><pre><a name="line34">34</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> </pre></td>
+            <td><pre><a name="line35">35</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>   def revoked?</pre></td>
+            <td><pre><a name="line36">36</a>   def revoked?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>     self.state == :revoked.to_s</pre></td>
+            <td><pre><a name="line37">37</a>     self.state == :revoked.to_s</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>   end</pre></td>
+            <td><pre><a name="line38">38</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a> </pre></td>
+            <td><pre><a name="line39">39</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>   private</pre></td>
+            <td><pre><a name="line40">40</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   # generate the account token randomly</pre></td>
+            <td><pre><a name="line41">41</a>   # generate the account token randomly</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>   def generate_account_token</pre></td>
+            <td><pre><a name="line42">42</a>   def generate_account_token</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>     self.account_token = OaUtils.generate_random_key</pre></td>
+            <td><pre><a name="line43">43</a>     self.account_token = OaUtils.generate_random_key</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     self.state = :active</pre></td>
+            <td><pre><a name="line44">44</a>     self.state = :active</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a>   end</pre></td>
+            <td><pre><a name="line45">45</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a> end</pre></td>
+            <td><pre><a name="line46">46</a> end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a> </pre></td>
+            <td><pre><a name="line47">47</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jul 12 14:52:38 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun Jul 31 18:52:46 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

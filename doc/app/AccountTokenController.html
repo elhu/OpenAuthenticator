@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: AccountTokenController</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./app/controllers/account_token_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="app/controllers/account_token_controller.rb">app/controllers/account_token_controller.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="ApplicationController.html">ApplicationController</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-create">#create</a></li>
+          
+          <li><a href="#method-i-destroy">#destroy</a></li>
+          
+          <li><a href="#method-i-get_account_token_and_user">#get_account_token_and_user</a></li>
+          
+          <li><a href="#method-i-index">#index</a></li>
+          
+          <li><a href="#method-i-show">#show</a></li>
+          
+          <li><a href="#method-i-update">#update</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./AccountToken.html">AccountToken</a></li>
+        
+          <li><a href="./AccountTokenController.html">AccountTokenController</a></li>
+        
+          <li><a href="./ApplicationController.html">ApplicationController</a></li>
+        
+          <li><a href="./AuthController.html">AuthController</a></li>
+        
+          <li><a href="./AuthLog.html">AuthLog</a></li>
+        
+          <li><a href="./AuthLogController.html">AuthLogController</a></li>
+        
+          <li><a href="./HttpResponse.html">HttpResponse</a></li>
+        
+          <li><a href="./OaUtils.html">OaUtils</a></li>
+        
+          <li><a href="./PersonalKey.html">PersonalKey</a></li>
+        
+          <li><a href="./PersonalKeyController.html">PersonalKeyController</a></li>
+        
+          <li><a href="./PseudoCookie.html">PseudoCookie</a></li>
+        
+          <li><a href="./User.html">User</a></li>
+        
+          <li><a href="./UsersController.html">UsersController</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">AccountTokenController</h1>
+
+    <div id="description" class="description">
+      
+<p>This class defines the API methods related to account_token management</p>
+
+    </div><!-- description -->
+
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="create-method" class="method-detail ">
+          <a name="method-i-create"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Creates a new account token for the specified user</p>
+
+<p>Restricted to: authenticated user, admin</p>
+
+<p>Return values:</p>
+<ul><li>
+<p>On success: 201 CREATED =&gt; account_token</p>
+</li><li>
+<p>On failure:</p>
+<ul><li>
+<p>404 NOT FOUND =&gt; false (no such user)</p>
+</li><li>
+<p>422 UNPROCESSABLE ENTITY =&gt; false (bad parameters)</p>
+</li></ul>
+</li></ul>
+
+<p>POST Params:</p>
+<ul><li>
+<p>account_token:</p>
+<ul><li>
+<p>label: label for the account token (string, length &lt;= 255)</p>
+</li></ul>
+</li><li>
+<p>auth_token: time-based token generated (string, length == 8)</p>
+</li></ul>
+
+<p>URL Params:</p>
+<ul><li>
+<p>&lt;login&gt;: the user the account token will be created for</p>
+</li><li>
+<p>&lt;format&gt;: the output format wanted</p>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>POST /users/&lt;login&gt;/account_token</p>
+</li><li>
+<p>POST /users/&lt;login&gt;/account_token.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="create-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/account_token_controller.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-identifier">account_token</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">account_tokens</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:account_token</span>])
+  <span class="ruby-identifier">success</span> = <span class="ruby-identifier">account_token</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">account_token</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">account_token</span>.<span class="ruby-identifier">errors</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:created</span> <span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- create-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- create-method -->
+
+      
+        <div id="destroy-method" class="method-detail ">
+          <a name="method-i-destroy"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">destroy</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Deletes (revokes) the specified account token for the specified user</p>
+
+<p>Restricted to: authenticated user, admin</p>
+
+<p>Return values:</p>
+<ul><li>
+<p>On success: 200 OK =&gt; true</p>
+</li><li>
+<p>On failure: 404 NOT FOUND =&gt; false (token not belonging to specified
+user, no such user or no such token)</p>
+</li></ul>
+
+<p>URL params:</p>
+<ul><li>
+<p>&lt;login&gt;: the user the account token belongs to</p>
+</li><li>
+<p>&lt;token_id&gt;: the account_token id</p>
+</li><li>
+<p>&lt;format&gt;: the output format wanted</p>
+</li></ul>
+
+<p>DELETE params:</p>
+<ul><li>
+<p>auth_token: time-based token generated (string, length == 8)</p>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>DELETE /users/&lt;login&gt;/account_token/&lt;token_id&gt;</p>
+</li><li>
+<p>DELETE /users/&lt;login&gt;/account_token/&lt;token_id&gt;.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="destroy-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/account_token_controller.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:not_found</span>
+  <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">revoke</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span><span class="ruby-identifier">success</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- destroy-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- destroy-method -->
+
+      
+        <div id="get_account_token_and_user-method" class="method-detail ">
+          <a name="method-i-get_account_token_and_user"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">get_account_token_and_user</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="get_account_token_and_user-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/account_token_controller.rb, line 151</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_account_token_and_user</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@account_token</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">account_tokens</span>.<span class="ruby-identifier">active</span>.<span class="ruby-identifier">find_by_id</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- get_account_token_and_user-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- get_account_token_and_user-method -->
+
+      
+        <div id="index-method" class="method-detail ">
+          <a name="method-i-index"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">index</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Lists all the user’s account tokens</p>
+
+<p>Restricted to: authenticated user, admin</p>
+
+<p>Return values;</p>
+<ul><li>
+<p>On success: 200 OK =&gt; account tokens</p>
+</li><li>
+<p>On failure: 404 NOT FOUND =&gt; false (no such user)</p>
+</li></ul>
+
+<p>URL params:</p>
+<ul><li>
+<p>&lt;login&gt;: the user the account token belongs to</p>
+</li><li>
+<p>&lt;format&gt;: the output format wanted</p>
+</li></ul>
+
+<p>GET params:</p>
+<ul><li>
+<p>auth_token: time-based token generated (string, length == 8)</p>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>GET /users/&lt;login&gt;/account_token</p>
+</li><li>
+<p>GET /users/&lt;login&gt;/account_token.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="index-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/account_token_controller.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:not_found</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">account_tokens</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- index-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- index-method -->
+
+      
+        <div id="show-method" class="method-detail ">
+          <a name="method-i-show"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">show</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Gets the account token information</p>
+
+<p>Restricted to: authenticated user, admin</p>
+
+<p>Return values</p>
+<ul><li>
+<p>On success: 200 OK =&gt; @account_token</p>
+</li><li>
+<p>On failure: 404 NOT FOUND =&gt; false (no such account token, or
+account_token not belonging to specified user)</p>
+</li></ul>
+
+<p>URL params:</p>
+<ul><li>
+<p>&lt;login&gt;: the user the account token belongs to</p>
+</li><li>
+<p>&lt;token_id&gt;: the account_token id</p>
+</li><li>
+<p>&lt;format&gt;: the output format wanted</p>
+</li></ul>
+
+<p>GET params:</p>
+<ul><li>
+<p>auth_token: time-based token generated (string, length == 8)</p>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>GET /users/&lt;login&gt;/account_token/&lt;token_id&gt;</p>
+</li><li>
+<p>GET /users/&lt;login&gt;/account_token/&lt;token_id&gt;.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="show-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/account_token_controller.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@account_token</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:not_found</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- show-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- show-method -->
+
+      
+        <div id="update-method" class="method-detail ">
+          <a name="method-i-update"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">update</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Creates a new account token for the specified user</p>
+
+<p>Restricted to: authenticated user, admin</p>
+
+<p>Return values:</p>
+<ul><li>
+<p>On success: 201 CREATED =&gt; account_token</p>
+</li><li>
+<p>On failure:</p>
+<ul><li>
+<p>404 NOT FOUND =&gt; false (no such user)</p>
+</li><li>
+<p>422 UNPROCESSABLE ENTITY =&gt; false (bad parameters)</p>
+</li></ul>
+</li></ul>
+
+<p>PUT Params:</p>
+<ul><li>
+<p>account_token:</p>
+<ul><li>
+<p>label: label for the account token (string, length &lt;= 255)</p>
+</li></ul>
+</li><li>
+<p>auth_token: time-based token generated (string, length == 8)</p>
+</li></ul>
+
+<p>URL Params:</p>
+<ul><li>
+<p>&lt;login&gt;: the user the account token will be created for</p>
+</li><li>
+<p>&lt;format&gt;: the output format wanted</p>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>PUT /users/&lt;login&gt;/account_token</p>
+</li><li>
+<p>PUT /users/&lt;login&gt;/account_token.&lt;format&gt;</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="update-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/account_token_controller.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">:not_found</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">success</span> = <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:account_token</span>])
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@account_token</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@account_token</span>.<span class="ruby-identifier">errors</span>
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- update-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- update-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

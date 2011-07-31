@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704141739) do
+ActiveRecord::Schema.define(:version => 20110731125629) do
 
   create_table "account_tokens", :force => true do |t|
     t.string   "account_token"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20110704141739) do
   end
 
   add_index "account_tokens", ["user_id"], :name => "index_account_tokens_on_user_id"
+
+  create_table "auth_logs", :force => true do |t|
+    t.integer  "account_token_id"
+    t.boolean  "outcome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "personal_keys", :force => true do |t|
     t.string   "personal_key"

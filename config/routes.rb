@@ -2,6 +2,7 @@ Openauthenticator::Application.routes.draw do
   resources :users do
     resources :account_token
     resources :personal_key
+    resources :auth_log
   end
 
   match '/authenticate', :to => 'auth#authenticate', :via => "post"

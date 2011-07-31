@@ -25,14 +25,16 @@ class AuthController < ApplicationController
   # * POST /authenticate.<format>
   def authenticate
     credentials = params[:credentials]
-    account_token = credentials[:account_token]
+    account_token = AccountToken.active.find_by_account_token(credentials[:account_token])
     token = credentials[:token]
 
-    user_id = AccountToken.active.find_by_account_token(account_token).user_id
+    user_id = account_token.user_id
     generated_token = OaUtils.generate_token PersonalKey.current.find_by_user_id(user_id).personal_key
     authorized = generated_token == token ? true : false
 
-    @response.body = authorized ? true : false
+    account_token.auth_logs.create!({ :outcome => authorized })
+
+    @response.body = authorized
     @response.status = authorized ? :ok : :unauthorized
     respond
   end

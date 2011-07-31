@@ -30,6 +30,32 @@ describe AuthController do
       response.status.should == 200
       response.should contain "true"
     end
+
+    describe "AuthLog generation" do
+      it "should fail" do
+        @credentials[:token] = "42"
+        lambda do
+          post :authenticate, :format => :json, :credentials => @credentials
+        end.should change(AuthLog, :count).by(1)
+        log = AuthLog.last
+        log.account_token.account_token.should == @credentials[:account_token]
+        log.outcome.should == false
+      end
+      
+      it "should succeed" do
+        lambda do
+          timespan = 30
+          time = Time.new.to_i / timespan
+          to_hash = "#{@p_key.personal_key}--#{time.to_s}"
+          key = Digest::SHA2.hexdigest(to_hash)[0..7]
+          @credentials[:token] = key
+          post :authenticate, :format => :json, :credentials => @credentials
+        end.should change(AuthLog, :count).by(1)
+        log = AuthLog.last
+        log.account_token.account_token.should == @credentials[:account_token]
+        log.outcome.should == true
+      end
+    end
   end
   
   describe "GET 'sync'" do

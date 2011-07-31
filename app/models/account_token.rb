@@ -17,6 +17,7 @@ class AccountToken < ActiveRecord::Base
 
   # model associations
   belongs_to :user
+  has_many :auth_logs
 
   # prevent foreign key change by mass assignment
   attr_accessible :label

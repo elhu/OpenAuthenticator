@@ -20,6 +20,21 @@ describe AccountToken do
     @account_token = Factory(:account_token)
     @attr = { :label => "test", :user_id => @user.id }
   end
+
+  describe "model associations" do
+    describe "it should respond to methods" do
+      it "should respond to the auth_logs method" do
+        @account_token.should respond_to :auth_logs
+      end
+
+      it "should be able to create a new auth_log" do
+        auth_log = @account_token.auth_logs.new
+        auth_log.outcome = true
+        auth_log.save!
+        auth_log.account_token.should == @account_token
+      end
+    end
+  end
   
   describe "creation" do
     it "should be valid" do
