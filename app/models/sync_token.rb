@@ -38,4 +38,9 @@ class SyncToken < ActiveRecord::Base
     self.used = true
     self.save
   end
+
+  # Set the sync_token as id for routing
+  def to_param
+    sync_token
+  end
 end

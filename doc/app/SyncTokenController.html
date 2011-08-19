@@ -196,7 +196,7 @@ href="SyncToken.html">SyncToken</a> management</p>
 <ul><li>
 <p>&lt;login&gt;: Login of the user to sync</p>
 </li><li>
-<p>&lt;sync_token_id&gt;: id of the sync token used to perform the sync</p>
+<p>&lt;sync_token&gt;: token of the sync token used to perform the sync</p>
 </li><li>
 <p>&lt;format&gt;: Output format wanted</p>
 </li></ul>
@@ -208,9 +208,9 @@ href="SyncToken.html">SyncToken</a> management</p>
 
 <p>Query URLs:</p>
 <ul><li>
-<p>GET /users/&lt;login&gt;/sync_token/&lt;sync_token_id&gt;</p>
+<p>GET /users/&lt;login&gt;/sync_token/&lt;sync_token&gt;</p>
 </li><li>
-<p>GET /users/&lt;login&gt;/sync_token/&lt;sync_token_id&gt;.format</p>
+<p>GET /users/&lt;login&gt;/sync_token/&lt;sync_token&gt;.format</p>
 </li></ul>
             
 
@@ -219,7 +219,7 @@ href="SyncToken.html">SyncToken</a> management</p>
 <pre>
 <span class="ruby-comment"># File app/controllers/sync_token_controller.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">account_sync</span>
-  <span class="ruby-identifier">sync_token</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">sync_tokens</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_id</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+  <span class="ruby-identifier">sync_token</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">sync_tokens</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_sync_token</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">sync_token</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">sync_token</span>.<span class="ruby-identifier">used</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">sync_token</span>.<span class="ruby-identifier">expires_at</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">now</span>
     <span class="ruby-identifier">sync_token</span>.<span class="ruby-identifier">revoke!</span>
     <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">:ok</span>

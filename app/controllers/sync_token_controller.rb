@@ -1,8 +1,8 @@
 # This class defines the API methods relative to SyncToken management
 class SyncTokenController < ApplicationController
- before_filter :restricted
- before_filter :instanciate_response
- before_filter :get_user
+  before_filter :restricted, :only => [:create]
+  before_filter :instanciate_response
+  before_filter :get_user
 
   # Synchronises an account with a device or the website
   #
@@ -12,17 +12,17 @@ class SyncTokenController < ApplicationController
   #
   # URL params:
   # * <login>: Login of the user to sync
-  # * <sync_token_id>: id of the sync token used to perform the sync
+  # * <sync_token>: token of the sync token used to perform the sync
   # * <format>: Output format wanted
   #
   # GET params:
   # * auth_token: time-based token generated (string, length == 8)
   #
   # Query URLs:
-  # * GET /users/<login>/sync_token/<sync_token_id>
-  # * GET /users/<login>/sync_token/<sync_token_id>.format
+  # * GET /users/<login>/sync_token/<sync_token>
+  # * GET /users/<login>/sync_token/<sync_token>.format
   def account_sync
-    sync_token = @user.sync_tokens.current.find_by_id params[:id]
+    sync_token = @user.sync_tokens.current.find_by_sync_token params[:id]
     if sync_token and not sync_token.used and sync_token.expires_at > DateTime.now
       sync_token.revoke!
       @response.status = :ok

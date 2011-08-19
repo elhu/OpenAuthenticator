@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"sync",
+				"sync_token_id"
+			],
+			[
+				"s",
+				"sync_token"
+			],
+			[
+				"sy",
+				"sync_tokens"
+			],
+			[
 				"auth",
 				"auth_login"
 			],
@@ -32,42 +44,18 @@
 	"buffers":
 	[
 		{
-			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/auth_log.rb",
-			"settings":
-			{
-				"buffer_size": 306,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_log_controller.rb",
 			"settings":
 			{
-				"buffer_size": 992,
+				"buffer_size": 977,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/pseudo_cookie.rb",
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/personal_key_controller.rb",
 			"settings":
 			{
-				"buffer_size": 1324,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/elhu/workspace/rails_projects/openauthenticator/config/routes.rb",
-			"settings":
-			{
-				"buffer_size": 470,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/account_token_controller_spec.rb",
-			"settings":
-			{
-				"buffer_size": 9337,
+				"buffer_size": 3355,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +63,15 @@
 			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
 			"settings":
 			{
-				"buffer_size": 4922,
+				"buffer_size": 4788,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/application_controller.rb",
+			"settings":
+			{
+				"buffer_size": 980,
 				"line_ending": "Unix"
 			}
 		},
@@ -84,6 +80,22 @@
 			"settings":
 			{
 				"buffer_size": 2888,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/users_controller.rb",
+			"settings":
+			{
+				"buffer_size": 5027,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/sync_token.rb",
+			"settings":
+			{
+				"buffer_size": 909,
 				"line_ending": "Unix"
 			}
 		}
@@ -99,7 +111,7 @@
 	},
 	"console":
 	{
-		"height": 0
+		"height": 143
 	},
 	"distraction_free":
 	{
@@ -111,20 +123,31 @@
 	},
 	"file_history":
 	[
-		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/auth_log_controller_spec.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/Gemfile",
-		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/user_spec.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/user.rb",
 		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/application_controller.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/auth_log_spec.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/account_token_controller_spec.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/auth_controller_spec.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_controller.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/config/routes.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/personal_key_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/sync_token.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
 		"/home/elhu/workspace/rails_projects/openauthenticator/spec/factories.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/account_token_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/users_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/sync_token_controller_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/sync_token_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/lib/oa_utils.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/account_token_controller_spec.rb",
 		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/account_token.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/auth_log_controller_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/config/routes.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/auth_controller_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_log_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/user_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/sync_token_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/auth_log_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/user.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/auth_log.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/coverage/lib-oa_utils_rb.html",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/pseudo_cookie.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/Gemfile",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/account_token_spec.rb",
 		"/home/elhu/workspace/rails_projects/openauthenticator/Rakefile",
 		"/home/elhu/workspace/rails_projects/BAD/coverage/index.html",
 		"/home/elhu/workspace/rails_projects/BAD/app/controllers/application_controller.rb",
@@ -185,12 +208,11 @@
 		"/home/elhu/.config/sublime-text-2/Packages/Ruby/begin-rescue.sublime-snippet",
 		"/home/elhu/workspace/rails_projects/BAD/Gemfile.lock",
 		"/home/elhu/workspace/rails_projects/BAD/.gitignore",
-		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/users_controller.rb",
 		"/home/elhu/Desktop/test.rb"
 	],
 	"find":
 	{
-		"height": 0
+		"height": 33
 	},
 	"find_in_files":
 	{
@@ -210,9 +232,12 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"user",
+			"	",
+			"\\t",
 			"def restricted",
 			"count",
 			"FIELDS",
@@ -248,12 +273,15 @@
 		"regex": false,
 		"replace_history":
 		[
+			"@user",
+			"  ",
+			" ",
 			"current_user"
 		],
 		"reverse": false,
 		"show_context": true,
 		"use_buffer": false,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"folders":
@@ -266,23 +294,23 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/auth_log.rb",
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_log_controller.rb",
 					"settings":
 					{
-						"buffer_size": 306,
+						"buffer_size": 977,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								276,
-								276
+								854,
+								854
 							]
 						],
 						"settings":
@@ -299,66 +327,10 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_log_controller.rb",
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/personal_key_controller.rb",
 					"settings":
 					{
-						"buffer_size": 992,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								725,
-								982
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0,
-						"translation.y": 0,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/pseudo_cookie.rb",
-					"settings":
-					{
-						"buffer_size": 1324,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1317,
-								1317
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0,
-						"translation.y": 192,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/elhu/workspace/rails_projects/openauthenticator/config/routes.rb",
-					"settings":
-					{
-						"buffer_size": 470,
+						"buffer_size": 3355,
 						"regions":
 						{
 						},
@@ -367,6 +339,62 @@
 							[
 								0,
 								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 378,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
+					"settings":
+					{
+						"buffer_size": 4788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								930,
+								930
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 54,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/application_controller.rb",
+					"settings":
+					{
+						"buffer_size": 980,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								691,
+								691
 							]
 						],
 						"settings":
@@ -383,10 +411,38 @@
 				},
 				{
 					"buffer": 4,
-					"file": "/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/account_token_controller_spec.rb",
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_controller.rb",
 					"settings":
 					{
-						"buffer_size": 9337,
+						"buffer_size": 2888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								189,
+								189
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 30,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/users_controller.rb",
+					"settings":
+					{
+						"buffer_size": 5027,
 						"regions":
 						{
 						},
@@ -404,53 +460,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0,
-						"translation.y": 384,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
-					"settings":
-					{
-						"buffer_size": 4922,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								316,
-								316
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0,
-						"translation.y": 1675,
+						"translation.y": 1728,
 						"zoom_level": 1
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_controller.rb",
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/sync_token.rb",
 					"settings":
 					{
-						"buffer_size": 2888,
+						"buffer_size": 909,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1250,
-								1250
+								849,
+								849
 							]
 						],
 						"settings":
@@ -501,7 +529,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0
+		"height": 62
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -509,6 +537,110 @@
 		"height": 0,
 		"selected_items":
 		[
+			[
+				"sy",
+				"app/models/sync_token.rb"
+			],
+			[
+				"user_co",
+				"app/controllers/users_controller.rb"
+			],
+			[
+				"auth_c",
+				"app/controllers/auth_controller.rb"
+			],
+			[
+				"application_",
+				"app/controllers/application_controller.rb"
+			],
+			[
+				"_controller.rb",
+				"app/controllers/account_token_controller.rb"
+			],
+			[
+				"app",
+				"app/controllers/application_controller.rb"
+			],
+			[
+				"pserson_co",
+				"app/controllers/personal_key_controller.rb"
+			],
+			[
+				"acco",
+				"app/controllers/account_token_controller.rb"
+			],
+			[
+				"user_c",
+				"app/controllers/users_controller.rb"
+			],
+			[
+				"fac",
+				"spec/factories.rb"
+			],
+			[
+				"syncto",
+				"app/models/sync_token.rb"
+			],
+			[
+				"account_co",
+				"spec/controllers/account_token_controller_spec.rb"
+			],
+			[
+				"auth_lo",
+				"spec/controllers/auth_log_controller_spec.rb"
+			],
+			[
+				"route",
+				"config/routes.rb"
+			],
+			[
+				"account_tokn",
+				"spec/controllers/account_token_controller_spec.rb"
+			],
+			[
+				"auth",
+				"spec/controllers/auth_controller_spec.rb"
+			],
+			[
+				"auth_l",
+				"app/controllers/auth_log_controller.rb"
+			],
+			[
+				"acc",
+				"app/models/account_token.rb"
+			],
+			[
+				"lib/",
+				"lib/oa_utils.rb"
+			],
+			[
+				"li",
+				"coverage/lib-oa_utils_rb.html"
+			],
+			[
+				"user.rb",
+				"app/models/user.rb"
+			],
+			[
+				"syn",
+				"app/models/sync_token.rb"
+			],
+			[
+				"user",
+				"spec/models/user_spec.rb"
+			],
+			[
+				"auth_log_",
+				"spec/models/auth_log_spec.rb"
+			],
+			[
+				"sync_",
+				"spec/models/sync_token_spec.rb"
+			],
+			[
+				"auth_log",
+				"spec/controllers/auth_log_controller_spec.rb"
+			],
 			[
 				"auth_co",
 				"app/controllers/auth_controller.rb"
@@ -528,10 +660,6 @@
 			[
 				"pse",
 				"app/models/pseudo_cookie.rb"
-			],
-			[
-				"route",
-				"config/routes.rb"
 			],
 			[
 				"account_tokent",
@@ -562,14 +690,6 @@
 				"spec/models/account_token_spec.rb"
 			],
 			[
-				"user",
-				"spec/models/user_spec.rb"
-			],
-			[
-				"fac",
-				"spec/factories.rb"
-			],
-			[
 				"rakef",
 				"Rakefile"
 			],
@@ -580,10 +700,6 @@
 			[
 				"accou",
 				"app/models/account_token.rb"
-			],
-			[
-				"auth_log",
-				"app/models/auth_log.rb"
 			],
 			[
 				"spec/models/auth_log_spec.rb",
@@ -890,10 +1006,6 @@
 				"app/views/table_field/index.html.erb"
 			],
 			[
-				"application_",
-				"app/controllers/application_controller.rb"
-			],
-			[
 				"show.",
 				"app/views/applications/show.html.erb"
 			],
@@ -936,90 +1048,6 @@
 			[
 				"edi",
 				"app/views/application_table/edit.js.erb"
-			],
-			[
-				"applicatio_",
-				"app/models/application_table.rb"
-			],
-			[
-				"application_table_co",
-				"app/controllers/application_table_controller.rb"
-			],
-			[
-				"application_table_c",
-				"app/controllers/application_table_controller.rb"
-			],
-			[
-				"table_field/sh",
-				"app/views/table_field/show.html.erb"
-			],
-			[
-				"applications/show",
-				"app/views/applications/show.html.erb"
-			],
-			[
-				"application_tabl_show",
-				"app/views/application_table/_show.html.erb"
-			],
-			[
-				"application_table/_s",
-				"app/views/application_table/_show.html.erb"
-			],
-			[
-				"application",
-				"app/controllers/application_controller.rb"
-			],
-			[
-				"rou",
-				"config/routes.rb"
-			],
-			[
-				"application_table.r",
-				"app/models/application_table.rb"
-			],
-			[
-				"show.t",
-				"app/views/applications/show.html.erb"
-			],
-			[
-				"appl",
-				"app/controllers/applications_controller.rb"
-			],
-			[
-				"application_c",
-				"app/controllers/application_controller.rb"
-			],
-			[
-				"_edit",
-				"app/views/application_table/edit.js.erb"
-			],
-			[
-				"application_tabl",
-				"app/controllers/application_table_controller.rb"
-			],
-			[
-				"up",
-				"app/views/application_table/update.js.erb"
-			],
-			[
-				"_",
-				"app/views/application_table/_show.js.erb"
-			],
-			[
-				"layouts/",
-				"app/views/layouts/application.html.erb"
-			],
-			[
-				"ui.",
-				"public/javascripts/jquery/ui.checkbox.js"
-			],
-			[
-				"screen",
-				"public/stylesheets/screen.css"
-			],
-			[
-				"show.ht",
-				"app/views/applications/show.html.erb"
 			]
 		],
 		"width": 0

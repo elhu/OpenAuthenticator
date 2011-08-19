@@ -1,4 +1,4 @@
-Fri, 19 Aug 2011 16:11:30 +0100
+Fri, 19 Aug 2011 23:26:13 +0100
 app/models/personal_key.rb	Sun, 10 Jul 2011 20:15:48 +0100
 app/controllers/personal_key_controller.rb	Fri, 19 Aug 2011 15:53:07 +0100
 app/controllers/auth_log_controller.rb	Fri, 19 Aug 2011 16:01:55 +0100
@@ -12,6 +12,6 @@ lib/http_response.rb	Sat, 09 Jul 2011 15:14:38 +0100
 app/models/pseudo_cookie.rb	Sun, 31 Jul 2011 18:30:36 +0100
 app/controllers/users_controller.rb	Fri, 19 Aug 2011 16:07:16 +0100
 app/controllers/account_token_controller.rb	Fri, 19 Aug 2011 16:01:13 +0100
-app/controllers/sync_token_controller.rb	Fri, 19 Aug 2011 15:53:27 +0100
+app/controllers/sync_token_controller.rb	Fri, 19 Aug 2011 23:26:03 +0100
 doc/README_FOR_APP	Sun, 27 Feb 2011 18:12:40 +0000
-app/models/sync_token.rb	Fri, 19 Aug 2011 16:11:25 +0100
+app/models/sync_token.rb	Fri, 19 Aug 2011 23:21:47 +0100
