@@ -219,13 +219,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     account_token = AccountToken.active.find_by_account_token(credentials[:account_token])</pre></td>
+            <td><pre><a name="line28">28</a>     token = credentials[:token]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>     token = credentials[:token]</pre></td>
+            <td><pre><a name="line29">29</a>     account_token = AccountToken.active.find_by_account_token(credentials[:account_token])</pre></td>
           </tr>
         
           
@@ -555,13 +555,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>     personal_key = credentials[:personal_key]</pre></td>
+            <td><pre><a name="line84">84</a>     token = credentials[:token]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>     token = credentials[:token]</pre></td>
+            <td><pre><a name="line85">85</a>     personal_key = credentials[:personal_key]</pre></td>
           </tr>
         
           
@@ -633,7 +633,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Sun Jul 31 18:52:46 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Aug 19 16:07:38 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.10</a></p>
 
   </body>
 </html>

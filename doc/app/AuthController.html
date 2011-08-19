@@ -128,6 +128,10 @@
         
           <li><a href="./PseudoCookie.html">PseudoCookie</a></li>
         
+          <li><a href="./SyncToken.html">SyncToken</a></li>
+        
+          <li><a href="./SyncTokenController.html">SyncTokenController</a></li>
+        
           <li><a href="./User.html">User</a></li>
         
           <li><a href="./UsersController.html">UsersController</a></li>
@@ -149,6 +153,8 @@
 
     </div><!-- description -->
 
+    
+    
     
     <div id="5Buntitled-5D" class="documentation-section">
       
@@ -219,8 +225,8 @@ be optimized.</p>
 <span class="ruby-comment"># File app/controllers/auth_controller.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticate</span>
   <span class="ruby-identifier">credentials</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:credentials</span>]
-  <span class="ruby-identifier">account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">active</span>.<span class="ruby-identifier">find_by_account_token</span>(<span class="ruby-identifier">credentials</span>[<span class="ruby-value">:account_token</span>])
   <span class="ruby-identifier">token</span> = <span class="ruby-identifier">credentials</span>[<span class="ruby-value">:token</span>]
+  <span class="ruby-identifier">account_token</span> = <span class="ruby-constant">AccountToken</span>.<span class="ruby-identifier">active</span>.<span class="ruby-identifier">find_by_account_token</span>(<span class="ruby-identifier">credentials</span>[<span class="ruby-value">:account_token</span>])
 
   <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">account_token</span>.<span class="ruby-identifier">user_id</span>
   <span class="ruby-identifier">generated_token</span> = <span class="ruby-constant">OaUtils</span>.<span class="ruby-identifier">generate_token</span> <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">user_id</span>).<span class="ruby-identifier">personal_key</span>
@@ -296,8 +302,8 @@ apps. A token is valid for 10 minutes.</p>
 <span class="ruby-comment"># File app/controllers/auth_controller.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">session_auth</span>
   <span class="ruby-identifier">credentials</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:credentials</span>]
-  <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">credentials</span>[<span class="ruby-value">:personal_key</span>]
   <span class="ruby-identifier">token</span> = <span class="ruby-identifier">credentials</span>[<span class="ruby-value">:token</span>]
+  <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">credentials</span>[<span class="ruby-value">:personal_key</span>]
 
   <span class="ruby-identifier">user_id</span> = <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_personal_key</span>(<span class="ruby-identifier">personal_key</span>).<span class="ruby-identifier">user_id</span>
 

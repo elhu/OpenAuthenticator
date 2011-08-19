@@ -130,6 +130,10 @@
         
           <li><a href="./PseudoCookie.html">PseudoCookie</a></li>
         
+          <li><a href="./SyncToken.html">SyncToken</a></li>
+        
+          <li><a href="./SyncTokenController.html">SyncTokenController</a></li>
+        
           <li><a href="./User.html">User</a></li>
         
           <li><a href="./UsersController.html">UsersController</a></li>
@@ -151,6 +155,8 @@
 
     </div><!-- description -->
 
+    
+    
     
     <div id="5Buntitled-5D" class="documentation-section">
       
@@ -190,7 +196,7 @@
 <ul><li>
 <p>422 UNPROCESSABLE ENTITY =&gt; false (bad parameters)</p>
 </li><li>
-<p>404 NOT FOUND =&gt; false (no such user)</p>
+<p>404 NOT FOUND =&gt; false (no such @user)</p>
 </li></ul>
 </li></ul>
 
@@ -221,9 +227,8 @@
 <pre>
 <span class="ruby-comment"># File app/controllers/personal_key_controller.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>])
-  <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">revoke</span>
-  <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">create</span>
+  <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">revoke</span>
+  <span class="ruby-identifier">personal_key</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">create</span>
   <span class="ruby-identifier">success</span> = <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">save</span>
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">personal_key</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">errors</span>
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:created</span> <span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span>
@@ -258,7 +263,7 @@
 <ul><li>
 <p>On success: 200 OK =&gt; true</p>
 </li><li>
-<p>On failure: 404 NOT FOUND =&gt; false (no such user, or no such
+<p>On failure: 404 NOT FOUND =&gt; false (no such @user, or no such
 personal_key)</p>
 </li></ul>
 
@@ -287,10 +292,9 @@ personal_key)</p>
             
             <div class="method-source-code" id="destroy-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/personal_key_controller.rb, line 102</span>
+<span class="ruby-comment"># File app/controllers/personal_key_controller.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
-  <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">personal_key</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">revoked?</span>)
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:not_found</span>
@@ -320,18 +324,18 @@ personal_key)</p>
 
           <div class="method-description">
             
-            <p>Lists all the user’s personal keys</p>
+            <p>Lists all the @user’s personal keys</p>
 
 <p>Return values;</p>
 <ul><li>
 <p>On success: 200 OK =&gt; personal keys</p>
 </li><li>
-<p>On failure: 404 NOT FOUND =&gt; false (no such user)</p>
+<p>On failure: 404 NOT FOUND =&gt; false (no such @user)</p>
 </li></ul>
 
 <p>URL params:</p>
 <ul><li>
-<p>&lt;login&gt;: the user the personal keys belongs to</p>
+<p>&lt;login&gt;: the @user the personal keys belongs to</p>
 </li><li>
 <p>&lt;format&gt;: the output format wanted</p>
 </li></ul>
@@ -348,11 +352,10 @@ personal_key)</p>
             
             <div class="method-source-code" id="index-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/personal_key_controller.rb, line 22</span>
+<span class="ruby-comment"># File app/controllers/personal_key_controller.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>])
-  <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">personal_keys</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:not_found</span>
   <span class="ruby-identifier">respond</span>
 <span class="ruby-keyword">end</span></pre>
@@ -379,13 +382,13 @@ personal_key)</p>
 
           <div class="method-description">
             
-            <p>Gets the personal key of the required user</p>
+            <p>Gets the personal key of the required @user</p>
 
 <p>Return values:</p>
 <ul><li>
 <p>On success: 200 OK =&gt; personal_key</p>
 </li><li>
-<p>On failure: 404 NOT FOUND =&gt; false (no such user, or no such
+<p>On failure: 404 NOT FOUND =&gt; false (no such @user, or no such
 personal_key)</p>
 </li></ul>
 
@@ -414,10 +417,9 @@ personal_key)</p>
             
             <div class="method-source-code" id="show-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/personal_key_controller.rb, line 76</span>
+<span class="ruby-comment"># File app/controllers/personal_key_controller.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
-  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]
-  <span class="ruby-identifier">personal_key</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">personal_key</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">personal_keys</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-identifier">success</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">personal_key</span>.<span class="ruby-identifier">revoked?</span>)
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">personal_key</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:ok</span> <span class="ruby-operator">:</span> <span class="ruby-value">:not_found</span>

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-personal_key_controller_rb.html">app/controllers/personal_key_controller.rb</a></td>
-            <td class='right_align'><tt>111</tt></td>
-            <td class='right_align'><tt>37</tt></td>
+            <td class='right_align'><tt>108</tt></td>
+            <td class='right_align'><tt>34</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -80,128 +80,128 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>   before_filter :get_user</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a>   # Lists all the user's personal keys</pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>   #</pre></td>
+            <td><pre><a name="line7">7</a>   # Lists all the @user's personal keys</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   # Return values;</pre></td>
+            <td><pre><a name="line8">8</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>   # * On success: 200 OK =&gt; personal keys</pre></td>
+            <td><pre><a name="line9">9</a>   # Return values;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>   # * On failure: 404 NOT FOUND =&gt; false (no such user)</pre></td>
+            <td><pre><a name="line10">10</a>   # * On success: 200 OK =&gt; personal keys</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>   #</pre></td>
+            <td><pre><a name="line11">11</a>   # * On failure: 404 NOT FOUND =&gt; false (no such @user)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   # URL params:</pre></td>
+            <td><pre><a name="line12">12</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>   # * &lt;login&gt;: the user the personal keys belongs to</pre></td>
+            <td><pre><a name="line13">13</a>   # URL params:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>   # * &lt;format&gt;: the output format wanted</pre></td>
+            <td><pre><a name="line14">14</a>   # * &lt;login&gt;: the @user the personal keys belongs to</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   #</pre></td>
+            <td><pre><a name="line15">15</a>   # * &lt;format&gt;: the output format wanted</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   # GET params:</pre></td>
+            <td><pre><a name="line16">16</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   # * auth_token: time-based token generated (string, length == 8)</pre></td>
+            <td><pre><a name="line17">17</a>   # GET params:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   #</pre></td>
+            <td><pre><a name="line18">18</a>   # * auth_token: time-based token generated (string, length == 8)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>   # Query URLs:</pre></td>
+            <td><pre><a name="line19">19</a>   #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   # GET * /users/&lt;login&gt;/personal_key</pre></td>
+            <td><pre><a name="line20">20</a>   # Query URLs:</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   # GET * /users/&lt;login&gt;/personal_key.&lt;format&gt;</pre></td>
+            <td><pre><a name="line21">21</a>   # GET * /users/&lt;login&gt;/personal_key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>   # GET * /users/&lt;login&gt;/personal_key.&lt;format&gt;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   def index</pre></td>
+            <td><pre><a name="line23">23</a>   def index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>     user = User.find_by_login(params[:user_id])</pre></td>
+            <td><pre><a name="line24">24</a>     success = !@user.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>     success = !user.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>     @response.body = success ? user.personal_keys : false</pre></td>
+            <td><pre><a name="line25">25</a>     @response.body = success ? @user.personal_keys : false</pre></td>
           </tr>
         
           
@@ -267,7 +267,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>   #   * 404 NOT FOUND =&gt; false (no such user)</pre></td>
+            <td><pre><a name="line36">36</a>   #   * 404 NOT FOUND =&gt; false (no such @user)</pre></td>
           </tr>
         
           
@@ -351,379 +351,361 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>     user = User.find_by_login(params[:user_id])</pre></td>
+            <td><pre><a name="line50">50</a>     PersonalKey.current.find_by_user_id(@user.id).revoke</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     PersonalKey.current.find_by_user_id(user.id).revoke</pre></td>
+            <td><pre><a name="line51">51</a>     personal_key = @user.personal_keys.create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>     personal_key = user.personal_keys.create</pre></td>
+            <td><pre><a name="line52">52</a>     success = personal_key.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     success = personal_key.save</pre></td>
+            <td><pre><a name="line53">53</a>     @response.body = success ? personal_key : personal_key.errors</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     @response.body = success ? personal_key : personal_key.errors</pre></td>
+            <td><pre><a name="line54">54</a>     @response.status = success ? :created : :unprocessable_entity</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>     @response.status = success ? :created : :unprocessable_entity</pre></td>
+            <td><pre><a name="line55">55</a>     respond</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line56">56</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line57">57</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line58">58</a>   # Gets the personal key of the required @user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line60">60</a>   # Return values:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line61">61</a>   # * On success: 200 OK =&gt; personal_key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line62">62</a>   # * On failure: 404 NOT FOUND =&gt; false (no such @user, or no such personal_key)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line63">63</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line64">64</a>   # URL params:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>   # * &lt;login&gt;: User's login</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a>   # * &lt;key_id&gt;: ID of the personal key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line67">67</a>   # * &lt;format&gt;: Output format wanted</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line68">68</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line69">69</a>   # GET params:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a>   # * auth_token: time-based token generated (string, length == 8)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a>   # Query URLs:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line73">73</a>   # * GET /users/&lt;login&gt;/personal_key/&lt;key_id&gt;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line74">74</a>   # * GET /users/&lt;login&gt;/personal_key/&lt;key_id&gt;.&lt;format&gt;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>     respond</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line57">57</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line58">58</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line59">59</a>   # Gets the personal key of the required user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line60">60</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line61">61</a>   # Return values:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line62">62</a>   # * On success: 200 OK =&gt; personal_key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line63">63</a>   # * On failure: 404 NOT FOUND =&gt; false (no such user, or no such personal_key)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line64">64</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line65">65</a>   # URL params:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line66">66</a>   # * &lt;login&gt;: User's login</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line67">67</a>   # * &lt;key_id&gt;: ID of the personal key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line68">68</a>   # * &lt;format&gt;: Output format wanted</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line69">69</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line70">70</a>   # GET params:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line71">71</a>   # * auth_token: time-based token generated (string, length == 8)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line72">72</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line73">73</a>   # Query URLs:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line74">74</a>   # * GET /users/&lt;login&gt;/personal_key/&lt;key_id&gt;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line75">75</a>   # * GET /users/&lt;login&gt;/personal_key/&lt;key_id&gt;.&lt;format&gt;</pre></td>
+            <td><pre><a name="line75">75</a>   def show</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>   def show</pre></td>
+            <td><pre><a name="line76">76</a>     personal_key = @user.personal_keys.find_by_id(params[:id]) unless @user.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>     user = User.find_by_login params[:user_id]</pre></td>
+            <td><pre><a name="line77">77</a>     success = !(personal_key.nil? or personal_key.revoked?)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line78">78</a>     personal_key = user.personal_keys.find_by_id(params[:id]) unless user.nil?</pre></td>
+            <td><pre><a name="line78">78</a>     @response.body = success ? personal_key : false</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>     success = !(personal_key.nil? or personal_key.revoked?)</pre></td>
+            <td><pre><a name="line79">79</a>     @response.status = success ? :ok : :not_found</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>     @response.body = success ? personal_key : false</pre></td>
+            <td><pre><a name="line80">80</a>     respond</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line81">81</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line82">82</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line83">83</a>   # Deletes the specified key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line84">84</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line85">85</a>   # Return values:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line86">86</a>   # * On success: 200 OK =&gt; true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line87">87</a>   # * On failure: 404 NOT FOUND =&gt; false (no such @user, or no such personal_key)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line88">88</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line89">89</a>   # URL params:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line90">90</a>   # * &lt;login&gt;: User's login</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line91">91</a>   # * &lt;key_id&gt;: ID of the personal key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a>   # * &lt;format&gt;: Output format wanted</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line93">93</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line94">94</a>   # DELETE params:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line95">95</a>   # * auth_token: time-based token generated (string, length == 8)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line96">96</a>   #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line97">97</a>   # Query URLs:</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line98">98</a>   # * DELETE /users/&lt;login&gt;/personal_key/&lt;key_id&gt;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line99">99</a>   # * DELETE /users/&lt;login&gt;/personal_key/&lt;key_id&gt;.&lt;format&gt;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>     @response.status = success ? :ok : :not_found</pre></td>
+            <td><pre><a name="line100">100</a>   def destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>     respond</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line83">83</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line84">84</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line85">85</a>   # Deletes the specified key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line86">86</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line87">87</a>   # Return values:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line88">88</a>   # * On success: 200 OK =&gt; true</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line89">89</a>   # * On failure: 404 NOT FOUND =&gt; false (no such user, or no such personal_key)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line90">90</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line91">91</a>   # URL params:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line92">92</a>   # * &lt;login&gt;: User's login</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line93">93</a>   # * &lt;key_id&gt;: ID of the personal key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line94">94</a>   # * &lt;format&gt;: Output format wanted</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line95">95</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line96">96</a>   # DELETE params:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line97">97</a>   # * auth_token: time-based token generated (string, length == 8)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line98">98</a>   #</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line99">99</a>   # Query URLs:</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line100">100</a>   # * DELETE /users/&lt;login&gt;/personal_key/&lt;key_id&gt;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line101">101</a>   # * DELETE /users/&lt;login&gt;/personal_key/&lt;key_id&gt;.&lt;format&gt;</pre></td>
+            <td><pre><a name="line101">101</a>     personal_key = @user.personal_keys.find_by_id(params[:id]) unless @user.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>   def destroy</pre></td>
+            <td><pre><a name="line102">102</a>     success = !(personal_key.nil? or personal_key.revoked?)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line103">103</a>     user = User.find_by_login params[:user_id]</pre></td>
+            <td><pre><a name="line103">103</a>     @response.body = success ? true : false</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>     personal_key = user.personal_keys.find_by_id(params[:id]) unless user.nil?</pre></td>
+            <td><pre><a name="line104">104</a>     @response.status = success ? :ok : :not_found</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>     success = !(personal_key.nil? or personal_key.revoked?)</pre></td>
+            <td><pre><a name="line105">105</a>     personal_key.revoke if success</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line106">106</a>     @response.body = success ? true : false</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line107">107</a>     @response.status = success ? :ok : :not_found</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line108">108</a>     personal_key.revoke if success</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line109">109</a>     respond</pre></td>
+            <td><pre><a name="line106">106</a>     respond</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line110">110</a>   end</pre></td>
+            <td><pre><a name="line107">107</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line111">111</a> end</pre></td>
+            <td><pre><a name="line108">108</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jul 31 18:52:46 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Aug 19 16:07:38 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.10</a></p>
 
   </body>
 </html>

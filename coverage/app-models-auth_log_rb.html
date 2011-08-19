@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-auth_log_rb.html">app/models/auth_log.rb</a></td>
-            <td class='right_align'><tt>15</tt></td>
-            <td class='right_align'><tt>3</tt></td>
+            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>4</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,97 +57,121 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line1">1</a> # == Schema Information</pre></td>
+            <td><pre><a name="line1">1</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line2">2</a> #</pre></td>
+            <td><pre><a name="line2">2</a> # == Schema Information</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> # Table name: auth_logs</pre></td>
+            <td><pre><a name="line3">3</a> #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a> #</pre></td>
+            <td><pre><a name="line4">4</a> # Table name: auth_logs</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> #  id            :integer         not null, primary key</pre></td>
+            <td><pre><a name="line5">5</a> #</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> #  account_token :integer</pre></td>
+            <td><pre><a name="line6">6</a> #  id               :integer         not null, primary key</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> #  outcome       :boolean</pre></td>
+            <td><pre><a name="line7">7</a> #  account_token_id :integer</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a> #  created_at    :datetime</pre></td>
+            <td><pre><a name="line8">8</a> #  outcome          :boolean</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> #  updated_at    :datetime</pre></td>
+            <td><pre><a name="line9">9</a> #  created_at       :datetime</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a> #</pre></td>
+            <td><pre><a name="line10">10</a> #  updated_at       :datetime</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a> </pre></td>
+            <td><pre><a name="line11">11</a> #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a> class AuthLog &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line13">13</a> class AuthLog &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>   # model association</pre></td>
+            <td><pre><a name="line14">14</a>   # default scope for ordering</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>   belongs_to :account_token</pre></td>
+            <td><pre><a name="line15">15</a>   default_scope :order =&gt; &quot;auth_logs.created_at DESC&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> end</pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a>   # model association</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>   belongs_to :account_token</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line19">19</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jul 31 18:52:46 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Aug 19 16:07:38 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.10</a></p>
 
   </body>
 </html>

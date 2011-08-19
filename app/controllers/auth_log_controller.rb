@@ -2,6 +2,7 @@
 class AuthLogController < ApplicationController
   before_filter :restricted
   before_filter :instanciate_response
+  before_filter :get_user
 
   # Lists all the user's auth attempts
   #
@@ -22,8 +23,8 @@ class AuthLogController < ApplicationController
   # * GET /users/<login>/auth_log
   # * GET /users/<login>/auth_log.<format>
   def index
-    user = User.find_by_login(params[:user_id])
-    logs = AuthLog.paginate(:include => { :account_token, :user }, :per_page => 10, :page => params[:page], :conditions => "users.id = #{user.id}")
+    logs = AuthLog.paginate(:include => { :account_token, :user }, :per_page => 10, :page => params[:page],
+      :conditions => "users.id = #{@user.id}")
     @response.body = logs
     @response.status = 200
     respond

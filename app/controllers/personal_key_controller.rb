@@ -2,15 +2,16 @@
 class PersonalKeyController < ApplicationController
   before_filter :restricted
   before_filter :instanciate_response
+  before_filter :get_user
 
-  # Lists all the user's personal keys
+  # Lists all the @user's personal keys
   #
   # Return values;
   # * On success: 200 OK => personal keys
-  # * On failure: 404 NOT FOUND => false (no such user)
+  # * On failure: 404 NOT FOUND => false (no such @user)
   #
   # URL params:
-  # * <login>: the user the personal keys belongs to
+  # * <login>: the @user the personal keys belongs to
   # * <format>: the output format wanted
   #
   # GET params:
@@ -20,9 +21,8 @@ class PersonalKeyController < ApplicationController
   # GET * /users/<login>/personal_key
   # GET * /users/<login>/personal_key.<format>
   def index
-    user = User.find_by_login(params[:user_id])
-    success = !user.nil?
-    @response.body = success ? user.personal_keys : false
+    success = !@user.nil?
+    @response.body = success ? @user.personal_keys : false
     @response.status = success ? :ok : :not_found
     respond
   end
@@ -33,7 +33,7 @@ class PersonalKeyController < ApplicationController
   # * On success: 201 CREATED => personal_key
   # * On failure:
   #   * 422 UNPROCESSABLE ENTITY => false (bad parameters)
-  #   * 404 NOT FOUND => false (no such user)
+  #   * 404 NOT FOUND => false (no such @user)
   #
   # POST params:
   # * empty parameter set to avoid 411 LENGTH REQUIRED
@@ -47,20 +47,19 @@ class PersonalKeyController < ApplicationController
   # * POST /users/<login>/personal_key
   # * POST /users/<login>/personal_key.<format>
   def create
-    user = User.find_by_login(params[:user_id])
-    PersonalKey.current.find_by_user_id(user.id).revoke
-    personal_key = user.personal_keys.create
+    PersonalKey.current.find_by_user_id(@user.id).revoke
+    personal_key = @user.personal_keys.create
     success = personal_key.save
     @response.body = success ? personal_key : personal_key.errors
     @response.status = success ? :created : :unprocessable_entity
     respond
   end
 
-  # Gets the personal key of the required user
+  # Gets the personal key of the required @user
   #
   # Return values:
   # * On success: 200 OK => personal_key
-  # * On failure: 404 NOT FOUND => false (no such user, or no such personal_key)
+  # * On failure: 404 NOT FOUND => false (no such @user, or no such personal_key)
   #
   # URL params:
   # * <login>: User's login
@@ -74,8 +73,7 @@ class PersonalKeyController < ApplicationController
   # * GET /users/<login>/personal_key/<key_id>
   # * GET /users/<login>/personal_key/<key_id>.<format>
   def show
-    user = User.find_by_login params[:user_id]
-    personal_key = user.personal_keys.find_by_id(params[:id]) unless user.nil?
+    personal_key = @user.personal_keys.find_by_id(params[:id]) unless @user.nil?
     success = !(personal_key.nil? or personal_key.revoked?)
     @response.body = success ? personal_key : false
     @response.status = success ? :ok : :not_found
@@ -86,7 +84,7 @@ class PersonalKeyController < ApplicationController
   #
   # Return values:
   # * On success: 200 OK => true
-  # * On failure: 404 NOT FOUND => false (no such user, or no such personal_key)
+  # * On failure: 404 NOT FOUND => false (no such @user, or no such personal_key)
   #
   # URL params:
   # * <login>: User's login
@@ -100,8 +98,7 @@ class PersonalKeyController < ApplicationController
   # * DELETE /users/<login>/personal_key/<key_id>
   # * DELETE /users/<login>/personal_key/<key_id>.<format>
   def destroy
-    user = User.find_by_login params[:user_id]
-    personal_key = user.personal_keys.find_by_id(params[:id]) unless user.nil?
+    personal_key = @user.personal_keys.find_by_id(params[:id]) unless @user.nil?
     success = !(personal_key.nil? or personal_key.revoked?)
     @response.body = success ? true : false
     @response.status = success ? :ok : :not_found

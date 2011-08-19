@@ -10,6 +10,9 @@ describe AuthLogController do
 	  @user.save
 	  @account_token.save
 	  @auth_log.save
+	  @auth_log_2 = Factory(:auth_log)
+	  @auth_log_2.outcome = true
+	  @auth_log_2.save
   end
 
   describe "GET 'index'" do
@@ -41,6 +44,14 @@ describe AuthLogController do
 	  		response.status.should == 200
 	  		response.body.should == "[]"
 		  end
+
+		  it "should have the right order" do
+	  		get :index, :format => :json, :user_id => @user.login, :auth_token => @cookie.cookie
+	  		response.status.should == 200
+	  		ret = ActiveSupport::JSON.decode response.body
+	  		ret[0].should contain "true"
+	  		ret[1].should contain "false"
+			  end
 	  end
   end
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/personal_key.rb</title>
+    <title>app/models/sync_token.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Openauthenticator C0 Coverage Information - RCov</h1>
-    <h2>app/models/personal_key.rb</h2>
+    <h2>app/models/sync_token.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-personal_key_rb.html">app/models/personal_key.rb</a></td>
-            <td class='right_align'><tt>42</tt></td>
-            <td class='right_align'><tt>18</tt></td>
+            <td class="left_align"><a href="app-models-sync_token_rb.html">app/models/sync_token.rb</a></td>
+            <td class='right_align'><tt>38</tt></td>
+            <td class='right_align'><tt>17</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -69,7 +69,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> # Table name: personal_keys</pre></td>
+            <td><pre><a name="line3">3</a> # Table name: sync_tokens</pre></td>
           </tr>
         
           
@@ -81,229 +81,205 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> #  id           :integer         not null, primary key</pre></td>
+            <td><pre><a name="line5">5</a> #  id         :integer         not null, primary key</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> #  personal_key :string(255)</pre></td>
+            <td><pre><a name="line6">6</a> #  user_id    :integer</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> #  state        :string(255)</pre></td>
+            <td><pre><a name="line7">7</a> #  sync_token :string(255)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a> #  user_id      :integer</pre></td>
+            <td><pre><a name="line8">8</a> #  expires_at :string(255)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> #  created_at   :datetime</pre></td>
+            <td><pre><a name="line9">9</a> #  used       :boolean         default(FALSE)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a> #  updated_at   :datetime</pre></td>
+            <td><pre><a name="line10">10</a> #  created_at :datetime</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a> #</pre></td>
+            <td><pre><a name="line11">11</a> #  updated_at :datetime</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
+            <td><pre><a name="line12">12</a> #</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a> class PersonalKey &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line14">14</a> class SyncToken &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>   #scopes definitions</pre></td>
+            <td><pre><a name="line15">15</a>   # scopes</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   scope :current, where(:state =&gt; :active)</pre></td>
+            <td><pre><a name="line16">16</a>   scope :current, where(:used =&gt; false)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line17">17</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   # model associations</pre></td>
+            <td><pre><a name="line18">18</a>   # model associations</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   belongs_to :user</pre></td>
+            <td><pre><a name="line19">19</a>   belongs_to :user</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
+            <td><pre><a name="line20">20</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   # prevent foreign key change by mass assignment</pre></td>
+            <td><pre><a name="line21">21</a>   # before and after filter</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   attr_accessible :personal_key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line23">23</a>   # before create filter</pre></td>
+            <td><pre><a name="line22">22</a>   before_create :set_sync_token</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   before_create :generate_personal_key</pre></td>
+            <td><pre><a name="line23">23</a>   after_create :set_expiring_date</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a> </pre></td>
+            <td><pre><a name="line24">24</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>   def set_sync_token</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>     self.sync_token = OaUtils::generate_random_key[0..7]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>   # revoke the personal key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>   def revoke</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>     self.state = :revoked</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>     self.save</pre></td>
+            <td><pre><a name="line27">27</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line31">31</a> </pre></td>
+            <td><pre><a name="line28">28</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   def revoked?</pre></td>
+            <td><pre><a name="line29">29</a>   def set_expiring_date</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>     self.state == :revoked.to_s</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line34">34</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line35">35</a> </pre></td>
+            <td><pre><a name="line30">30</a>     self.expires_at = self.created_at + 10.minutes</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>   private</pre></td>
+            <td><pre><a name="line31">31</a>     self.save</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>   # generate the personal_key bound to the User</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>   def generate_personal_key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     self.personal_key = OaUtils.generate_random_key</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     self.state = :active</pre></td>
+            <td><pre><a name="line32">32</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   end</pre></td>
+            <td><pre><a name="line33">33</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>   def revoke!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>     self.used = true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     self.save</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a> end</pre></td>
+            <td><pre><a name="line37">37</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line38">38</a> end</pre></td>
           </tr>
         
       </tbody>

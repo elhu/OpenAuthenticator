@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   def create
     user = User.new_with_params params
     success = user.save
-    @response.body =  success ? [user, PersonalKey.current.find_by_user_id(user.id)] : user.errors
+    @response.body =  success ? [user, user.personal_key] : user.errors
     @response.status = success ? :created : :unprocessable_entity
     respond
   end

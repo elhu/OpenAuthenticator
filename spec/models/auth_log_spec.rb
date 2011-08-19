@@ -1,12 +1,13 @@
+
 # == Schema Information
 #
 # Table name: auth_logs
 #
-#  id            :integer         not null, primary key
-#  account_token :integer
-#  outcome       :boolean
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id               :integer         not null, primary key
+#  account_token_id :integer
+#  outcome          :boolean
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 require 'spec_helper'
@@ -39,3 +40,4 @@ describe AuthLog do
 		end
 	end
 end
+

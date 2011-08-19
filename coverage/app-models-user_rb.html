@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-user_rb.html">app/models/user.rb</a></td>
-            <td class='right_align'><tt>76</tt></td>
-            <td class='right_align'><tt>41</tt></td>
+            <td class='right_align'><tt>77</tt></td>
+            <td class='right_align'><tt>42</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -171,349 +171,355 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>   has_one :pseudo_cookie, :dependent =&gt; :destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line21">21</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a>   # forbid mass assignment of login in update.</pre></td>
+            <td><pre><a name="line20">20</a>   has_many :sync_tokens, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   attr_accessible :first_name, :last_name, :email, :birth_date</pre></td>
+            <td><pre><a name="line21">21</a>   has_one :pseudo_cookie, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a> </pre></td>
+            <td><pre><a name="line22">22</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>   # regex for format validation</pre></td>
+            <td><pre><a name="line23">23</a>   # forbid mass assignment of login in update.</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>   login_regex = /\w+|[-]/</pre></td>
+            <td><pre><a name="line24">24</a>   attr_accessible :first_name, :last_name, :email, :birth_date</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a> </pre></td>
+            <td><pre><a name="line25">25</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   # validation rules for User model</pre></td>
+            <td><pre><a name="line26">26</a>   # regex for format validation</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>   validates :login, :presence =&gt; true, :format =&gt; { :with =&gt; login_regex },</pre></td>
+            <td><pre><a name="line27">27</a>   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>   login_regex = /\w+|[-]/</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>             :length =&gt; { :maximum =&gt; 25 }, :uniqueness =&gt; { :case_sensitive =&gt; false }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>   validates :first_name, :presence =&gt; true, :length =&gt; { :maximum =&gt; 50 }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>   validates :last_name, :presence =&gt; true, :length =&gt; { :maximum =&gt; 50 }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>   validates :email, :presence =&gt; true, :format =&gt; { :with =&gt; email_regex },</pre></td>
+            <td><pre><a name="line29">29</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>             :length =&gt; { :maximum =&gt; 255 }, :uniqueness =&gt; { :case_sensitive =&gt; false }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line37">37</a>   # before and after filters</pre></td>
+            <td><pre><a name="line30">30</a>   # validation rules for User model</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   before_create :set_emergency_pass</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>   after_create :create_personal_key</pre></td>
+            <td><pre><a name="line31">31</a>   validates :login, :presence =&gt; true, :format =&gt; { :with =&gt; login_regex },</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line41">41</a>   # returns the active personal_key</pre></td>
+            <td><pre><a name="line32">32</a>             :length =&gt; { :maximum =&gt; 25 }, :uniqueness =&gt; { :case_sensitive =&gt; false }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   def personal_key</pre></td>
+            <td><pre><a name="line33">33</a>   validates :first_name, :presence =&gt; true, :length =&gt; { :maximum =&gt; 50 }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     PersonalKey.current.find_by_user_id(self.id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line44">44</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line45">45</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line46">46</a>   # set the login as key for URLs</pre></td>
+            <td><pre><a name="line34">34</a>   validates :last_name, :presence =&gt; true, :length =&gt; { :maximum =&gt; 50 }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>   def to_param</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>     login</pre></td>
+            <td><pre><a name="line35">35</a>   validates :email, :presence =&gt; true, :format =&gt; { :with =&gt; email_regex },</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>   end</pre></td>
+            <td><pre><a name="line36">36</a>             :length =&gt; { :maximum =&gt; 255 }, :uniqueness =&gt; { :case_sensitive =&gt; false }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a> </pre></td>
+            <td><pre><a name="line37">37</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a>   # creates a new user with the params received</pre></td>
+            <td><pre><a name="line38">38</a>   # before and after filters</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>   def self.new_with_params params</pre></td>
+            <td><pre><a name="line39">39</a>   before_create :set_emergency_pass</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     traits = params[:user]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line54">54</a>     user = User.new(traits)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line55">55</a>     user.login = traits[:login]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>     date = traits[:birthdate]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>     begin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>       user.birthdate = Date.new(date[:year].to_s.to_i, date[:month].to_s.to_i, date[:day].to_s.to_i)</pre></td>
+            <td><pre><a name="line40">40</a>   after_create :create_personal_key</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a>     rescue</pre></td>
+            <td><pre><a name="line41">41</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line42">42</a>   # returns the active personal_key</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>       user.birthdate = nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line61">61</a>     end</pre></td>
+            <td><pre><a name="line43">43</a>   def personal_key</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>     user</pre></td>
+            <td><pre><a name="line44">44</a>     PersonalKey.current.find_by_user_id(self.id)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>   end</pre></td>
+            <td><pre><a name="line45">45</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a> </pre></td>
+            <td><pre><a name="line46">46</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a>   # set the login as key for URLs</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line66">66</a>   # generates an account_token for the user on create only</pre></td>
+            <td><pre><a name="line48">48</a>   def to_param</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>   def create_personal_key</pre></td>
+            <td><pre><a name="line49">49</a>     login</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line50">50</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line51">51</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a>   # creates a new user with the params received</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>     self.personal_keys.create</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line69">69</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line70">70</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line71">71</a>   # generates and save emergency_pass for the user on create only</pre></td>
+            <td><pre><a name="line53">53</a>   def self.new_with_params params</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>   def set_emergency_pass</pre></td>
+            <td><pre><a name="line54">54</a>     traits = params[:user]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     self.emergency_pass = OaUtils.generate_random_key if self.new_record? and self.emergency_pass.nil?</pre></td>
+            <td><pre><a name="line55">55</a>     user = User.new(traits)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     user.login = traits[:login]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>     date = traits[:birthdate]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>       user.birthdate = Date.new(date[:year].to_s.to_i, date[:month].to_s.to_i, date[:day].to_s.to_i)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a>   end</pre></td>
+            <td><pre><a name="line60">60</a>     rescue</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>       user.birthdate = nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a> end</pre></td>
+            <td><pre><a name="line62">62</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>     user</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a> </pre></td>
+            <td><pre><a name="line64">64</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line67">67</a>   # generates an account_token for the user on create only</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>   def create_personal_key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     self.personal_keys.create</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a>   # generates and save emergency_pass for the user on create only</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>   def set_emergency_pass</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line74">74</a>     self.emergency_pass = OaUtils.generate_random_key if self.new_record? and self.emergency_pass.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line75">75</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line76">76</a> end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line77">77</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jul 31 18:52:46 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Aug 19 16:07:38 +0100 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.10</a></p>
 
   </body>
 </html>

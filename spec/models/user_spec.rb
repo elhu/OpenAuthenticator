@@ -30,6 +30,7 @@ describe User do
     describe "it should respond to methods" do
       it "should respond to the account_tokens method" do
         @user.should respond_to :account_tokens
+        @user.should respond_to :sync_tokens
       end
     end
   end

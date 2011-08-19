@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
     @response = HttpResponse.new
   end
 
+  # Gets the user to make it available to actions
+  def get_user
+    @user = User.find_by_login(params[:user_id])
+  end
+
   private
   # Handles the response for all API requests
   def respond

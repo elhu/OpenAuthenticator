@@ -25,8 +25,8 @@ class AuthController < ApplicationController
   # * POST /authenticate.<format>
   def authenticate
     credentials = params[:credentials]
-    account_token = AccountToken.active.find_by_account_token(credentials[:account_token])
     token = credentials[:token]
+    account_token = AccountToken.active.find_by_account_token(credentials[:account_token])
 
     user_id = account_token.user_id
     generated_token = OaUtils.generate_token PersonalKey.current.find_by_user_id(user_id).personal_key
@@ -81,8 +81,8 @@ class AuthController < ApplicationController
   # * POST /session_auth.<format>
   def session_auth
     credentials = params[:credentials]
-    personal_key = credentials[:personal_key]
     token = credentials[:token]
+    personal_key = credentials[:personal_key]
 
     user_id = PersonalKey.current.find_by_personal_key(personal_key).user_id
 

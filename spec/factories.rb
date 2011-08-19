@@ -15,3 +15,7 @@ Factory.define :auth_log do |auth_log|
 	auth_log.account_token_id		1
 	auth_log.outcome					false
 end
+
+Factory.define :sync_token do |sync_token|
+	sync_token.user_id					1
+end

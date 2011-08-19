@@ -136,6 +136,10 @@
         
           <li><a href="./PseudoCookie.html">PseudoCookie</a></li>
         
+          <li><a href="./SyncToken.html">SyncToken</a></li>
+        
+          <li><a href="./SyncTokenController.html">SyncTokenController</a></li>
+        
           <li><a href="./User.html">User</a></li>
         
           <li><a href="./UsersController.html">UsersController</a></li>
@@ -157,6 +161,8 @@
 
     </div><!-- description -->
 
+    
+    
     
     <div id="5Buntitled-5D" class="documentation-section">
       
@@ -199,8 +205,8 @@
 <ul><li>
 <p>user:</p>
 <ul><li>
-<p>email: user’s email address (string, matching:
-/A[w+-.]+@[a-zd-.]+.[a-z]+z/i, length: &lt;= 255)</p>
+<p>email: user’s email address (string, matching: /A[w+-.]+@[<a
+href="http://a-z">a-zd-.]+.</a>+z/i, length: &lt;= 255)</p>
 </li></ul>
 </li></ul>
 
@@ -319,8 +325,8 @@
 </li><li>
 <p>last_name: user’s last name (string, length: &lt;= 50)</p>
 </li><li>
-<p>email: user’s email address (string, matching:
-/A[w+-.]+@[a-zd-.]+.[a-z]+z/i, length: &lt;= 255)</p>
+<p>email: user’s email address (string, matching: /A[w+-.]+@[<a
+href="http://a-z">a-zd-.]+.</a>+z/i, length: &lt;= 255)</p>
 </li><li>
 <p>birthdate:</p>
 <ul><li>
@@ -350,7 +356,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new_with_params</span> <span class="ruby-identifier">params</span>
   <span class="ruby-identifier">success</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>
-  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> =  <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> [<span class="ruby-identifier">user</span>, <span class="ruby-constant">PersonalKey</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_user_id</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)] <span class="ruby-operator">:</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">errors</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> =  <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> [<span class="ruby-identifier">user</span>, <span class="ruby-identifier">user</span>.<span class="ruby-identifier">personal_key</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">errors</span>
   <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">success</span> <span class="ruby-operator">?</span> <span class="ruby-value">:created</span> <span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span>
   <span class="ruby-identifier">respond</span>
 <span class="ruby-keyword">end</span></pre>
@@ -590,8 +596,8 @@
 </li><li>
 <p>last_name: user’s last name (string, length: &lt;= 50)</p>
 </li><li>
-<p>email: user’s email address (string, matching:
-/A[w+-.]+@[a-zd-.]+.[a-z]+z/i, length: &lt;= 255)</p>
+<p>email: user’s email address (string, matching: /A[w+-.]+@[<a
+href="http://a-z">a-zd-.]+.</a>+z/i, length: &lt;= 255)</p>
 </li></ul>
 </li><li>
 <p>auth_token: time-based token generated (string, length == 8)</p>

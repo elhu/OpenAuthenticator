@@ -5,7 +5,7 @@
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-  <title>Class: AuthLogController</title>
+  <title>Class: SyncTokenController</title>
 
   <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
 
@@ -34,8 +34,8 @@
         <div class="section-body">
           <ul>
           
-            <li><a href="./app/controllers/auth_log_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-              class="thickbox" title="app/controllers/auth_log_controller.rb">app/controllers/auth_log_controller.rb</a></li>
+            <li><a href="./app/controllers/sync_token_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="app/controllers/sync_token_controller.rb">app/controllers/sync_token_controller.rb</a></li>
           
           </ul>
         </div>
@@ -65,7 +65,9 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li><a href="#method-i-index">#index</a></li>
+          <li><a href="#method-i-account_sync">#account_sync</a></li>
+          
+          <li><a href="#method-i-create">#create</a></li>
           
         </ul>
       </div>
@@ -141,12 +143,12 @@
   </div>
 
   <div id="documentation">
-    <h1 class="class">AuthLogController</h1>
+    <h1 class="class">SyncTokenController</h1>
 
     <div id="description" class="description">
       
-<p>This class defines the API methods related to the logging of Authentication
-requests</p>
+<p>This class defines the API methods relative to <a
+href="SyncToken.html">SyncToken</a> management</p>
 
     </div><!-- description -->
 
@@ -168,12 +170,12 @@ requests</p>
         <h3 class="section-header">Public Instance Methods</h3>
 
       
-        <div id="index-method" class="method-detail ">
-          <a name="method-i-index"></a>
+        <div id="account_sync-method" class="method-detail ">
+          <a name="method-i-account_sync"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">index</span><span
+            <span class="method-name">account_sync</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -181,56 +183,125 @@ requests</p>
 
           <div class="method-description">
             
-            <p>Lists all the user’s auth attempts</p>
+            <p>Synchronises an account with a device or the website</p>
 
-<p>Restricted to: authenticated user, admin</p>
-
-<p>Return values;</p>
+<p>Return values:</p>
 <ul><li>
-<p>On success: 200 OK =&gt; logs</p>
+<p>On success: 201 CREATED =&gt; user</p>
+</li><li>
+<p>On failure: 422 UNPROCESSABLE ENTITY =&gt; false (bad parameters)</p>
 </li></ul>
 
 <p>URL params:</p>
 <ul><li>
-<p>&lt;login&gt;: the user the logs belongs to</p>
+<p>&lt;login&gt;: Login of the user to sync</p>
 </li><li>
-<p>&lt;format&gt;: the output format wanted</p>
+<p>&lt;sync_token_id&gt;: id of the sync token used to perform the sync</p>
+</li><li>
+<p>&lt;format&gt;: Output format wanted</p>
 </li></ul>
 
 <p>GET params:</p>
 <ul><li>
 <p>auth_token: time-based token generated (string, length == 8)</p>
-</li><li>
-<p>page: Not mandatory, get the 10 logs starting after (page - 1) * 10</p>
 </li></ul>
 
 <p>Query URLs:</p>
 <ul><li>
-<p>GET /users/&lt;login&gt;/auth_log</p>
+<p>GET /users/&lt;login&gt;/sync_token/&lt;sync_token_id&gt;</p>
 </li><li>
-<p>GET /users/&lt;login&gt;/auth_log.&lt;format&gt;</p>
+<p>GET /users/&lt;login&gt;/sync_token/&lt;sync_token_id&gt;.format</p>
 </li></ul>
             
 
             
-            <div class="method-source-code" id="index-source">
+            <div class="method-source-code" id="account_sync-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/auth_log_controller.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-identifier">logs</span> = <span class="ruby-constant">AuthLog</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:include</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:account_token</span>, <span class="ruby-value">:user</span> }, <span class="ruby-value">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>, <span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>],
-    <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;users.id = #{@user.id}&quot;</span>)
-  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">logs</span>
-  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">200</span>
+<span class="ruby-comment"># File app/controllers/sync_token_controller.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">account_sync</span>
+  <span class="ruby-identifier">sync_token</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">sync_tokens</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">find_by_id</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">sync_token</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">sync_token</span>.<span class="ruby-identifier">used</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">sync_token</span>.<span class="ruby-identifier">expires_at</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-identifier">sync_token</span>.<span class="ruby-identifier">revoke!</span>
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">:ok</span>
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = [<span class="ruby-ivar">@user</span>, <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">personal_key</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">:unprocessable_entity</span>
+    <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">respond</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- index-source -->
+            </div><!-- account_sync-source -->
             
           </div>
 
           
 
           
-        </div><!-- index-method -->
+        </div><!-- account_sync-method -->
+
+      
+        <div id="create-method" class="method-detail ">
+          <a name="method-i-create"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Generates a sync token</p>
+
+<p>Return values:</p>
+<ul><li>
+<p>On success: 200 OK =&gt; [user, personal_key] (same as user_create)</p>
+</li><li>
+<p>On failure: Cannot fail (unless not authenticated)</p>
+</li></ul>
+
+<p>URL params:</p>
+<ul><li>
+<p>&lt;login&gt;: Login of the user to sync</p>
+</li><li>
+<p>&lt;format&gt;: Output format wanted</p>
+</li></ul>
+
+<p>POST params:</p>
+<ul><li>
+<p>auth_token: time-based token generated (string, length == 8)</p>
+</li></ul>
+
+<p>Query URLs:</p>
+<ul><li>
+<p>POST /users/&lt;login&gt;/sync_token</p>
+</li><li>
+<p>POST /users/&lt;login&gt;/sync_token.format</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="create-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/sync_token_controller.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-identifier">prev</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">sync_tokens</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-identifier">prev</span>.<span class="ruby-identifier">revoke!</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">prev</span>
+  <span class="ruby-identifier">sync_token</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">sync_tokens</span>.<span class="ruby-identifier">create</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">:created</span>
+  <span class="ruby-ivar">@response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">sync_token</span>
+  <span class="ruby-identifier">respond</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- create-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- create-method -->
 
       
       </div><!-- public-instance-method-details -->

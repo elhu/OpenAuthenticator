@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"auth",
+				"auth_login"
+			],
+			[
+				"autho",
+				"authorized"
+			],
+			[
+				"acco",
+				"account_token"
+			],
+			[
 				"target_t",
 				"target_table_field"
 			],
@@ -19,6 +31,62 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/auth_log.rb",
+			"settings":
+			{
+				"buffer_size": 306,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_log_controller.rb",
+			"settings":
+			{
+				"buffer_size": 992,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/pseudo_cookie.rb",
+			"settings":
+			{
+				"buffer_size": 1324,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/config/routes.rb",
+			"settings":
+			{
+				"buffer_size": 470,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/account_token_controller_spec.rb",
+			"settings":
+			{
+				"buffer_size": 9337,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
+			"settings":
+			{
+				"buffer_size": 4922,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_controller.rb",
+			"settings":
+			{
+				"buffer_size": 2888,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -43,6 +111,21 @@
 	},
 	"file_history":
 	[
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/auth_log_controller_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/Gemfile",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/user_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/user.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/application_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/auth_log_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/account_token_controller_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/auth_controller_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_controller.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/config/routes.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/factories.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/account_token_spec.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/account_token.rb",
+		"/home/elhu/workspace/rails_projects/openauthenticator/Rakefile",
 		"/home/elhu/workspace/rails_projects/BAD/coverage/index.html",
 		"/home/elhu/workspace/rails_projects/BAD/app/controllers/application_controller.rb",
 		"/home/elhu/workspace/rails_projects/BAD/app/views/table/index.html.erb",
@@ -102,9 +185,7 @@
 		"/home/elhu/.config/sublime-text-2/Packages/Ruby/begin-rescue.sublime-snippet",
 		"/home/elhu/workspace/rails_projects/BAD/Gemfile.lock",
 		"/home/elhu/workspace/rails_projects/BAD/.gitignore",
-		"/home/elhu/workspace/rails_projects/openauthenticator/app/models/user.rb",
 		"/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/users_controller.rb",
-		"/home/elhu/workspace/rails_projects/openauthenticator/spec/models/user_spec.rb",
 		"/home/elhu/Desktop/test.rb"
 	],
 	"find":
@@ -122,6 +203,8 @@
 		],
 		"location_history":
 		[
+			"/home/elhu/workspace/rails_projects/openauthenticator/app",
+			"/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers",
 			"<open folders>"
 		]
 	},
@@ -130,6 +213,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"def restricted",
+			"count",
 			"FIELDS",
 			"@tableColumns",
 			"@table =",
@@ -181,8 +266,205 @@
 	"groups":
 	[
 		{
+			"selected": 5,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/auth_log.rb",
+					"settings":
+					{
+						"buffer_size": 306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_log_controller.rb",
+					"settings":
+					{
+						"buffer_size": 992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								725,
+								982
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/models/pseudo_cookie.rb",
+					"settings":
+					{
+						"buffer_size": 1324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1317,
+								1317
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 192,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/config/routes.rb",
+					"settings":
+					{
+						"buffer_size": 470,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/spec/controllers/account_token_controller_spec.rb",
+					"settings":
+					{
+						"buffer_size": 9337,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 384,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/account_token_controller.rb",
+					"settings":
+					{
+						"buffer_size": 4922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								316,
+								316
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 1675,
+						"zoom_level": 1
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/elhu/workspace/rails_projects/openauthenticator/app/controllers/auth_controller.rb",
+					"settings":
+					{
+						"buffer_size": 2888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1250,
+								1250
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0,
+						"translation.y": 0,
+						"zoom_level": 1
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -227,6 +509,86 @@
 		"height": 0,
 		"selected_items":
 		[
+			[
+				"auth_co",
+				"app/controllers/auth_controller.rb"
+			],
+			[
+				"account_token_",
+				"app/controllers/account_token_controller.rb"
+			],
+			[
+				"gem",
+				"Gemfile"
+			],
+			[
+				"account_co_sp",
+				"spec/controllers/account_token_controller_spec.rb"
+			],
+			[
+				"pse",
+				"app/models/pseudo_cookie.rb"
+			],
+			[
+				"route",
+				"config/routes.rb"
+			],
+			[
+				"account_tokent",
+				"app/controllers/account_token_controller.rb"
+			],
+			[
+				"pseudo",
+				"app/models/pseudo_cookie.rb"
+			],
+			[
+				"account_token",
+				"app/controllers/account_token_controller.rb"
+			],
+			[
+				"account_tokle",
+				"spec/controllers/account_token_controller_spec.rb"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"auth_controller_",
+				"spec/controllers/auth_controller_spec.rb"
+			],
+			[
+				"account_token_spec",
+				"spec/models/account_token_spec.rb"
+			],
+			[
+				"user",
+				"spec/models/user_spec.rb"
+			],
+			[
+				"fac",
+				"spec/factories.rb"
+			],
+			[
+				"rakef",
+				"Rakefile"
+			],
+			[
+				"gemf",
+				"Gemfile"
+			],
+			[
+				"accou",
+				"app/models/account_token.rb"
+			],
+			[
+				"auth_log",
+				"app/models/auth_log.rb"
+			],
+			[
+				"spec/models/auth_log_spec.rb",
+				"spec/models/auth_log_spec.rb"
+			],
 			[
 				"table/inde",
 				"app/views/table/index.html.erb"
@@ -306,10 +668,6 @@
 			[
 				"index",
 				"app/views/table/index.html.erb"
-			],
-			[
-				"gemf",
-				"Gemfile"
 			],
 			[
 				"table/edit",
@@ -400,10 +758,6 @@
 				"app/views/table_field/edit.html.erb"
 			],
 			[
-				"gem",
-				"Gemfile"
-			],
-			[
 				"confi",
 				"config/application.rb"
 			],
@@ -448,20 +802,12 @@
 				"tmp/metric_fu/scratch/saikuro/app/views/users/_form.html.erb_cyclo.html"
 			],
 			[
-				"routes",
-				"config/routes.rb"
-			],
-			[
 				"application_table/sh",
 				"app/views/application_table/_show.html.erb"
 			],
 			[
 				"show",
 				"app/views/applications/show.html.erb"
-			],
-			[
-				"route",
-				"config/routes.rb"
 			],
 			[
 				"applications_co",
@@ -674,70 +1020,6 @@
 			[
 				"show.ht",
 				"app/views/applications/show.html.erb"
-			],
-			[
-				"_sho",
-				"app/views/application_table/_show.html.erb"
-			],
-			[
-				"applications_contr",
-				"app/controllers/applications_controller.rb"
-			],
-			[
-				"nav.",
-				"app/views/layouts/_nav.html.erb"
-			],
-			[
-				"application_t",
-				"app/models/application_table.rb"
-			],
-			[
-				"nav",
-				"app/views/layouts/_nav.html.erb"
-			],
-			[
-				"publicstyles",
-				"public/stylesheets/screen.css"
-			],
-			[
-				"_formt",
-				"app/views/applications/_form.html.erb"
-			],
-			[
-				"applications/new",
-				"app/views/applications/new.html.erb"
-			],
-			[
-				"gemfi",
-				"Gemfile"
-			],
-			[
-				"controller",
-				"app/controllers/users_controller.rb"
-			],
-			[
-				"applications",
-				"app/controllers/applications_controller.rb"
-			],
-			[
-				"applicationco",
-				"app/controllers/application_controller.rb"
-			],
-			[
-				"layt",
-				"app/views/layouts/application.html.erb"
-			],
-			[
-				".g",
-				".gitignore"
-			],
-			[
-				"model/",
-				"app/models/user.rb"
-			],
-			[
-				"mode/user",
-				"spec/models/user_spec.rb"
 			]
 		],
 		"width": 0

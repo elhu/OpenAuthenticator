@@ -65,6 +65,8 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
+          <li><a href="#method-i-get_user">#get_user</a></li>
+          
           <li><a href="#method-i-instanciate_response">#instanciate_response</a></li>
           
           <li><a href="#method-i-restricted">#restricted</a></li>
@@ -126,6 +128,10 @@
         
           <li><a href="./PseudoCookie.html">PseudoCookie</a></li>
         
+          <li><a href="./SyncToken.html">SyncToken</a></li>
+        
+          <li><a href="./SyncTokenController.html">SyncTokenController</a></li>
+        
           <li><a href="./User.html">User</a></li>
         
           <li><a href="./UsersController.html">UsersController</a></li>
@@ -148,6 +154,8 @@
     </div><!-- description -->
 
     
+    
+    
     <div id="5Buntitled-5D" class="documentation-section">
       
 
@@ -161,6 +169,39 @@
       
       <div id="protected-instance-method-details" class="method-section section">
         <h3 class="section-header">Protected Instance Methods</h3>
+
+      
+        <div id="get_user-method" class="method-detail ">
+          <a name="method-i-get_user"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">get_user</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Gets the user to make it available to actions</p>
+            
+
+            
+            <div class="method-source-code" id="get_user-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/application_controller.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_user</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>])
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- get_user-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- get_user-method -->
 
       
         <div id="instanciate_response-method" class="method-detail ">

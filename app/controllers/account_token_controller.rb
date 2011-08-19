@@ -1,7 +1,8 @@
 # This class defines the API methods related to account_token management
 class AccountTokenController < ApplicationController
   before_filter :restricted
-  before_filter :get_account_token_and_user, :only => [:show, :update, :destroy]
+  before_filter :get_user
+  before_filter :get_account_token, :only => [:show, :update, :destroy]
   before_filter :instanciate_response
 
   # Lists all the user's account tokens
@@ -23,10 +24,9 @@ class AccountTokenController < ApplicationController
   # * GET /users/<login>/account_token
   # * GET /users/<login>/account_token.<format>
   def index
-    user = User.find_by_login(params[:user_id])
-    success = !user.nil?
+    success = !@user.nil?
     @response.status = success ? :ok : :not_found
-    @response.body = success ? user.account_tokens : false
+    @response.body = success ? @user.account_tokens : false
     respond
   end
 
@@ -79,8 +79,7 @@ class AccountTokenController < ApplicationController
   # * POST /users/<login>/account_token
   # * POST /users/<login>/account_token.<format>
   def create
-    user = User.find_by_login(params[:user_id])
-    account_token = user.account_tokens.create(params[:account_token])
+    account_token = @user.account_tokens.create(params[:account_token])
     success = account_token.save
     @response.body = success ? account_token : account_token.errors
     @response.status = success ? :created : :unprocessable_entity
@@ -148,8 +147,7 @@ class AccountTokenController < ApplicationController
     respond
   end
 
-  def get_account_token_and_user
-    @user = User.find_by_login(params[:user_id])
+  def get_account_token
     @account_token = @user.account_tokens.active.find_by_id params[:id]
   end
 end
