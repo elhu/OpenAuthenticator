@@ -88,8 +88,8 @@ class AuthController < ApplicationController
 
     authorized = OaUtils.generate_token(personal_key) == token ? true : false
 
-    @response.body = authorized and p_k ? PseudoCookie.generate_cookie(p_k.user_id) : false
-    @response.status = authorized and p_k ? :ok : :unauthorized
+    @response.body = (authorized && p_k) ? PseudoCookie.generate_cookie(p_k.user_id) : false
+    @response.status = (authorized && p_k) ? :ok : :unauthorized
     respond
   end
 end
