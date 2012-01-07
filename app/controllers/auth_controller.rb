@@ -85,6 +85,7 @@ class AuthController < ApplicationController
     personal_key = credentials[:personal_key]
 
     p_k = PersonalKey.current.find_by_personal_key(personal_key)
+    logger.info "p_k: #{p_k.inspect}"
 
     authorized = OaUtils.generate_token(personal_key) == token ? true : false
 
