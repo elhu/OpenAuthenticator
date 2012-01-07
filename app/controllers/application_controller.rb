@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   # Handles the response for all API requests
   def respond
     respond_to do |format|
+      logger.info @response.inspect
       format.json { render :json => @response.body, :status => @response.status }
       format.xml { render :xml => @response.body, :status => @response.status }
     end
