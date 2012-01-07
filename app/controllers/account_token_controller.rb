@@ -26,7 +26,7 @@ class AccountTokenController < ApplicationController
   def index
     success = !@user.nil?
     @response.status = success ? :ok : :not_found
-    @response.body = success ? @user.account_tokens : false
+    @response.body = success ? @user.account_tokens.active : false
     respond
   end
 

@@ -5,3 +5,4 @@ tmp/**/*
 *~
 webrat.log
 \#*
+.rvmrc*
