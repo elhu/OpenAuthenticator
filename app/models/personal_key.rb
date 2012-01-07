@@ -12,7 +12,7 @@
 
 class PersonalKey < ActiveRecord::Base
   #scopes definitions
-  scope :current, where(:state => :active)
+  scope :current, where("state = 'active'")
 
   # model associations
   belongs_to :user
