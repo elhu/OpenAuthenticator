@@ -27,6 +27,7 @@ class AuthLogController < ApplicationController
       :conditions => "users.id = #{@user.id}")
     @response.body = logs
     @response.status = 200
+    logger.info "Logs: #{logs.inspect}"
     respond
   end
 end
