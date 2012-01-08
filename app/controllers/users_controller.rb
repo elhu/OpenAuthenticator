@@ -152,7 +152,9 @@ class UsersController < ApplicationController
   # Query URLs:
   # * POST /users/new/check_email
   def check_email
-    user = User.find_by_email(params[:user][:email])
+    logger.info "PARAMS: #{params.inspect}"
+    user = nil
+    user = User.find_by_email(params[:user][:email]) if params[:user]
     user_exist_check user
   end
 
@@ -169,7 +171,9 @@ class UsersController < ApplicationController
   # Query URLs:
   # * POST /users/new/check_login
   def check_login
-    user = User.find_by_login(params[:user][:login])
+    logger.info "PARAMS: #{params.inspect}"
+    user = nil
+    user = User.find_by_login(params[:user][:login]) if params[:user]
     user_exist_check user
   end
 
