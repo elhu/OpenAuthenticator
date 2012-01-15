@@ -20,3 +20,5 @@ production:
   host: localhost
   database: open_authenticator
   username: root
+  password: eipbilantech
+  

@@ -1,0 +1,30 @@
+# aptitude update
+# aptitude upgrade
+aptitude install rubygems libxslt-dev apache2-prefork-dev libcurl4-openssl-dev libapr1-dev libaprutil1-dev
+gem install passenger bundler
+export PATH=$PATH:/var/lib/gems/1.8/bin/
+passenger-install-apache2-module
+echo -e "LoadModule passenger_module /var/lib/gems/1.8/gems/passenger-3.0.11/ext/apache2/mod_passenger.so\nPassengerRoot /var/lib/gems/1.8/gems/passenger-3.0.11\nPassengerRuby /usr/bin/ruby1.8" >> /etc/apache2/apache2.conf
+# Copy the second part of the passenger conf and change the parts you need.
+cd /var/www
+rm index.html
+git clone git://github.com/elhu/OpenAuthenticator.git
+cd OpenAuthenticator
+bundle
+# Configure config/database.yml
+RAILS_ENV=production bundle exec rake db:setup
+chmod -R 777 log db public
+a2dissite default default-ssl
+/etc/init.d/apache2 restart
+a2ensite default
+/etc/init.d/apache2 restart
+
+#### 
+<VirtualHost *:80>
+  ServerName localhost
+  DocumentRoot /var/www/OpenAuthenticator/public
+  <Directory /var/www/OpenAuthenticator/public>
+    AllowOverride All
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
