@@ -40,7 +40,7 @@ class AccountToken < ActiveRecord::Base
   private
   # generate the account token randomly
   def generate_account_token
-    self.account_token = OaUtils.generate_random_key[0..7]
+    self.account_token = OaUtils.generate_random_key.to_s[0..7]
     self.state = :active
   end
 end
