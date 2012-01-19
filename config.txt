@@ -11,7 +11,7 @@ rm index.html
 git clone git://github.com/elhu/OpenAuthenticator.git
 cd OpenAuthenticator
 bundle
-# Configure config/database.yml
+# Configure config/database.yml 
 RAILS_ENV=production bundle exec rake db:setup
 chmod -R 777 log db public
 a2dissite default default-ssl
